@@ -7,7 +7,8 @@ const Root = () => (
   <BrowserRouter>
     <MainTemplate>
       <Switch>
-        <Route exact path={routes.home} render={() => <Redirect to="/" />} />
+        {/* <Route exact path={routes.home} render={() => <Redirect to="/" />} /> */}
+        <Route exact path={routes.main} component={Main} />
       </Switch>
     </MainTemplate>
   </BrowserRouter>
