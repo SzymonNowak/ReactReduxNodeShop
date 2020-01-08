@@ -1,4 +1,5 @@
 export const routes = {
   home: "/",
-  main: "/main"
+  main: "/main",
+  cos1: "/cos"
 };

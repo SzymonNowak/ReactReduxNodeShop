@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
 import { routes } from "../../../routes/index";
 
@@ -26,6 +26,30 @@ const StyledLink = styled(NavLink)`
   text-decoration: none;
   font-weight: bold;
   position: relative;
+
+  &:visited {
+    color: black;
+  }
+  &:hover {
+    color: purple;
+  }
+  &.active {
+    color: blue;
+  }
+/* 
+  ${({ button }) =>
+    button &&
+    css`
+      color: white;
+      border: 1px solid #343a40;
+      background-color: purple;
+      border-radius: 10px;
+      width: 180px;
+      height: 60px;
+      font-size: 10px;
+      text-align: center;
+      vertical-align: middle;
+    `} */
 `;
 
 const ListOfNavItem = styled.ul`
@@ -46,17 +70,17 @@ const NavBar = () => {
   return (
     <Nav>
       <UserBoxWrapper>
-        <p>IDK WH I AM DOING</p>
+        <StyledLink to={routes.main}>IDK WH I AM DOING</StyledLink>
       </UserBoxWrapper>
       <ListOfNavItem>
         <ListItem>
-          <StyledLink to={routes.main}> cos1</StyledLink>
+          <StyledLink to={routes.cos1}> cos1</StyledLink>
         </ListItem>
         <ListItem>
-          <StyledLink to={routes.main}> cos2</StyledLink>
+          <StyledLink to={routes.cos1}> cos2</StyledLink>
         </ListItem>
         <ListItem>
-          <StyledLink to={routes.main}> cos3</StyledLink>
+          <StyledLink to={routes.cos1}> cos3</StyledLink>
         </ListItem>
       </ListOfNavItem>
     </Nav>
