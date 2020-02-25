@@ -4,7 +4,7 @@ import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
 import { useForm } from "react-hook-form";
 const Wrapper = styled.div`
-  border-left: 8px solid purple;
+  border-left: 8px solid #f39c12;
   z-index: 99;
   position: fixed;
   display: flex;
@@ -14,7 +14,6 @@ const Wrapper = styled.div`
   top: 0;
   height: 100vh;
   width: 680px;
-  /* margin-top: 130px; */
   background-color: white;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   transform: translateX(${({ isVisible }) => (isVisible ? "0" : "100%")});
@@ -66,7 +65,7 @@ const NewItemBar = ({ isVisible }) => {
             required: true
           })}
         />
-        {errors.tittle && <ErrorMessage>This is required</ErrorMessage>}
+        {errors.tittle && <ErrorMessage>This is required </ErrorMessage> }
         <StyledInput
           id="count"
           name="count"

@@ -11,13 +11,15 @@ const ButtonIcon = styled.button`
   background-size: 40%;
   border: none;
   background-color: white;
-  border: 1px solid purple;
+  border: 1px solid #f39c12;
   transition: 0.25s ease-in-out;
-  &.active {
+  outline: none;
+
+  &:focus {
     background-color: white;
   }
   &:hover {
-    background-color: purple;
+    background-color: #f39c12;
   }
 `;
 
