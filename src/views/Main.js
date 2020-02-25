@@ -3,7 +3,8 @@ import Plus from "../assets/plus.svg";
 import styled from "styled-components";
 import IconButton from "../components/atoms/IconButton/IconButton";
 import NewItemBar from "../components/organism/NewItemBar/NewItemBar";
-
+import { connect } from 'react-redux';
+import Card from '../components/molecules/Card/Card';
 const StyledIconButton = styled(IconButton)`
   position: absolute;
   bottom: 40px;
@@ -11,11 +12,23 @@ const StyledIconButton = styled(IconButton)`
   z-index: 200;
 `;
 
-const Main = () => {
+const Main = ({products}) => {
   const [isVisible, setVisibility] = useState(false);
-  console.log(isVisible);
+
   return (
     <div>
+      {products.map(({ id, tittle, count, price, description, productPhoto }) => (
+        <Card
+          id={id}
+          tittle={tittle}
+          count={count}
+          price={price}
+          description={description}
+          productPhoto={productPhoto}
+          key={id}
+        />
+      ))}
+
       <StyledIconButton
         icon={Plus}
         active
@@ -26,4 +39,7 @@ const Main = () => {
   );
 };
 
-export default Main;
+
+const mapeStateToProps = ({ products }) => ({products});
+
+export default connect(mapeStateToProps)(Main);
