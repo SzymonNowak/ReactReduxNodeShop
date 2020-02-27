@@ -3,6 +3,8 @@ import styled, { css } from "styled-components";
 import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
 import { useForm } from "react-hook-form";
+import { connect, useDispatch } from "react-redux";
+import { addItem as addItemAction} from '../../../actions/index';
 const Wrapper = styled.div`
   border-left: 8px solid #f39c12;
   z-index: 99;
@@ -45,14 +47,16 @@ const ErrorMessage = styled.p`
 
 `;
 
-const NewItemBar = ({ isVisible }) => {
+const NewItemBar = ({ isVisible, addItem }) => {
+  const { register, handleSubmit, errors } = useForm();
+  const dispatch = useDispatch();
+  const onSubmit = data => {
+    dispatch(addItemAction(data));
+  };
+    // const onSubmit = data => {
+    //  console.log(data);
+    // };
 
-    const { register, handleSubmit, errors,} = useForm();
-    const onSubmit = (data) => {
-        console.log(data)
-    }
-
-    
   return (
     <Wrapper isVisible={isVisible}>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
@@ -65,7 +69,7 @@ const NewItemBar = ({ isVisible }) => {
             required: true
           })}
         />
-        {errors.tittle && <ErrorMessage>This is required </ErrorMessage> }
+        {/* {errors.tittle && <ErrorMessage>This is required </ErrorMessage>} */}
         <StyledInput
           id="count"
           name="count"
@@ -74,7 +78,7 @@ const NewItemBar = ({ isVisible }) => {
             required: true
           })}
         />
-        {errors.count && <ErrorMessage>This is required</ErrorMessage>}
+        {/* {errors.count && <ErrorMessage>This is required</ErrorMessage>} */}
         <StyledInput
           id="price"
           name="price"
@@ -83,7 +87,7 @@ const NewItemBar = ({ isVisible }) => {
             required: true
           })}
         />
-        {errors.price && <ErrorMessage>This is required</ErrorMessage>}
+        {/* {errors.price && <ErrorMessage>This is required</ErrorMessage>} */}
         <StyledTextArea
           name="description"
           id="description"
@@ -93,7 +97,7 @@ const NewItemBar = ({ isVisible }) => {
             required: true
           })}
         />
-        {errors.description && <ErrorMessage>This is required</ErrorMessage>}
+        {/* {errors.description && <ErrorMessage>This is required</ErrorMessage>} */}
         <input
           type="file"
           id="productPhoto"
@@ -103,11 +107,19 @@ const NewItemBar = ({ isVisible }) => {
             required: true
           })}
         />
-        {errors.productPhoto && <ErrorMessage>This is required</ErrorMessage>}
-        <StyledButton type="submit">Add product</StyledButton>
+        {/* {errors.productPhoto && <ErrorMessage>This is required</ErrorMessage>} */}
+        <StyledButton  type="submit">
+          Add product
+        </StyledButton>
       </StyledForm>
     </Wrapper>
   );
 };
 
-export default NewItemBar;
+//  const mapDispatchToProps = dispatch => ({
+//    addItem: itemContent => dispatch(addItemAction(itemContent))
+//  });
+
+export default connect()(NewItemBar);
+
+// export default connect(null,mapDispatchToProps)(NewItemBar);
