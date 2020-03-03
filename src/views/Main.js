@@ -17,14 +17,13 @@ const Main = ({products}) => {
 
   return (
     <div>
-      {products.map(({ id, tittle, count, price, description, productPhoto }) => (
+      {products.map(({ id, tittle, count, price, description }) => (
         <Card
           id={id}
           tittle={tittle}
           count={count}
           price={price}
           description={description}
-          productPhoto={productPhoto}
           key={id}
         />
       ))}

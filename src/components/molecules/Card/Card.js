@@ -11,18 +11,15 @@ const Wrapper = styled.div`
 
 `;
 
-
 const Card = ({
     id,
   tittle,
   count,
   price,
   description,
-  productPhoto,
   removeItem
 }) => (
   <Wrapper>
-    <img src={productPhoto} alt="elo"/>
     <p>{tittle}</p>
     <p>{count}</p>
     <p>{price}</p>

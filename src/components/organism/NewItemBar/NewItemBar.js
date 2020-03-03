@@ -53,9 +53,6 @@ const NewItemBar = ({ isVisible, addItem }) => {
   const onSubmit = data => {
     dispatch(addItemAction(data));
   };
-    // const onSubmit = data => {
-    //  console.log(data);
-    // };
 
   return (
     <Wrapper isVisible={isVisible}>
@@ -69,7 +66,7 @@ const NewItemBar = ({ isVisible, addItem }) => {
             required: true
           })}
         />
-        {/* {errors.tittle && <ErrorMessage>This is required </ErrorMessage>} */}
+        {errors.tittle && <ErrorMessage>This is required </ErrorMessage>}
         <StyledInput
           id="count"
           name="count"
@@ -78,7 +75,7 @@ const NewItemBar = ({ isVisible, addItem }) => {
             required: true
           })}
         />
-        {/* {errors.count && <ErrorMessage>This is required</ErrorMessage>} */}
+        {errors.count && <ErrorMessage>This is required</ErrorMessage>}
         <StyledInput
           id="price"
           name="price"
@@ -87,7 +84,7 @@ const NewItemBar = ({ isVisible, addItem }) => {
             required: true
           })}
         />
-        {/* {errors.price && <ErrorMessage>This is required</ErrorMessage>} */}
+        {errors.price && <ErrorMessage>This is required</ErrorMessage>}
         <StyledTextArea
           name="description"
           id="description"
@@ -97,29 +94,13 @@ const NewItemBar = ({ isVisible, addItem }) => {
             required: true
           })}
         />
-        {/* {errors.description && <ErrorMessage>This is required</ErrorMessage>} */}
-        <input
-          type="file"
-          id="productPhoto"
-          name="productPhoto"
-          accept="image/png, image/jpeg"
-          ref={register({
-            required: true
-          })}
-        />
-        {/* {errors.productPhoto && <ErrorMessage>This is required</ErrorMessage>} */}
-        <StyledButton  type="submit">
-          Add product
-        </StyledButton>
+        {errors.description && <ErrorMessage>This is required</ErrorMessage>}
+        <StyledButton type="submit">Add product</StyledButton>
       </StyledForm>
     </Wrapper>
   );
 };
 
-//  const mapDispatchToProps = dispatch => ({
-//    addItem: itemContent => dispatch(addItemAction(itemContent))
-//  });
 
 export default connect()(NewItemBar);
 
-// export default connect(null,mapDispatchToProps)(NewItemBar);
