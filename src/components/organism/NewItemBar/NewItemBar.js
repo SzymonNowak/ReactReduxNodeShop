@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled, { css } from "styled-components";
 import Input from "../../atoms/Input/Input";
-import Button from "../../atoms/Button/Button";
+import AddProductButton from "../../atoms/AddProductButton/AddProductButton";
 import { useForm } from "react-hook-form";
 import { connect, useDispatch } from "react-redux";
 import { addItem as addItemAction} from '../../../actions/index';
@@ -25,26 +25,34 @@ const Wrapper = styled.div`
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
+  
 `;
 
 const StyledInput = styled(Input)`
   margin-top: 20px;
+  &:focus {
+    outline: 2px solid ${({ theme }) => theme.orange};
+  }
 `;
 
 const StyledTextArea = styled(Input)`
-  margin: 30px 0 50px;
+  margin: 30px 0 30px;
   border-radius: 20px;
   height: 30vh;
+  &:focus {
+    outline: 2px solid ${({theme}) => theme.orange };
+  }
 `;
 
-const StyledButton = styled(Button)`
+const StyledButton = styled(AddProductButton)`
   margin-top: 30px;
+  
 `;
 
 const ErrorMessage = styled.p`
-    color:red;
-    margin-left:20px;
-
+  color: ${({ theme }) => theme.warning};
+  margin-left: 20px;
+  font-weight: ${({ theme }) => theme.bold};
 `;
 
 const NewItemBar = ({ isVisible, addItem }) => {
@@ -66,7 +74,7 @@ const NewItemBar = ({ isVisible, addItem }) => {
             required: true
           })}
         />
-        {errors.tittle && <ErrorMessage>This is required </ErrorMessage>}
+        {errors.tittle && <ErrorMessage>This field is required </ErrorMessage>}
         <StyledInput
           id="count"
           name="count"
@@ -75,7 +83,7 @@ const NewItemBar = ({ isVisible, addItem }) => {
             required: true
           })}
         />
-        {errors.count && <ErrorMessage>This is required</ErrorMessage>}
+        {errors.count && <ErrorMessage>This field is required</ErrorMessage>}
         <StyledInput
           id="price"
           name="price"
@@ -84,7 +92,7 @@ const NewItemBar = ({ isVisible, addItem }) => {
             required: true
           })}
         />
-        {errors.price && <ErrorMessage>This is required</ErrorMessage>}
+        {errors.price && <ErrorMessage>This field is required</ErrorMessage>}
         <StyledTextArea
           name="description"
           id="description"
@@ -94,7 +102,9 @@ const NewItemBar = ({ isVisible, addItem }) => {
             required: true
           })}
         />
-        {errors.description && <ErrorMessage>This is required</ErrorMessage>}
+        {errors.description && (
+          <ErrorMessage>This field is required</ErrorMessage>
+        )}
         <StyledButton type="submit">Add product</StyledButton>
       </StyledForm>
     </Wrapper>

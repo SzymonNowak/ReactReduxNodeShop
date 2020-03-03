@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
 import { routes } from "../../../routes/index";
-
+import Button from '../../atoms/Button/Button';
 const Nav = styled.nav`
   position: absolute;
   top: 0;
@@ -19,6 +19,7 @@ const Nav = styled.nav`
 const ListItem = styled.li`
   list-style: none;
   margin-left: 30px;
+  font-size:${({theme}) => theme.fontSize.xxs};
 `;
 
 const StyledLink = styled(NavLink)`
@@ -31,25 +32,11 @@ const StyledLink = styled(NavLink)`
     color: black;
   }
   &:hover {
-    color: purple;
+    color: #fd79a8;
   }
   &.active {
-    color: blue;
+    color: ${({ theme }) => theme.orange};
   }
-/* 
-  ${({ button }) =>
-    button &&
-    css`
-      color: white;
-      border: 1px solid #343a40;
-      background-color: purple;
-      border-radius: 10px;
-      width: 180px;
-      height: 60px;
-      font-size: 10px;
-      text-align: center;
-      vertical-align: middle;
-    `} */
 `;
 
 const ListOfNavItem = styled.ul`
@@ -77,10 +64,16 @@ const NavBar = () => {
           <StyledLink to={routes.cos1}> cos1</StyledLink>
         </ListItem>
         <ListItem>
-          <StyledLink to={routes.cos1}> cos2</StyledLink>
+          <StyledLink to={routes.cos2}> cos2</StyledLink>
         </ListItem>
         <ListItem>
-          <StyledLink to={routes.cos1}> cos3</StyledLink>
+          <StyledLink to={routes.cos3}> cos3</StyledLink>
+        </ListItem>
+        <ListItem>
+          <Button> Rejestracja</Button>
+        </ListItem>
+        <ListItem>
+          <Button>Zaloguj</Button>
         </ListItem>
       </ListOfNavItem>
     </Nav>

@@ -12,4 +12,9 @@ const MainUserTemaplte = ({children}) => {
    ) 
 }
 
+MainUserTemaplte.propTypes = {
+  children: PropTypes.element.isRequired
+};
+
+
 export default MainUserTemaplte;
