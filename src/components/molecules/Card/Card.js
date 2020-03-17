@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { connect, } from 'react-redux';
 import PropTypes from "prop-types";
-import { removeItem as removeItemAction} from '../../../actions/index';
-import { test } from '../../../actions/index';
+import {
+  removeItem as removeItemAction,
+  addItemToCart as addItemToCartAction
+} from "../../../actions/index";
 const Wrapper = styled.div`
     height:200px;
     width:200px;
@@ -18,17 +20,32 @@ const Card = ({
   price,
   description,
   removeItem,
-  testItem
-}) => (
-  <Wrapper>
-    <p>{tittle}</p>
-    <p>{count}</p>
-    <p>{price}</p>
-    <p>{description}</p>
-    <button onClick={() => removeItem(id)}>Usun</button>
-    <button>Edit</button>
-  </Wrapper>
-);
+  addItemToCart }) => { 
+  const item = {
+    id,
+    tittle,
+    count,
+    price,
+  };
+  return (
+    <Wrapper>
+      <p>{tittle}</p>
+      <p>{count}</p>
+      <p>{price}</p>
+      <p>{description}</p>
+      <button onClick={() => removeItem(id)}>Usun</button>
+      <button>Edit</button>
+      <button onClick={() => addItemToCart(item)}>
+        Add to cart
+      </button>
+    </Wrapper>
+  );
+  
+
+  
+
+}
+
 
 
 
@@ -46,6 +63,7 @@ Card.protoTypes = {
 
 const mapDispatchToProps = dispatch => ({
   removeItem: id => dispatch(removeItemAction(id)),
+  addItemToCart: item => dispatch(addItemToCartAction(item))
 });
 
 

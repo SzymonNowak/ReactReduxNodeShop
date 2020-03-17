@@ -30,3 +30,12 @@ export const addItem = (itemContent) => {
 
 
 
+
+export const addItemToCart = (item) => {
+  return {
+    type: ShopItemActionType.ADD_ITEM_TO_CART,
+    payload: {
+     ...item
+    }
+  }
+}

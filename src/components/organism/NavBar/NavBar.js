@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
 import { routes } from "../../../routes/index";
 import Button from '../../atoms/Button/Button';
+import { connect } from "react-redux";
 const Nav = styled.nav`
   position: absolute;
   top: 0;
@@ -53,7 +54,9 @@ const UserBoxWrapper = styled.div`
   font-weight: bold;
 `;
 
-const NavBar = () => {
+const NavBar = ({ productsInCart }) => {
+  
+  console.log(productsInCart);
   return (
     <Nav>
       <UserBoxWrapper>
@@ -75,9 +78,15 @@ const NavBar = () => {
         <ListItem>
           <Button>Zaloguj</Button>
         </ListItem>
+        <ListItem>
+          {/* <p>{productsInCart.lenght}</p> */}
+        </ListItem>
       </ListOfNavItem>
     </Nav>
   );
 };
 
-export default NavBar;
+
+const mapeStateToProps = ({ productsInCart }) => ({ productsInCart });
+
+export default connect(mapeStateToProps)(NavBar);

@@ -8,8 +8,8 @@ const rootReducer = (state = initialState, action) => {
       return addNewItem(state, action);
     case ShopItemActionType.REMOVE_ITEM:
       return deleteNewItem(state, action);
-    case ShopItemActionType.TEST:
-     return test(state, action);
+    case ShopItemActionType.ADD_ITEM_TO_CART:
+      return addItemToCart(state, action)
     default:
       return state;
   }
@@ -17,14 +17,16 @@ const rootReducer = (state = initialState, action) => {
 
 
 
-const test = (state, action) => {
-  console.log(action.payload.tittle);
-}
-
 const addNewItem = (state, action) => {
   return {
     ...state,
     products: [...state.products, action.payload.item]
+  };
+}
+const addItemToCart = (state, action) => {
+  return {
+    ...state,
+    productsInCart: [...state.productsInCart, action.payload]
   };
 }
 
@@ -36,7 +38,9 @@ const deleteNewItem = (state, action) => {
 }
 
 const initialState = {
-  products: []
+  products: [],
+  productsInCart: [],
+  cart: 0,
 };
 
 
