@@ -1,6 +1,10 @@
+import {
+  ShopItemActionType
+} from "../reducers/ShopItemActionType";
+
 export const removeItem = (id) => {
     return {
-        type: 'REMOVE_ITEM',
+        type: ShopItemActionType.REMOVE_ITEM,
         payload: {
             id
         }
@@ -14,7 +18,7 @@ export const addItem = (itemContent) => {
         .substr(2, 9)}`;
 
   return {
-    type: "ADD_ITEM",
+    type: ShopItemActionType.ADD_ITEM,
     payload: {
       item: {
         id: getId(),

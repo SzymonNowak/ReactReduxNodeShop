@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled, { css } from "styled-components";
 import Input from "../../atoms/Input/Input";
-import AddProductButton from "../../atoms/AddProductButton/AddProductButton";
+import Button from "../../atoms/Button/Button";
 import { useForm } from "react-hook-form";
 import { connect, useDispatch } from "react-redux";
 import { addItem as addItemAction} from '../../../actions/index';
@@ -44,8 +44,11 @@ const StyledTextArea = styled(Input)`
   }
 `;
 
-const StyledButton = styled(AddProductButton)`
+const StyledButton = styled(Button)`
   margin-top: 30px;
+  width:220px;
+  height:47px;
+  font-size:${({theme}) => theme.fontSize.xxs};
   
 `;
 
@@ -58,8 +61,8 @@ const ErrorMessage = styled.p`
 const NewItemBar = ({ isVisible, addItem }) => {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
-  const onSubmit = data => {
-    dispatch(addItemAction(data));
+  const onSubmit = itemContent => {
+    dispatch(addItemAction(itemContent));
   };
 
   return (

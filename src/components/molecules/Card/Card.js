@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect, } from 'react-redux';
 import PropTypes from "prop-types";
 import { removeItem as removeItemAction} from '../../../actions/index';
-
+import { test } from '../../../actions/index';
 const Wrapper = styled.div`
     height:200px;
     width:200px;
@@ -12,12 +12,13 @@ const Wrapper = styled.div`
 `;
 
 const Card = ({
-    id,
+  id,
   tittle,
   count,
   price,
   description,
-  removeItem
+  removeItem,
+  testItem
 }) => (
   <Wrapper>
     <p>{tittle}</p>
@@ -25,8 +26,11 @@ const Card = ({
     <p>{price}</p>
     <p>{description}</p>
     <button onClick={() => removeItem(id)}>Usun</button>
+    <button>Edit</button>
   </Wrapper>
 );
+
+
 
 
 
@@ -36,14 +40,12 @@ Card.protoTypes = {
   count: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
-  productPhoto: PropTypes.string.isRequired,
   removeItem: PropTypes.func.isRequired,
 };
    
 
 const mapDispatchToProps = dispatch => ({
-  removeItem: id => dispatch(removeItemAction(id))
-  //losowa nazwa naszego propsa        a tutaj chcemy dac dostep do naszej akcji
+  removeItem: id => dispatch(removeItemAction(id)),
 });
 
 
