@@ -1,15 +1,15 @@
- import {
-  ShopItemActionType 
-} from "./ShopItemActionType"
-
+ import { actionTypes } from "../constants/actionTypes";
+import { addNewItem } from './addnewItem';
+import { addItemToCart } from './addItemToCart';
+import { deleteNewItem } from "./deleteItem";
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ShopItemActionType.ADD_ITEM: 
+    case actionTypes.ADD_ITEM:
       return addNewItem(state, action);
-    case ShopItemActionType.REMOVE_ITEM:
+    case actionTypes.REMOVE_ITEM:
       return deleteNewItem(state, action);
-    case ShopItemActionType.ADD_ITEM_TO_CART:
-      return addItemToCart(state, action)
+    case actionTypes.ADD_ITEM_TO_CART:
+      return addItemToCart(state, action);
     default:
       return state;
   }
@@ -17,25 +17,6 @@ const rootReducer = (state = initialState, action) => {
 
 
 
-const addNewItem = (state, action) => {
-  return {
-    ...state,
-    products: [...state.products, action.payload.item]
-  };
-}
-const addItemToCart = (state, action) => {
-  return {
-    ...state,
-    productsInCart: [...state.productsInCart, action.payload]
-  };
-}
-
-const deleteNewItem = (state, action) => {
-  return {
-    ...state,
-    products: state.products.filter(item => item.id !== action.payload.id)
-  };
-}
 
 const initialState = {
   products: [],

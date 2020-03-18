@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { connect, } from 'react-redux';
 import PropTypes from "prop-types";
-import {
-  removeItem as removeItemAction,
-  addItemToCart as addItemToCartAction
-} from "../../../actions/index";
+import { removeItem as removeItemAction } from '../../../actions/removeItemAction';
+import { addItemToCart as addItemToCartAction } from "../../../actions/addItemToCartAction";
 const Wrapper = styled.div`
     height:200px;
     width:200px;

@@ -4,7 +4,7 @@ import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
 import { useForm } from "react-hook-form";
 import { connect, useDispatch } from "react-redux";
-import { addItem as addItemAction} from '../../../actions/index';
+import { addItem as addItemAction} from '../../../actions/addItemAction';
 const Wrapper = styled.div`
   border-left: 8px solid #f39c12;
   z-index: 99;
