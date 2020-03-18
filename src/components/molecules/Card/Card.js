@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { connect, } from 'react-redux';
-import PropTypes from "prop-types";
+import React from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { removeItem as removeItemAction } from '../../../actions/removeItemAction';
-import { addItemToCart as addItemToCartAction } from "../../../actions/addItemToCartAction";
+import { addItemToCart as addItemToCartAction } from '../../../actions/addItemToCartAction';
+
 const Wrapper = styled.div`
     height:200px;
     width:200px;
@@ -18,7 +19,8 @@ const Card = ({
   price,
   description,
   removeItem,
-  addItemToCart }) => { 
+  addItemToCart,
+}) => {
   const item = {
     id,
     tittle,
@@ -38,32 +40,33 @@ const Card = ({
       </button>
     </Wrapper>
   );
-  
-
-  
-
-}
-
-
-
-
-
-
-Card.protoTypes = {
-  id: PropTypes.string.isRequired,
-  tittle: PropTypes.string.isRequired,
-  count: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
-  removeItem: PropTypes.func.isRequired,
 };
-   
 
-const mapDispatchToProps = dispatch => ({
-  removeItem: id => dispatch(removeItemAction(id)),
-  addItemToCart: item => dispatch(addItemToCartAction(item))
+Card.propTypes = {
+  id: PropTypes.string,
+  tittle: PropTypes.string,
+  count: PropTypes.number,
+  price: PropTypes.number,
+  description: PropTypes.string,
+  removeItem: PropTypes.func,
+  addItemToCart: PropTypes.func,
+};
+
+Card.defaultProps = {
+  id: 'asd',
+  tittle: 'asd',
+  count: 10,
+  price: 10,
+  description: 'asd',
+  removeItem: () => {},
+  addItemToCart: () => { },
+};
+
+
+const mapDispatchToProps = (dispatch) => ({
+  removeItem: (id) => dispatch(removeItemAction(id)),
+  addItemToCart: (item) => dispatch(addItemToCartAction(item)),
 });
 
 
-export default connect(null,mapDispatchToProps)(Card);
-
+export default connect(null, mapDispatchToProps)(Card);

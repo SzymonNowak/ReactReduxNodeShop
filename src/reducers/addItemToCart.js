@@ -1,6 +1,4 @@
-export const addItemToCart = (state, action) => {
-  return {
-    ...state,
-    productsInCart: [...state.productsInCart, action.payload]
-  };
-};
+export const addItemToCart = (state, action) => ({
+  ...state,
+  productsInCart: [...state.productsInCart, action.payload],
+});

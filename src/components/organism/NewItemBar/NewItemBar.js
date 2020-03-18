@@ -1,10 +1,11 @@
-import React, {useState} from "react";
-import styled, { css } from "styled-components";
-import Input from "../../atoms/Input/Input";
-import Button from "../../atoms/Button/Button";
-import { useForm } from "react-hook-form";
-import { connect, useDispatch } from "react-redux";
-import { addItem as addItemAction} from '../../../actions/addItemAction';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
+import { useForm } from 'react-hook-form';
+import { connect, useDispatch } from 'react-redux';
+import Input from '../../atoms/Input/Input';
+import Button from '../../atoms/Button/Button';
+import { addItem as addItemAction } from '../../../actions/addItemAction';
+
 const Wrapper = styled.div`
   border-left: 8px solid #f39c12;
   z-index: 99;
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
   width: 680px;
   background-color: white;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-  transform: translateX(${({ isVisible }) => (isVisible ? "0" : "100%")});
+  transform: translateX(${({ isVisible }) => (isVisible ? '0' : '100%')});
   transition: transform 0.25s ease-in-out;
 `;
 
@@ -40,7 +41,7 @@ const StyledTextArea = styled(Input)`
   border-radius: 20px;
   height: 30vh;
   &:focus {
-    outline: 2px solid ${({theme}) => theme.orange };
+    outline: 2px solid ${({ theme }) => theme.orange};
   }
 `;
 
@@ -48,7 +49,7 @@ const StyledButton = styled(Button)`
   margin-top: 30px;
   width:220px;
   height:47px;
-  font-size:${({theme}) => theme.fontSize.xxs};
+  font-size:${({ theme }) => theme.fontSize.xxs};
   
 `;
 
@@ -61,7 +62,7 @@ const ErrorMessage = styled.p`
 const NewItemBar = ({ isVisible, addItem }) => {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
-  const onSubmit = itemContent => {
+  const onSubmit = (itemContent) => {
     dispatch(addItemAction(itemContent));
   };
 
@@ -74,7 +75,7 @@ const NewItemBar = ({ isVisible, addItem }) => {
           name="tittle"
           placeholder="type name "
           ref={register({
-            required: true
+            required: true,
           })}
         />
         {errors.tittle && <ErrorMessage>This field is required </ErrorMessage>}
@@ -83,7 +84,7 @@ const NewItemBar = ({ isVisible, addItem }) => {
           name="count"
           placeholder="type count "
           ref={register({
-            required: true
+            required: true,
           })}
         />
         {errors.count && <ErrorMessage>This field is required</ErrorMessage>}
@@ -92,7 +93,7 @@ const NewItemBar = ({ isVisible, addItem }) => {
           name="price"
           placeholder="type price "
           ref={register({
-            required: true
+            required: true,
           })}
         />
         {errors.price && <ErrorMessage>This field is required</ErrorMessage>}
@@ -102,7 +103,7 @@ const NewItemBar = ({ isVisible, addItem }) => {
           as="textarea"
           placeholder="type description"
           ref={register({
-            required: true
+            required: true,
           })}
         />
         {errors.description && (
@@ -116,4 +117,3 @@ const NewItemBar = ({ isVisible, addItem }) => {
 
 
 export default connect()(NewItemBar);
-

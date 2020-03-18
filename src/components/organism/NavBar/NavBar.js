@@ -1,9 +1,10 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import { NavLink } from "react-router-dom";
-import { routes } from "../../../routes/index";
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { routes } from '../../../routes/index';
 import Button from '../../atoms/Button/Button';
-import { connect } from "react-redux";
+
 const Nav = styled.nav`
   position: absolute;
   top: 0;
@@ -20,7 +21,7 @@ const Nav = styled.nav`
 const ListItem = styled.li`
   list-style: none;
   margin-left: 30px;
-  font-size:${({theme}) => theme.fontSize.xxs};
+  font-size:${({ theme }) => theme.fontSize.xxs};
 `;
 
 const StyledLink = styled(NavLink)`
@@ -55,7 +56,6 @@ const UserBoxWrapper = styled.div`
 `;
 
 const NavBar = ({ productsInCart }) => {
-  
   console.log(productsInCart);
   return (
     <Nav>

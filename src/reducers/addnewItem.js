@@ -1,6 +1,4 @@
-export const addNewItem = (state, action) => {
-  return {
-    ...state,
-    products: [...state.products, action.payload.item]
-  };
-};
+export const addNewItem = (state, action) => ({
+  ...state,
+  products: [...state.products, action.payload.item],
+});

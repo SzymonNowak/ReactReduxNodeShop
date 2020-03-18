@@ -1,7 +1,15 @@
- import { actionTypes } from "../constants/actionTypes";
+import { actionTypes } from '../constants/actionTypes';
 import { addNewItem } from './addnewItem';
 import { addItemToCart } from './addItemToCart';
-import { deleteNewItem } from "./deleteItem";
+import { deleteNewItem } from './deleteItem';
+
+const initialState = {
+  products: [],
+  productsInCart: [],
+  cart: 0,
+};
+
+
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_ITEM:
@@ -13,17 +21,7 @@ const rootReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
-
-
-
-
-const initialState = {
-  products: [],
-  productsInCart: [],
-  cart: 0,
 };
-
 
 
 export default rootReducer;
