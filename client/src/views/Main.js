@@ -15,6 +15,14 @@ const StyledIconButton = styled(IconButton)`
 const Main = ({products}) => {
   const [isVisible, setVisibility] = useState(false);
 
+  const getData = () => {
+    fetch('http://localhost:8080/')
+    .then(response => {
+      return response.json()
+    })
+    .then(data => console.log(data) )
+  }
+
   return (
     <div>
       {products.map(({ id, tittle, count, price, description }) => (
@@ -34,6 +42,7 @@ const Main = ({products}) => {
         onClick={() => setVisibility(!isVisible)}
       />
       <NewItemBar isVisible={isVisible} />
+      <button onClick={getData}> get fucking data</button>
     </div>
   );
 };
