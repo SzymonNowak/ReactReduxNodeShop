@@ -60,23 +60,27 @@ const NavBar = ({ productsInCart }) => {
   return (
     <Nav>
       <UserBoxWrapper>
-        <StyledLink to={routes.main}>IDK WH I AM DOING</StyledLink>
+        <StyledLink to={routes.main}> <i class="fas fa-hamburger"></i>  Burgermania </StyledLink>
       </UserBoxWrapper>
       <ListOfNavItem>
         <ListItem>
-          <StyledLink to={routes.cos1}> cos1</StyledLink>
+          <StyledLink to={routes.orders}> Order List</StyledLink>
         </ListItem>
         <ListItem>
-          <StyledLink to={routes.cos2}> cos2</StyledLink>
+          <StyledLink to={routes.contact}> Contact</StyledLink>
         </ListItem>
         <ListItem>
-          <StyledLink to={routes.cos3}> cos3</StyledLink>
+          <StyledLink to={routes.anything}> Anything</StyledLink>
         </ListItem>
         <ListItem>
-          <Button> Rejestracja</Button>
+          <StyledLink to={routes.register}>
+            <Button> Register</Button>
+          </StyledLink>
         </ListItem>
         <ListItem>
-          <Button>Zaloguj</Button>
+          <StyledLink to={routes.login}>
+            <Button>Login</Button>
+          </StyledLink>
         </ListItem>
         <ListItem>
           {/* <p>{productsInCart.lenght}</p> */}

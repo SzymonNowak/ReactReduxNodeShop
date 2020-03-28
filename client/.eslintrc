@@ -15,7 +15,8 @@
         "import/prefer-default-export": "off",
         "linebreak-style": 0,
         "no-console": "off",
-        "react/button-has-type": [0,
+        "react/button-has-type": [
+            0,
             {
                 "button": 0,
                 "submit": 0,

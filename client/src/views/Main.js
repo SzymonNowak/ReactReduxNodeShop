@@ -12,15 +12,15 @@ const StyledIconButton = styled(IconButton)`
   z-index: 200;
 `;
 
-const Main = ({products}) => {
+const Main = ({ products }) => {
   const [isVisible, setVisibility] = useState(false);
 
   const getData = () => {
     fetch('http://localhost:8080/')
-    .then(response => {
-      return response.json()
-    })
-    .then(data => console.log(data) )
+      .then(response => {
+        return response.json()
+      })
+      .then(data => console.log(data))
   }
 
   return (
@@ -48,6 +48,6 @@ const Main = ({products}) => {
 };
 
 
-const mapeStateToProps = ({ products }) => ({products});
+const mapeStateToProps = ({ products }) => ({ products });
 
 export default connect(mapeStateToProps)(Main);

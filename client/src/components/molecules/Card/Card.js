@@ -4,12 +4,20 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { removeItem as removeItemAction } from '../../../actions/removeItemAction';
 import { addItemToCart as addItemToCartAction } from '../../../actions/addItemToCartAction';
-
+import Burger from '../../../assets/burger.jpg';
 const Wrapper = styled.div`
-    height:200px;
-    width:200px;
-    border:1px solid black;
-
+    height:400px;
+    width:305px;
+    /* border:2px solid ${({ theme }) => theme.orange}; */
+    float:left;
+    text-align:center;
+    margin-left:200px;
+    margin-top:15px;
+  box-shadow: 0px 0px 10px #f39c12 ;
+    
+`;
+const StyledImg = styled.img`
+  /* margin-top:5px; */
 `;
 
 const Card = ({
@@ -29,10 +37,11 @@ const Card = ({
   };
   return (
     <Wrapper>
-      <p>{tittle}</p>
-      <p>{count}</p>
-      <p>{price}</p>
-      <p>{description}</p>
+      <StyledImg src={Burger} />
+      <p>tittle:{tittle}</p>
+      <p>count: {count}</p>
+      <p>price:{price}</p>
+      <p>description:{description}</p>
       <button onClick={() => removeItem(id)}>Usun</button>
       <button>Edit</button>
       <button onClick={() => addItemToCart(item)}>
@@ -58,9 +67,10 @@ Card.defaultProps = {
   count: 10,
   price: 10,
   description: 'asd',
-  removeItem: () => {},
+  removeItem: () => { },
   addItemToCart: () => { },
 };
+
 
 
 const mapDispatchToProps = (dispatch) => ({
