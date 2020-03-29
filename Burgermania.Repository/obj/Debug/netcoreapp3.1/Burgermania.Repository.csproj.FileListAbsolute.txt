@@ -1,0 +1,12 @@
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\obj\Debug\netcoreapp3.1\Burgermania.Repository.csprojAssemblyReference.cache
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\obj\Debug\netcoreapp3.1\Burgermania.Repository.csproj.CoreCompileInputs.cache
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\obj\Debug\netcoreapp3.1\Burgermania.Repository.AssemblyInfoInputs.cache
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\obj\Debug\netcoreapp3.1\Burgermania.Repository.AssemblyInfo.cs
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\bin\Debug\netcoreapp3.1\Burgermania.Repository.deps.json
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\bin\Debug\netcoreapp3.1\Burgermania.Repository.runtimeconfig.json
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\bin\Debug\netcoreapp3.1\Burgermania.Repository.runtimeconfig.dev.json
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\bin\Debug\netcoreapp3.1\Burgermania.Repository.dll
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\bin\Debug\netcoreapp3.1\Burgermania.Repository.pdb
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\obj\Debug\netcoreapp3.1\Burgermania.Repository.dll
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\obj\Debug\netcoreapp3.1\Burgermania.Repository.pdb
+C:\Users\Szymon\Desktop\React\ReactReduxNodeShop\Burgermania.Repository\obj\Debug\netcoreapp3.1\Burgermania.Repository.genruntimeconfig.cache
