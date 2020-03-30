@@ -9,7 +9,7 @@ namespace Burgermania.Repository
         {
 
         }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Category> Category { get; set; }
         public DbSet<Component> Component { get; set; }
         public DbSet<Meal> Meal { get; set; }
         public DbSet<MealAddon> MealAddon { get; set; }

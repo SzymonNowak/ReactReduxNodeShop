@@ -7,9 +7,9 @@ namespace Burgermania.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CategoryController : ControllerBase
+    public class  Component : ControllerBase
     {
-        public CategoryController(BurgermaniaContext context)
+        public Component(BurgermaniaContext context)
         {
             _context = context;
         }
@@ -31,11 +31,7 @@ namespace Burgermania.Controllers
         [HttpPut("{id}")]
         public object Update(int id, Category categoryToUpdate)
         {
-            var elementFromDataBase = _context.Category.FirstOrDefault(category => category.Id == id);
-            if(elementFromDataBase == null)
-            {
-                return NotFound();
-            }
+            var elementFromDataBase = _context.Category.First(category => category.Id == id);
             if(categoryToUpdate.Id != id)
             {
                 return new { error = "zjebalo sie "};
