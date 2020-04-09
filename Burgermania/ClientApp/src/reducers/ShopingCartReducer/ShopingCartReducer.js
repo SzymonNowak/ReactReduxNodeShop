@@ -1,4 +1,4 @@
-import { actionTypes } from '../constants/actionTypes';
+import { actionTypes } from '../../constants/actionTypes';
 import { addItemToCart } from './addItemToCart';
 
 const initialState = {

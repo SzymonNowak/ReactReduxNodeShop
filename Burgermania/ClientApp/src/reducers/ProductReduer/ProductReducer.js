@@ -1,7 +1,7 @@
-import { actionTypes } from '../constants/actionTypes';
+import { actionTypes } from '../../constants/actionTypes';
 import { addNewItem } from './addnewItem';
 import { deleteNewItem } from './deleteItem';
-import { db } from '../initialStates/productState';
+import { db } from '../../initialStates/productState';
 
 
 const ProductReducer = (state = db, action) => {
