@@ -8,12 +8,11 @@ import Burger from '../../../assets/burger.jpg';
 const Wrapper = styled.div`
     height:400px;
     width:305px;
-    /* border:2px solid ${({ theme }) => theme.orange}; */
     float:left;
     text-align:center;
     margin-left:200px;
     margin-top:15px;
-  box-shadow: 0px 0px 10px #f39c12 ;
+    box-shadow: 0px 0px 10px #f39c12 ;
     
 `;
 const StyledImg = styled.img`
@@ -67,8 +66,8 @@ Card.defaultProps = {
   count: 10,
   price: 10,
   description: 'asd',
-  removeItem: () => { },
-  addItemToCart: () => { },
+  removeItem: () => ({}),
+  addItemToCart: () => ({}),
 };
 
 
@@ -79,4 +78,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default connect(null, mapDispatchToProps)(Card);
+export default connect(() => ({}), mapDispatchToProps)(Card);

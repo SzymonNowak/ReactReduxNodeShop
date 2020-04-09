@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { connect, useDispatch } from 'react-redux';

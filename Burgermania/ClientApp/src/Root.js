@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   BrowserRouter,
   Switch,
@@ -28,9 +28,9 @@ const Root = () => (
       <BrowserRouter>
         <MainUserTemaplte>
           <Switch>
-            {/* <Route exact path={routes.home} render={() => <Redirect to="/" />} /> */}
+            <Route exact path={routes.home} render={() => <Redirect to="/main" />} />
             <Route path={routes.main} component={Main} />
-            <Route path={routes.Contact} component={Contact} />
+            <Route path={routes.contact} component={Contact} />
             <Route path={routes.register} component={Register} />
             <Route path={routes.login} component={Login} />
             <Route path={routes.orders} component={OrderList} />

@@ -83,7 +83,7 @@ const NavBar = ({ productsInCart }) => {
           </StyledLink>
         </ListItem>
         <ListItem>
-          {/* <p>{productsInCart.lenght}</p> */}
+          <p>{productsInCart.length}</p>
         </ListItem>
       </ListOfNavItem>
     </Nav>
@@ -91,6 +91,10 @@ const NavBar = ({ productsInCart }) => {
 };
 
 
-const mapeStateToProps = ({ productsInCart }) => ({ productsInCart });
+const mapeStateToProps = ({ ShopingCartReducer }) => ({
+  productsInCart: ShopingCartReducer.productsInCart
+});
+
+
 
 export default connect(mapeStateToProps)(NavBar);

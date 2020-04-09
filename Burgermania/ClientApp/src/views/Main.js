@@ -48,6 +48,11 @@ const Main = ({ products }) => {
 };
 
 
-const mapeStateToProps = ({ products }) => ({ products });
+const mapeStateToProps = ({ ProductReducer }) => ({
+  products: ProductReducer.products
+});
+
+
+
 
 export default connect(mapeStateToProps)(Main);
