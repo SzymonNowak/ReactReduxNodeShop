@@ -1,7 +1,9 @@
 import { actionTypes } from '../../constants/actionTypes';
 
 const initialState = {
-    user: []
+    user: [],
+    synced: false
+
 }
 
 const AuthReducer = (state = initialState, action) => {
