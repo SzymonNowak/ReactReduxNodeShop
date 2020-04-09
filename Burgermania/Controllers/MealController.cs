@@ -1,5 +1,6 @@
 ﻿using Burgermania.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,7 +20,9 @@ namespace Burgermania.Controllers
         [HttpGet]
         public List<Meal> Get()
         {
-            return _context.Meal.ToList();
+
+            List<Meal> list = _context.Meal.Include(meal => meal.Category).Include(meal => meal.MeatCategory).ToList();
+            return list;
         }
 
         [HttpGet("{id}")]
@@ -43,9 +46,13 @@ namespace Burgermania.Controllers
 
 
         [HttpPost]
-        public void AddMeal(Meal Meal)
+        public void AddMeal(Meal meal)
         {
-            _context.Meal.Add(Meal);
+            Category cateogry = _context.Categories.FirstOrDefault(x => x.Id == meal.Category.Id);
+            MeatCategory meatCateogry = _context.MeatCategory.FirstOrDefault(x => x.Id == meal.MeatCategory.Id);
+            meal.MeatCategory = meatCateogry;
+            meal.Category = cateogry;
+            _context.Meal.Add(meal);
             _context.SaveChanges();
         }
         [HttpDelete]

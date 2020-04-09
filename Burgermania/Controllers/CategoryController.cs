@@ -19,19 +19,19 @@ namespace Burgermania.Controllers
         [HttpGet]
         public List<Category> Get()
         {
-            return _context.Category.ToList();
+            return _context.Categories.ToList();
         }
 
         [HttpGet("{id}")]
         public Category GetFirstElement(int id)
         {
-            return _context.Category.First(category => category.Id == id);
+            return _context.Categories.First(category => category.Id == id);
         }
 
         [HttpPut("{id}")]
         public object Update(int id, Category categoryToUpdate)
         {
-            var elementFromDataBase = _context.Category.FirstOrDefault(category => category.Id == id);
+            var elementFromDataBase = _context.Categories.FirstOrDefault(category => category.Id == id);
             if(elementFromDataBase == null)
             {
                 return NotFound();
@@ -49,7 +49,7 @@ namespace Burgermania.Controllers
         [HttpPost]
         public void AddCategory(Category category)
         {
-            _context.Category.Add(category);
+            _context.Categories.Add(category);
             _context.SaveChanges();
         }
     }

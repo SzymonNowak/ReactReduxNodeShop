@@ -8,6 +8,7 @@ namespace Burgermania.Repository
         public string Title { get; set; }
         public string Price { get; set; }
         public bool IsAvaible { get; set; }
+
         public Category Category { get; set; }
         public MeatCategory MeatCategory { get; set; }
         public string Photo { get; set; }
