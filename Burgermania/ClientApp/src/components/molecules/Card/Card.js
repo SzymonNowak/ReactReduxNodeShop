@@ -20,7 +20,6 @@ const StyledImg = styled.img`
 `;
 
 const Card = ({
-  id,
   tittle,
   count,
   price,
@@ -29,7 +28,6 @@ const Card = ({
   addItemToCart,
 }) => {
   const item = {
-    id,
     tittle,
     count,
     price,
@@ -41,7 +39,7 @@ const Card = ({
       <p>count: {count}</p>
       <p>price:{price}</p>
       <p>description:{description}</p>
-      <button onClick={() => removeItem(id)}>Usun</button>
+      <button onClick={() => removeItem(tittle)}>Usun</button>
       <button>Edit</button>
       <button onClick={() => addItemToCart(item)}>
         Add to cart
