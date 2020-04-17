@@ -40,7 +40,6 @@ const Root = () => {
               <Route path={routes.register} component={Register} />
               <Route path={routes.login} component={Login} />
               <Route path={routes.orders} component={OrderList} />
-
             </Switch>
           </MainUserTemaplte>
         </BrowserRouter>

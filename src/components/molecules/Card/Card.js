@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { removeItem as removeItemAction } from '../../../actions/removeItemAction';
 import { addItemToCart as addItemToCartAction } from '../../../actions/addItemToCartAction';
 import Burger from '../../../assets/burger.jpg';
+
 const Wrapper = styled.div`
     height:400px;
     width:305px;
@@ -13,12 +14,10 @@ const Wrapper = styled.div`
     margin-left:200px;
     margin-top:15px;
     box-shadow: 0px 0px 10px #f39c12 ;
-    
 `;
 const StyledImg = styled.img`
   /* margin-top:5px; */
 `;
-
 const Card = ({
   tittle,
   count,
@@ -35,10 +34,23 @@ const Card = ({
   return (
     <Wrapper>
       <StyledImg src={Burger} />
-      <p>tittle:{tittle}</p>
-      <p>count: {count}</p>
-      <p>price:{price}</p>
-      <p>description:{description}</p>
+      <p>
+        tittle:
+        {tittle}
+      </p>
+      <p>
+        count:
+        {' '}
+        {count}
+      </p>
+      <p>
+        price:
+        {price}
+      </p>
+      <p>
+        description:
+        {description}
+      </p>
       <button onClick={() => removeItem(tittle)}>Usun</button>
       <button>Edit</button>
       <button onClick={() => addItemToCart(item)}>
@@ -69,9 +81,8 @@ Card.defaultProps = {
 };
 
 
-
 const mapDispatchToProps = (dispatch) => ({
-  removeItem: (id) => dispatch(removeItemAction(id)),
+  removeItem: (tittle) => dispatch(removeItemAction(tittle)),
   addItemToCart: (item) => dispatch(addItemToCartAction(item)),
 });
 
