@@ -3,8 +3,8 @@ import Plus from "../assets/plus.svg";
 import styled from "styled-components";
 import IconButton from "../components/atoms/IconButton/IconButton";
 import NewItemBar from "../components/organism/NewItemBar/NewItemBar";
-import { connect } from 'react-redux';
-import Card from '../components/molecules/Card/Card';
+import { connect } from "react-redux";
+import Card from "../components/molecules/Card/Card";
 const StyledIconButton = styled(IconButton)`
   position: absolute;
   bottom: 40px;
@@ -37,12 +37,8 @@ const Main = ({ products }) => {
   );
 };
 
-
 const mapeStateToProps = ({ ProductReducer }) => ({
-  products: ProductReducer.products
+  products: ProductReducer.products,
 });
-
-
-
 
 export default connect(mapeStateToProps)(Main);

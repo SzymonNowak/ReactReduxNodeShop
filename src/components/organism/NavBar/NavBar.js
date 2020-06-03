@@ -1,9 +1,9 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { routes } from '../../../routes/index';
-import Button from '../../atoms/Button/Button';
+import React from "react";
+import styled, { css } from "styled-components";
+import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { routes } from "../../../routes/index";
+import Button from "../../atoms/Button/Button";
 
 const Nav = styled.nav`
   position: absolute;
@@ -21,7 +21,7 @@ const Nav = styled.nav`
 const ListItem = styled.li`
   list-style: none;
   margin-left: 30px;
-  font-size:${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
 const StyledLink = styled(NavLink)`
@@ -60,7 +60,7 @@ const NavBar = ({ productsInCart }) => {
   return (
     <Nav>
       <UserBoxWrapper>
-        <StyledLink to={routes.main}> <i class="fas fa-hamburger"></i>  Burgermania </StyledLink>
+        <StyledLink to={routes.main}> Burgermania </StyledLink>
       </UserBoxWrapper>
       <ListOfNavItem>
         <ListItem>
@@ -69,8 +69,11 @@ const NavBar = ({ productsInCart }) => {
         <ListItem>
           <StyledLink to={routes.contact}> Contact</StyledLink>
         </ListItem>
-        <ListItem>
+        {/* <ListItem>
           <StyledLink to={routes.anything}> Anything</StyledLink>
+        </ListItem> */}
+        <ListItem>
+          <StyledLink to={routes.addNewProduct}> New Productr</StyledLink>
         </ListItem>
         <ListItem>
           <StyledLink to={routes.register}>
@@ -83,6 +86,8 @@ const NavBar = ({ productsInCart }) => {
           </StyledLink>
         </ListItem>
         <ListItem>
+          <i className="fas fa-shopping-cart"></i>
+
           <p>{productsInCart.length}</p>
         </ListItem>
       </ListOfNavItem>
@@ -90,11 +95,8 @@ const NavBar = ({ productsInCart }) => {
   );
 };
 
-
 const mapeStateToProps = ({ ShopingCartReducer }) => ({
-  productsInCart: ShopingCartReducer.productsInCart
+  productsInCart: ShopingCartReducer.productsInCart,
 });
-
-
 
 export default connect(mapeStateToProps)(NavBar);
