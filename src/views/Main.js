@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import Plus from "../assets/plus.svg";
-import styled from "styled-components";
-import IconButton from "../components/atoms/IconButton/IconButton";
-import NewItemBar from "../components/organism/NewItemBar/NewItemBar";
 import { connect } from "react-redux";
+import styled from "styled-components";
+import Plus from "../assets/plus.svg";
+import IconButton from "../components/atoms/IconButton/IconButton";
 import Card from "../components/molecules/Card/Card";
+import NewItemBar from "../components/organism/NewItemBar/NewItemBar";
+
 const StyledIconButton = styled(IconButton)`
   position: absolute;
   bottom: 40px;
