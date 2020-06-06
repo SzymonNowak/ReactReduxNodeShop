@@ -1,13 +1,22 @@
 {
-  "extends": ["react-app", "airbnb"],
+  "extends": [
+    "react-app",
+    "airbnb"
+  ],
   "rules": {
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js"]
+        "extensions": [
+          ".js"
+        ]
       }
     ],
-    "quotes": [2, "double", "avoid-escape"],
+    "quotes": [
+      2,
+      "double",
+      "avoid-escape"
+    ],
     "import/prefer-default-export": "off",
     "linebreak-style": 0,
     "no-console": "off",

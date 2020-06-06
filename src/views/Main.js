@@ -18,22 +18,17 @@ const Main = ({ products }) => {
 
   return (
     <div>
-      {products.map(({ tittle, count, price, description }) => (
-        <Card
-          tittle={tittle}
-          count={count}
-          price={price}
-          description={description}
-          key={tittle}
-        />
-      ))}
-
-      <StyledIconButton
-        icon={Plus}
-        active
-        onClick={() => setVisibility(!isVisible)}
-      />
-      <NewItemBar isVisible={isVisible} />
+      {products.map(({
+        tittle, count, price, description,
+      }) => (
+          <Card
+            tittle={tittle}
+            count={count}
+            price={price}
+            description={description}
+            key={tittle}
+          />
+        ))}
     </div>
   );
 };
