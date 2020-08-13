@@ -4,20 +4,16 @@ import styled, { css } from "styled-components";
 import { useForm } from "react-hook-form";
 import { connect, useDispatch } from "react-redux";
 import Input from "../components/atoms/Input/Input";
-import Button from "../components/atoms/Button/Button";
-
+import SmallButton from "../components/atoms/SmallButton/SmallButton";
+import LongButton from "../components/atoms/LongButton/LongButton";
+import ErrorMessage from "../components/atoms/ErrorMessage/ErrorMessage";
 import AddProductGridTemplate from "../templates/NewProductGridTemplate";
 
-const StyledButton = styled(Button)`
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  display: inline-block;
-`;
-const ErrorMessage = styled.p`
-  color: ${({ theme }) => theme.warning};
-  margin-left: 20px;
-  font-weight: ${({ theme }) => theme.bold};
+const FormWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const AddNewProdcutsForm = () => {
@@ -40,9 +36,9 @@ const AddNewProdcutsForm = () => {
 
   return (
     <AddProductGridTemplate>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="productName">product name:</label>
-        <input
+      <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+        <h1 htmlFor="productName">product name</h1>
+        <Input
           id="productName"
           name="productName"
           type="text"
@@ -51,45 +47,46 @@ const AddNewProdcutsForm = () => {
           })}
         />
         {errors.productName && (
-          <ErrorMessage>This field is required </ErrorMessage>
+          <ErrorMessage>This field is required !</ErrorMessage>
         )}
-        <label>product price:</label>
-        <input
+        <h1>product price</h1>
+        <Input
           id="productPrice"
           name="productPrice"
           type="number"
+          step="any"
           ref={register({
             required: true,
           })}
         />
         {errors.productPrice && (
-          <ErrorMessage>This field is required </ErrorMessage>
+          <ErrorMessage>This field is required !</ErrorMessage>
         )}
-        <StyledButton id="addIngredient" onClick={(e) => addIngredient(e)}>
+        <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
           +
-        </StyledButton>
+        </SmallButton>
+        <h1>ingredient</h1>
         {ingredients.map((ingredient, index) => (
           <div key={index}>
-            <label>ingredient:</label>
-            <input
+            <Input
               id={"ingredient" + index}
               name={"ingredient" + index}
               ref={register({
                 required: true,
               })}
             />
-            <span>{index}</span>
-            <StyledButton
+            <SmallButton
+              delete
               id={index}
               placeholder={index}
               onClick={(e) => handleInputRemove(e, index)}
             >
-              -
-            </StyledButton>
+              X
+            </SmallButton>
           </div>
         ))}
-        <Button type="submit">add product</Button>
-      </form>
+        <LongButton type="submit">add product</LongButton>
+      </FormWrapper>
     </AddProductGridTemplate>
   );
 };

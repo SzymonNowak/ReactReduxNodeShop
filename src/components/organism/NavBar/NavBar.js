@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { routes } from "../../../routes/index";
-import Button from "../../atoms/Button/Button";
+import LongButton from "../../atoms/LongButton/LongButton";
 
 const Nav = styled.nav`
   position: absolute;
@@ -74,12 +74,12 @@ const NavBar = ({ productsInCart }) => {
         </ListItem>
         <ListItem>
           <StyledLink to={routes.register}>
-            <Button> Register</Button>
+            <LongButton> Register</LongButton>
           </StyledLink>
         </ListItem>
         <ListItem>
           <StyledLink to={routes.login}>
-            <Button>Login</Button>
+            <LongButton>Login</LongButton>
           </StyledLink>
         </ListItem>
         <ListItem>
