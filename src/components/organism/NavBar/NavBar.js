@@ -69,11 +69,8 @@ const NavBar = ({ productsInCart }) => {
         <ListItem>
           <StyledLink to={routes.contact}> Contact</StyledLink>
         </ListItem>
-        {/* <ListItem>
-          <StyledLink to={routes.anything}> Anything</StyledLink>
-        </ListItem> */}
         <ListItem>
-          <StyledLink to={routes.addNewProduct}> New Productr</StyledLink>
+          <StyledLink to={routes.addNewProduct}> New Product</StyledLink>
         </ListItem>
         <ListItem>
           <StyledLink to={routes.register}>

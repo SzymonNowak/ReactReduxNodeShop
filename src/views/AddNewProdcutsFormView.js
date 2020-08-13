@@ -1,56 +1,97 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import styled, { css } from "styled-components";
 import { useForm } from "react-hook-form";
 import { connect, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 import Input from "../components/atoms/Input/Input";
 import Button from "../components/atoms/Button/Button";
 
-class AddNewProdcutsForm extends Component {
-  state = {
-    ingredients: [],
-  }
+import AddProductGridTemplate from "../templates/NewProductGridTemplate";
 
+const StyledButton = styled(Button)`
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: inline-block;
+`;
+const ErrorMessage = styled.p`
+  color: ${({ theme }) => theme.warning};
+  margin-left: 20px;
+  font-weight: ${({ theme }) => theme.bold};
+`;
 
-  render() {
-    const { ingredients } = this.state;
-    const addIngredient = (e) => {
-      e.preventDefault();
-      this.setState({ ingredients: [...ingredients, ""] });
-    };
-    const handleInputChange = (e, index) => {
-      ingredients[index] = e.target.value;
-      this.setState({ ingredients });
-    };
-    const handleInputRemove = (e, index) => {
-      e.preventDefault();
-      ingredients.splice(index, 1);
-      this.setState({ ingredients });
-    };
-    const handleSubmit = (e) => {
-      console.log(this.state);
-    };
-    return (
-      <div>
-        <form>
-          <label htmlFor="productName">product name:</label>
-          <input id="productName" name="productName" type="text" />
-          <label>product price:</label>
-          <input />
-          <button id="addIngredient" onClick={(e) => addIngredient(e)}>Add ingredient</button>
-          {ingredients.map((ingredient, index) => (
-            <div key={index}>
-              <input value={ingredient} id="ingredient" onChange={(e) => handleInputChange(e, index)} />
-              <button onClick={(e) => handleInputRemove(e, index)}>remove</button>
+const AddNewProdcutsForm = () => {
+  const [ingredients, setIngredients] = useState([]);
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = (data) => console.log(data);
 
-            </div>
-          ))}
-        </form>
-        <button onClick={(e) => handleSubmit(e)}>add product</button>
-      </div>
-    );
-  }
-}
+  const addIngredient = (e) => {
+    e.preventDefault();
+    setIngredients(ingredients.concat(""));
+    console.log(ingredients);
+  };
+
+  const handleInputRemove = (e, index) => {
+    e.preventDefault();
+    const ingredientsCopy = [...ingredients];
+    ingredientsCopy.splice(index, 1);
+    setIngredients(ingredientsCopy);
+  };
+
+  return (
+    <AddProductGridTemplate>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="productName">product name:</label>
+        <input
+          id="productName"
+          name="productName"
+          type="text"
+          ref={register({
+            required: true,
+          })}
+        />
+        {errors.productName && (
+          <ErrorMessage>This field is required </ErrorMessage>
+        )}
+        <label>product price:</label>
+        <input
+          id="productPrice"
+          name="productPrice"
+          type="number"
+          ref={register({
+            required: true,
+          })}
+        />
+        {errors.productPrice && (
+          <ErrorMessage>This field is required </ErrorMessage>
+        )}
+        <StyledButton id="addIngredient" onClick={(e) => addIngredient(e)}>
+          +
+        </StyledButton>
+        {ingredients.map((ingredient, index) => (
+          <div key={index}>
+            <label>ingredient:</label>
+            <input
+              id={"ingredient" + index}
+              name={"ingredient" + index}
+              ref={register({
+                required: true,
+              })}
+            />
+            <span>{index}</span>
+            <StyledButton
+              id={index}
+              placeholder={index}
+              onClick={(e) => handleInputRemove(e, index)}
+            >
+              -
+            </StyledButton>
+          </div>
+        ))}
+        <Button type="submit">add product</Button>
+      </form>
+    </AddProductGridTemplate>
+  );
+};
 
 export default AddNewProdcutsForm;

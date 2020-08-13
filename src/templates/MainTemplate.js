@@ -1,7 +1,6 @@
 import React from "react";
-import NavBar from "../components/organism/NavBar/NavBar";
 import PropTypes from "prop-types";
-
+import NavBar from "../components/organism/NavBar/NavBar";
 
 const MainUserTemaplte = ({ children }) => {
   return (
@@ -9,12 +8,11 @@ const MainUserTemaplte = ({ children }) => {
       <NavBar />
       {children}
     </>
-  )
-}
-
-MainUserTemaplte.propTypes = {
-  children: PropTypes.element.isRequired
+  );
 };
 
+MainUserTemaplte.propTypes = {
+  children: PropTypes.element.isRequired,
+};
 
 export default MainUserTemaplte;

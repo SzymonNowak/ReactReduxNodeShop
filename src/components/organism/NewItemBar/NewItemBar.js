@@ -1,10 +1,10 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { useForm } from 'react-hook-form';
-import { connect, useDispatch } from 'react-redux';
-import Input from '../../atoms/Input/Input';
-import Button from '../../atoms/Button/Button';
-import { addItem as addItemAction } from '../../../actions/addItemAction';
+import React from "react";
+import styled, { css } from "styled-components";
+import { useForm } from "react-hook-form";
+import { connect, useDispatch } from "react-redux";
+import Input from "../../atoms/Input/Input";
+import Button from "../../atoms/Button/Button";
+import { addItem as addItemAction } from "../../../actions/addItemAction";
 
 const Wrapper = styled.div`
   border-left: 8px solid #f39c12;
@@ -19,14 +19,13 @@ const Wrapper = styled.div`
   width: 680px;
   background-color: white;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-  transform: translateX(${({ isVisible }) => (isVisible ? '0' : '100%')});
+  transform: translateX(${({ isVisible }) => (isVisible ? "0" : "100%")});
   transition: transform 0.25s ease-in-out;
 `;
 
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  
 `;
 
 const StyledInput = styled(Input)`
@@ -47,10 +46,9 @@ const StyledTextArea = styled(Input)`
 
 const StyledButton = styled(Button)`
   margin-top: 30px;
-  width:220px;
-  height:47px;
-  font-size:${({ theme }) => theme.fontSize.xxs};
-  
+  width: 220px;
+  height: 47px;
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
 const ErrorMessage = styled.p`
@@ -114,6 +112,5 @@ const NewItemBar = ({ isVisible, addItem }) => {
     </Wrapper>
   );
 };
-
 
 export default connect()(NewItemBar);
