@@ -43,10 +43,10 @@ const Card = ({
         {price}
       </p>
       <p>ingredients:</p>
-      {ingredients.map((item) => (
-        <p>{item}</p>
+      {ingredients.map((ingredient) => (
+        <p>{ingredient}</p>
       ))}
-      <p>sauce:{sauce}</p>
+      {/* <p>sauce:{sauce}</p> */}
       <button onClick={() => removeItem(tittle)}>Usun</button>
       <button>Edit</button>
       <button onClick={() => addItemToCart(item)}>Add to cart</button>

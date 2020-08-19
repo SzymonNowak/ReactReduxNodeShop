@@ -8,6 +8,7 @@ import SmallButton from "../components/atoms/SmallButton/SmallButton";
 import LongButton from "../components/atoms/LongButton/LongButton";
 import ErrorMessage from "../components/atoms/ErrorMessage/ErrorMessage";
 import AddProductGridTemplate from "../templates/NewProductGridTemplate";
+import { addItem as addItemAction } from "../actions/addItemAction";
 
 const FormWrapper = styled.form`
   display: flex;
@@ -19,7 +20,11 @@ const FormWrapper = styled.form`
 const AddNewProdcutsForm = () => {
   const [ingredients, setIngredients] = useState([]);
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const dispatch = useDispatch();
+
+  const onSubmit = (itemContent) => {
+    dispatch(addItemAction(itemContent));
+  };
 
   const addIngredient = (e) => {
     e.preventDefault();
@@ -69,11 +74,10 @@ const AddNewProdcutsForm = () => {
         {ingredients.map((ingredient, index) => (
           <div key={index}>
             <Input
-              id={"ingredient" + index}
-              name={"ingredient" + index}
               ref={register({
                 required: true,
               })}
+              name={`ingredients[${index}]`}
             />
             <SmallButton
               delete
@@ -91,4 +95,4 @@ const AddNewProdcutsForm = () => {
   );
 };
 
-export default AddNewProdcutsForm;
+export default connect()(AddNewProdcutsForm);
