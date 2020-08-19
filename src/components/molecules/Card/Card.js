@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { removeItem as removeItemAction } from "../../../actions/removeItemAction";
@@ -15,10 +16,14 @@ const Wrapper = styled.div`
   margin-top: 15px;
   box-shadow: 0px 0px 10px #f39c12;
 `;
+const StyledLink = styled(Link)`
+  color: black;
+`;
 const StyledImg = styled.img`
   /* margin-top:5px; */
 `;
 const Card = ({
+  id,
   tittle,
   price,
   ingredients,
@@ -32,41 +37,49 @@ const Card = ({
     price,
   };
   return (
-    <Wrapper>
-      <StyledImg src={Burger} />
-      <p>
-        tittle:
-        {tittle}
-      </p>
-      <p>
-        price:
-        {price}
-      </p>
-      <p>ingredients:</p>
-      {ingredients.map((ingredient) => (
-        <p>{ingredient}</p>
-      ))}
-      {/* <p>sauce:{sauce}</p> */}
-      <button onClick={() => removeItem(tittle)}>Usun</button>
-      <button>Edit</button>
-      <button onClick={() => addItemToCart(item)}>Add to cart</button>
-    </Wrapper>
+    <StyledLink to={`burger/${id}`}>
+      <Wrapper>
+        <StyledImg src={Burger} />
+        <h2>{tittle}</h2>
+        <p>
+          price:
+          {price}
+        </p>
+        <p>ingredients:</p>
+        {ingredients.map((ingredient) => (
+          <span>{ingredient + ", "}</span>
+        ))}
+        <p>
+          sauce:
+          {sauce}
+        </p>
+        <button onClick={() => removeItem(tittle)}>Usun</button>
+        <button>Edit</button>
+        <button onClick={() => addItemToCart(item)}>Add to cart</button>
+      </Wrapper>
+    </StyledLink>
   );
 };
 
-// Card.propTypes = {
-//   tittle: PropTypes.string,
-//   price: PropTypes.number,
-//   removeItem: PropTypes.func,
-//   addItemToCart: PropTypes.func,
-// };
+Card.propTypes = {
+  tittle: PropTypes.string,
+  price: PropTypes.number,
+  ingredients: PropTypes.arrayOf(PropTypes.string),
+  sauce: PropTypes.string,
+  mealOfTheWeek: PropTypes.bool,
+  removeItem: PropTypes.func,
+  addItemToCart: PropTypes.func,
+};
 
-// Card.defaultProps = {
-//   tittle: "asd",
-//   price: 10,
-//   removeItem: () => ({}),
-//   addItemToCart: () => ({}),
-// };
+Card.defaultProps = {
+  tittle: "asd",
+  price: 18,
+  ingredients: ["beef", "tomato", "onion"],
+  mealOfTheWeek: false,
+  sauce: "M M",
+  removeItem: () => ({}),
+  addItemToCart: () => ({}),
+};
 
 const mapDispatchToProps = (dispatch) => ({
   removeItem: (tittle) => dispatch(removeItemAction(tittle)),

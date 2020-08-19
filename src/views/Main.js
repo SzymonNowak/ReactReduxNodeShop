@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import Card from "../components/molecules/Card/Card";
 
@@ -6,8 +6,16 @@ const Main = ({ products }) => {
   return (
     <div>
       {products.map(
-        ({ productName, productPrice, ingredients, sauce, mealOfTheWeek }) => (
+        ({
+          id,
+          productName,
+          productPrice,
+          ingredients,
+          sauce,
+          mealOfTheWeek,
+        }) => (
           <Card
+            id={id}
             tittle={productName}
             price={productPrice}
             key={productName}

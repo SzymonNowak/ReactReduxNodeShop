@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { Component, useState } from "react";
-import styled, { css } from "styled-components";
+import React, { useState } from "react";
+import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { connect, useDispatch } from "react-redux";
 import Input from "../components/atoms/Input/Input";
 import SmallButton from "../components/atoms/SmallButton/SmallButton";
 import LongButton from "../components/atoms/LongButton/LongButton";
 import ErrorMessage from "../components/atoms/ErrorMessage/ErrorMessage";
-import AddProductGridTemplate from "../templates/NewProductGridTemplate";
+import AddProductGridTemplate from "./NewProductGridTemplate";
 import { addItem as addItemAction } from "../actions/addItemAction";
 
 const FormWrapper = styled.form`
@@ -17,7 +17,7 @@ const FormWrapper = styled.form`
   align-items: center;
 `;
 
-const AddNewProdcutsForm = () => {
+const AddNewProdcutsTemplate = () => {
   const [ingredients, setIngredients] = useState([]);
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
@@ -95,4 +95,4 @@ const AddNewProdcutsForm = () => {
   );
 };
 
-export default connect()(AddNewProdcutsForm);
+export default connect()(AddNewProdcutsTemplate);
