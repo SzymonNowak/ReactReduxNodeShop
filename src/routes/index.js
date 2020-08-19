@@ -8,6 +8,6 @@ export const routes = {
   addNewProduct: "/newProduct",
   newBurger: "/newBurger",
   newTortilla: "/newTortilla",
-  newAddons: "./newAddons",
-  newBeverages: "newBeverages",
+  newAddons: "/newAddons",
+  newBeverages: "/newBeverages",
 };

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { connect, useDispatch } from "react-redux";
@@ -17,10 +17,18 @@ const FormWrapper = styled.form`
   align-items: center;
 `;
 
-const AddNewProdcutsTemplate = () => {
+const AddNewProdcutsTemplate = ({ match }) => {
   const [ingredients, setIngredients] = useState([]);
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
+
+  const { path } = match;
+  const burger = "/newBurger";
+  const tortilla = "/newTortilla";
+  useEffect(() => {
+    // console.log("sciezka to" + path);
+    console.log(match);
+  });
 
   const onSubmit = (itemContent) => {
     dispatch(addItemAction(itemContent));
@@ -42,7 +50,7 @@ const AddNewProdcutsTemplate = () => {
   return (
     <AddProductGridTemplate>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <h1 htmlFor="productName">product name</h1>
+        <h1 htmlFor="productName">{path + " name"}</h1>
         <Input
           id="productName"
           name="productName"
@@ -67,10 +75,25 @@ const AddNewProdcutsTemplate = () => {
         {errors.productPrice && (
           <ErrorMessage>This field is required !</ErrorMessage>
         )}
-        <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
-          +
-        </SmallButton>
-        <h1>ingredient</h1>
+
+        {path === burger && (
+          <>
+            <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
+              +
+            </SmallButton>
+            <h1>ingredient</h1>
+          </>
+        )}
+
+        {path === tortilla && (
+          <>
+            <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
+              +
+            </SmallButton>
+            <h1>ingredient</h1>
+          </>
+        )}
+
         {ingredients.map((ingredient, index) => (
           <div key={index}>
             <Input
