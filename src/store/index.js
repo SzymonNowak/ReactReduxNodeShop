@@ -12,7 +12,6 @@ const store = createStore(
     composeEnhancer(
       applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore }))
     ),
-    reactReduxFirebase(firebase), // redux binding for firebase
     reduxFirestore(firebase) // redux bindings for firestore
   )
 );
