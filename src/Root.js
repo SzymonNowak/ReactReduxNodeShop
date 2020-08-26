@@ -18,11 +18,6 @@ import ProductsDetailsTemplate from "./templates/ProductsDetailsTemplate";
 import { auth } from "./services/firebase";
 
 const Root = () => {
-  useEffect(() => {
-    const unsubscribe = auth().onAuthStateChanged((data) => console.log(data));
-
-    return () => unsubscribe();
-  }, []);
   return (
     <Provider store={store}>
       <GlobalStyle />

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
+
 import { googleAuth } from "../services/firebase";
 
 const Login = () => {
