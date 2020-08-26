@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
+import { ReactReduxFirebaseProvider } from "react-redux-firebase";
+import { createFirestoreInstance } from "redux-firestore"; // <- needed if using firestore
 import { routes } from "./routes/index";
 import { theme } from "./theme/mainTheme";
+import { rrfConfig } from "./configuration/rrfConfig";
 import Main from "./views/Main";
 import store from "./store/index";
 import GlobalStyle from "./theme/GlobalStyle";
@@ -15,19 +18,9 @@ import NewProduct from "./views/NewProduct";
 import MainUserTemaplte from "./templates/MainTemplate";
 import AddNewProdcutsTemplate from "./templates/AddNewProdcutsTemplate";
 import ProductsDetailsTemplate from "./templates/ProductsDetailsTemplate";
-import { auth } from "./services/firebase";
-import {
-  ReactReduxFirebaseProvider,
-  firebaseReducer,
-} from "react-redux-firebase";
-import { createFirestoreInstance } from "redux-firestore"; // <- needed if using firestore
 import firebase from "./services/firebase";
 
 const Root = () => {
-  const rrfConfig = {
-    userProfile: "users",
-    useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
-  };
   const rrfProps = {
     firebase,
     config: rrfConfig,
