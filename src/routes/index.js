@@ -10,4 +10,6 @@ export const routes = {
   newTortilla: "/newTortilla",
   newAddons: "/newAddons",
   newBeverages: "/newBeverages",
+  admin: "/admin",
+  user: "/user",
 };

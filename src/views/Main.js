@@ -10,6 +10,7 @@ const Main = ({ products }) => {
       {products.length ? (
         products.map(
           ({
+            id,
             productName,
             productPrice,
             ingredients,
@@ -17,6 +18,7 @@ const Main = ({ products }) => {
             mealOfTheWeek,
           }) => (
             <Card
+              id={id}
               tittle={productName}
               price={productPrice}
               key={productName}

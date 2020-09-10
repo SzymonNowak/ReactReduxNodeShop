@@ -25,10 +25,7 @@ const AddNewProdcutsTemplate = ({ match }) => {
   const { path } = match;
   const burger = "/newBurger";
   const tortilla = "/newTortilla";
-  useEffect(() => {
-    // console.log("sciezka to" + path);
-    console.log(match);
-  });
+  useEffect(() => {});
 
   const onSubmit = (itemContent) => {
     dispatch(addItemAction(itemContent));
@@ -37,7 +34,6 @@ const AddNewProdcutsTemplate = ({ match }) => {
   const addIngredient = (e) => {
     e.preventDefault();
     setIngredients(ingredients.concat(""));
-    console.log(ingredients);
   };
 
   const handleInputRemove = (e, index) => {

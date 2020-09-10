@@ -15,6 +15,8 @@ import Login from "./views/Login";
 import Register from "./views/Register";
 import OrderList from "./views/OrderList";
 import NewProduct from "./views/NewProduct";
+import User from "./views/User";
+import Admin from "./views/Admin";
 import MainUserTemaplte from "./templates/MainTemplate";
 import AddNewProdcutsTemplate from "./templates/AddNewProdcutsTemplate";
 import ProductsDetailsTemplate from "./templates/ProductsDetailsTemplate";
@@ -51,6 +53,9 @@ const Root = () => {
                 <Route path={routes.login} component={Login} />
                 <Route path={routes.orders} component={OrderList} />
                 <Route path={routes.addNewProduct} component={NewProduct} />
+                <Route path={routes.admin} component={Admin} />
+                <Route path={routes.user} component={User} />
+
                 <Route
                   path={routes.newBurger}
                   component={AddNewProdcutsTemplate}

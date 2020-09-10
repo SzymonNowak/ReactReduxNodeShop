@@ -5,7 +5,6 @@ import { handleAddNewItemError } from "./handleAddNewItemError";
 import { db } from "../../initialStates/productState";
 
 const ProductReducer = (state = db, action) => {
-  console.log(state);
   switch (action.type) {
     case actionTypes.ADD_ITEM:
       return addNewItem(state, action);

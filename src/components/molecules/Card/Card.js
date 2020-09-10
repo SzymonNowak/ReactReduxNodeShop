@@ -5,21 +5,24 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { removeItem as removeItemAction } from "../../../actions/removeItemAction";
 import { addItemToCart as addItemToCartAction } from "../../../actions/addItemToCartAction";
-import Burger from "../../../assets/burger.jpg";
+import DrawBurger from "../../../assets/drawBurger.jpg";
+import PriceText from "../../atoms/PriceText/PriceText";
+import LongButton from "../../atoms/LongButton/LongButton";
 
 const Wrapper = styled.div`
   height: 100%;
   width: 305px;
   float: left;
   text-align: center;
-  margin-left: 200px;
-  margin-top: 15px;
+  margin-left: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 `;
 const StyledLink = styled(Link)`
   color: black;
 `;
 const StyledImg = styled.img`
-  /* margin-top:5px; */
+  width: 100%;
 `;
 const Card = ({
   id,
@@ -36,31 +39,28 @@ const Card = ({
     price,
   };
   return (
-    <StyledLink to={`burger/${id}`}>
-      <Wrapper>
-        <StyledImg src={Burger} />
-        <h2>{tittle}</h2>
-        <p>
-          price:
-          {price}
-        </p>
-        <p>ingredients:</p>
-        {ingredients.map((ingredient, index) => (
-          <span key={index}>{ingredient + ", "}</span>
-        ))}
-        <p>
-          sauce:
-          {sauce}
-        </p>
-        <button onClick={() => removeItem(tittle)}>Usun</button>
-        <button>Edit</button>
-        <button onClick={() => addItemToCart(item)}>Add to cart</button>
-      </Wrapper>
-    </StyledLink>
+    <Wrapper>
+      <StyledLink to={`burger/${id}`}>
+        <StyledImg src={DrawBurger} />
+      </StyledLink>
+      <h1>{tittle}</h1>
+      <PriceText>{`${price} zl`}</PriceText>
+      <p>ingredients:</p>
+      {ingredients.map((ingredient, index) => (
+        <span key={index}>{ingredient + ", "}</span>
+      ))}
+      <p>
+        sauce:
+        {sauce}
+      </p>
+      <LongButton onClick={() => removeItem(id)}>Usun</LongButton>
+      <LongButton onClick={() => addItemToCart(item)}>Add to cart</LongButton>
+    </Wrapper>
   );
 };
 
 Card.propTypes = {
+  id: PropTypes.string,
   tittle: PropTypes.string,
   price: PropTypes.number,
   ingredients: PropTypes.arrayOf(PropTypes.string),

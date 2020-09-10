@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { routes } from "../../../routes/index";
-import LongButton from "../../atoms/LongButton/LongButton";
 
 const Nav = styled.nav`
   position: absolute;
@@ -67,24 +66,13 @@ const NavBar = ({ productsInCart }) => {
           <StyledLink to={routes.orders}> Order List</StyledLink>
         </ListItem>
         <ListItem>
-          <StyledLink to={routes.contact}> Contact</StyledLink>
+          <StyledLink to={routes.admin}> Admin</StyledLink>
         </ListItem>
         <ListItem>
-          <StyledLink to={routes.addNewProduct}> New Product</StyledLink>
+          <StyledLink to={routes.user}>User</StyledLink>
         </ListItem>
-        <ListItem>
-          <StyledLink to={routes.register}>
-            <LongButton> Register</LongButton>
-          </StyledLink>
-        </ListItem>
-        <ListItem>
-          <StyledLink to={routes.login}>
-            <LongButton>Login</LongButton>
-          </StyledLink>
-        </ListItem>
-        <ListItem>
-          <i className="fas fa-shopping-cart"></i>
 
+        <ListItem>
           <p>{productsInCart.length}</p>
         </ListItem>
       </ListOfNavItem>
