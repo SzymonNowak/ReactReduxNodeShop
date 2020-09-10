@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import Card from "../components/molecules/Card/Card";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import Card from "../components/molecules/Card/Card";
+
 const Main = ({ products }) => {
   return (
     <div>
@@ -26,16 +27,15 @@ const Main = ({ products }) => {
           )
         )
       ) : (
-        <p>there is nothing</p>
+        <p>there is nothing to show</p>
       )}
     </div>
   );
 };
 
 const mapeStateToProps = ({ ProductReducer, firestoreReducer }) => {
-  console.log(firestoreReducer);
   return {
-    products: ProductReducer.products,
+    products: firestoreReducer.ordered.burgers || ProductReducer.products,
   };
 };
 
