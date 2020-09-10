@@ -14,7 +14,6 @@ const Wrapper = styled.div`
   text-align: center;
   margin-left: 200px;
   margin-top: 15px;
-  /* box-shadow: 0px 0px 10px #f39c12; */
 `;
 const StyledLink = styled(Link)`
   color: black;
@@ -46,8 +45,8 @@ const Card = ({
           {price}
         </p>
         <p>ingredients:</p>
-        {ingredients.map((ingredient) => (
-          <span>{ingredient + ", "}</span>
+        {ingredients.map((ingredient, index) => (
+          <span key={index}>{ingredient + ", "}</span>
         ))}
         <p>
           sauce:

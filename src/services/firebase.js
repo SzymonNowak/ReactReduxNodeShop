@@ -5,7 +5,7 @@ import "firebase/firestore";
 import { firebaseConfig } from "../configuration/firebaseConfig";
 
 firebase.initializeApp(firebaseConfig);
-firebase.firestore().settings({ timestampsInSnapshots: true });
+// firebase.firestore().settings({ timestampsInSnapshots: true });
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 export const googleAuth = () => {
