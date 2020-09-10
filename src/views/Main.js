@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import Card from "../components/molecules/Card/Card";
-
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 const Main = ({ products }) => {
   return (
     <div>
@@ -31,8 +32,18 @@ const Main = ({ products }) => {
   );
 };
 
-const mapeStateToProps = ({ ProductReducer }) => ({
-  products: ProductReducer.products,
-});
+const mapeStateToProps = ({ ProductReducer, firestoreReducer }) => {
+  console.log(firestoreReducer);
+  return {
+    products: ProductReducer.products,
+  };
+};
 
-export default connect(mapeStateToProps)(Main);
+export default compose(
+  connect(mapeStateToProps),
+  firestoreConnect([
+    {
+      collection: "burgers",
+    },
+  ])
+)(Main);

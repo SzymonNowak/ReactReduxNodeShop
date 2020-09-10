@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   text-align: center;
   margin-left: 200px;
   margin-top: 15px;
-  box-shadow: 0px 0px 10px #f39c12;
+  /* box-shadow: 0px 0px 10px #f39c12; */
 `;
 const StyledLink = styled(Link)`
   color: black;

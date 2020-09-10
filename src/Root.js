@@ -29,7 +29,12 @@ const Root = () => {
   };
   return (
     <Provider store={store}>
-      <ReactReduxFirebaseProvider {...rrfProps}>
+      <ReactReduxFirebaseProvider
+        firebase={firebase}
+        config={rrfConfig}
+        dispatch={store.dispatch}
+        createFirestoreInstance={createFirestoreInstance}
+      >
         <GlobalStyle />
         <ThemeProvider theme={theme}>
           <BrowserRouter>
