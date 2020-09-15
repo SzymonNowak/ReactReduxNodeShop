@@ -1,27 +1,32 @@
 import { actionTypes } from "../constants/actionTypes";
-export const addItem = (itemContent) => {
+import { addItemToFirestore } from "../services/addItemToFirestore";
+
+export const addItem = (itemContent, collectionName) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-    const firestore = getFirestore();
-    firestore
-      .collection("burgers")
-      .add({
-        ...itemContent,
-      })
+    addItemToFirestore(collectionName, itemContent, getFirestore)
       .then(() => {
-        dispatch({
-          type: actionTypes.ADD_ITEM,
-          payload: {
-            item: {
-              ...itemContent,
-            },
-          },
-        });
+        dispatchItemContent(dispatch, itemContent);
       })
       .catch((err) => {
-        dispatch({
-          type: actionTypes.ADD_ITEM_ERROR,
-          err,
-        });
+        dispatchError(dispatch, err);
       });
   };
+};
+
+const dispatchItemContent = (dispatch, itemContent) => {
+  dispatch({
+    type: actionTypes.ADD_ITEM,
+    payload: {
+      item: {
+        ...itemContent,
+      },
+    },
+  });
+};
+
+const dispatchError = (dispatch, err) => {
+  dispatch({
+    type: actionTypes.ADD_ITEM_ERROR,
+    err,
+  });
 };

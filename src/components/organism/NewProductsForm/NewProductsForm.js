@@ -1,17 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-
-// TODO move this to organism from templates
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { connect, useDispatch } from "react-redux";
-import Input from "../components/atoms/Input/Input";
-import SmallButton from "../components/atoms/SmallButton/SmallButton";
-import LongButton from "../components/atoms/LongButton/LongButton";
-import ErrorMessage from "../components/atoms/ErrorMessage/ErrorMessage";
-import AddProductGridTemplate from "./NewProductGridTemplate";
-import { addItem as addItemAction } from "../actions/addItemAction";
+import Input from "../../atoms/Input/Input";
+import SmallButton from "../../atoms/SmallButton/SmallButton";
+import LongButton from "../../atoms/LongButton/LongButton";
+import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
+import AddProductGridTemplate from "../../../templates/NewProductGridTemplate";
+import { addItem as addItemAction } from "../../../actions/addItemAction";
 
 const FormWrapper = styled.form`
   display: flex;
@@ -20,15 +17,13 @@ const FormWrapper = styled.form`
   align-items: center;
 `;
 
-const AddNewProdcutsTemplate = ({ match }) => {
+const NewProductsForm = ({ match }) => {
   const [ingredients, setIngredients] = useState([]);
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
 
-  const { path } = match;
-  const burger = "/newBurger";
-  const tortilla = "/newTortilla";
-  useEffect(() => {});
+  const formTypes = ["burgers", "tortillas", "addons", "beverages"];
+  const currentFormType = formTypes.filter((type) => match.path.includes(type));
 
   const onSubmit = (itemContent) => {
     dispatch(addItemAction(itemContent));
@@ -49,7 +44,7 @@ const AddNewProdcutsTemplate = ({ match }) => {
   return (
     <AddProductGridTemplate>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <h1 htmlFor="productName">{path + " name"}</h1>
+        <h1 htmlFor="productName">{`${currentFormType} name`}</h1>
         <Input
           id="productName"
           name="productName"
@@ -75,17 +70,42 @@ const AddNewProdcutsTemplate = ({ match }) => {
           <ErrorMessage>This field is required !</ErrorMessage>
         )}
 
-        {path === burger && (
+        {currentFormType == "tortillas" && (
           <>
+            <label htmlFor="sauce">Choose a sauce:</label>
+            <select
+              name="sauce"
+              id="sauce"
+              ref={register({
+                required: true,
+              })}
+            >
+              <option value="MM">MM</option>
+              <option value="Garlic">Garlic</option>
+              <option value="DIP">DIP</option>
+              <option value="BBQ">BBQ</option>
+            </select>
             <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
               +
             </SmallButton>
             <h1>ingredient</h1>
           </>
         )}
-
-        {path === tortilla && (
+        {currentFormType == "burgers" && (
           <>
+            <label htmlFor="sauce">Choose a sauce:</label>
+            <select
+              name="sauce"
+              id="sauce"
+              ref={register({
+                required: true,
+              })}
+            >
+              <option value="MM">MM</option>
+              <option value="Garlic">Garlic</option>
+              <option value="DIP">DIP</option>
+              <option value="BBQ">BBQ</option>
+            </select>
             <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
               +
             </SmallButton>
@@ -111,23 +131,10 @@ const AddNewProdcutsTemplate = ({ match }) => {
             </SmallButton>
           </div>
         ))}
-        <label htmlFor="sauce">Choose a sauce:</label>
-        <select
-          name="sauce"
-          id="sauce"
-          ref={register({
-            required: true,
-          })}
-        >
-          <option value="MM">MM</option>
-          <option value="Garlic">Garlic</option>
-          <option value="DIP">DIP</option>
-          <option value="BBQ">BBQ</option>
-        </select>
         <LongButton type="submit">add product</LongButton>
       </FormWrapper>
     </AddProductGridTemplate>
   );
 };
 
-export default connect()(AddNewProdcutsTemplate);
+export default connect()(NewProductsForm);

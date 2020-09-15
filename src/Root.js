@@ -18,7 +18,7 @@ import NewProduct from "./views/NewProduct";
 import User from "./views/User";
 import Admin from "./views/Admin";
 import MainUserTemaplte from "./templates/MainTemplate";
-import AddNewProdcutsTemplate from "./templates/AddNewProdcutsTemplate";
+import NewProductsForm from "./components/organism/NewProductsForm/NewProductsForm";
 import ProductsDetailsTemplate from "./templates/ProductsDetailsTemplate";
 import firebase from "./services/firebase";
 import CheckOutMyOrder from "./views/CheckOutMyOrder";
@@ -58,27 +58,15 @@ const Root = () => {
                 <Route path={routes.admin} component={Admin} />
                 <Route path={routes.user} component={User} />
 
-                <Route
-                  path={routes.newBurger}
-                  component={AddNewProdcutsTemplate}
-                />
+                <Route path={routes.newBurger} component={NewProductsForm} />
                 <Route
                   path={routes.checkOutmyOrder}
                   component={CheckOutMyOrder}
                 />
                 <Route path={routes.addresForm} component={AdressForm} />
-                <Route
-                  path={routes.newTortilla}
-                  component={AddNewProdcutsTemplate}
-                />
-                <Route
-                  path={routes.newAddons}
-                  component={AddNewProdcutsTemplate}
-                />
-                <Route
-                  path={routes.newBeverages}
-                  component={AddNewProdcutsTemplate}
-                />
+                <Route path={routes.newTortilla} component={NewProductsForm} />
+                <Route path={routes.newAddons} component={NewProductsForm} />
+                <Route path={routes.newBeverages} component={NewProductsForm} />
                 <Route path="/burger/:id" component={ProductsDetailsTemplate} />
               </Switch>
             </MainUserTemaplte>
