@@ -24,19 +24,12 @@ const StyledLink = styled(Link)`
 const StyledImg = styled.img`
   width: 100%;
 `;
-const Card = ({
-  id,
-  tittle,
-  price,
-  ingredients,
-  sauce,
-  mealOfTheWeek,
-  removeItem,
-  addItemToCart,
-}) => {
+const Card = ({ id, tittle, price, ingredients, sauce, addItemToCart }) => {
   const item = {
     tittle,
     price,
+    ingredients,
+    sauce,
   };
   return (
     <Wrapper>
@@ -47,13 +40,12 @@ const Card = ({
       <PriceText>{`${price} zl`}</PriceText>
       <p>ingredients:</p>
       {ingredients.map((ingredient, index) => (
-        <span key={index}>{ingredient + ", "}</span>
+        <span key={index}>{`${ingredient}, `}</span>
       ))}
       <p>
         sauce:
         {sauce}
       </p>
-      <LongButton onClick={() => removeItem(id)}>Usun</LongButton>
       <LongButton onClick={() => addItemToCart(item)}>Add to cart</LongButton>
     </Wrapper>
   );
@@ -65,23 +57,18 @@ Card.propTypes = {
   price: PropTypes.string,
   ingredients: PropTypes.arrayOf(PropTypes.string),
   sauce: PropTypes.string,
-  mealOfTheWeek: PropTypes.bool,
-  removeItem: PropTypes.func,
   addItemToCart: PropTypes.func,
 };
 
 Card.defaultProps = {
   tittle: "asd",
   price: 18,
-  ingredients: ["beef", "tomato", "onion"],
-  mealOfTheWeek: false,
+  ingredients: [],
   sauce: "M M",
-  removeItem: () => ({}),
   addItemToCart: () => ({}),
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  removeItem: (tittle) => dispatch(removeItemAction(tittle)),
   addItemToCart: (item) => dispatch(addItemToCartAction(item)),
 });
 

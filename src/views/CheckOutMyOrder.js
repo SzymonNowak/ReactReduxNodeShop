@@ -29,6 +29,13 @@ const CheckOutMyOrder = ({ productsInCart }) => {
           <h2>burger:</h2>
           <p>{item.tittle}</p>
           <p>{item.price}</p>
+          <p>{item.sauce}</p>
+          {item.ingredients > 0 && <p>ingredients:</p>}
+          {item.ingredients
+            ? item.ingredients.map((ingredient, index) => (
+                <span key={index}>{ingredient + ", "}</span>
+              ))
+            : null}
         </>
       ))}
       <LongButton>
