@@ -1,17 +1,15 @@
 import { actionTypes } from "../../constants/actionTypes";
-
+import LoginError, { loginError } from "./loginError";
 const initialState = {
-  user: [],
-  synced: false,
+  authError: null,
 };
 
 const AuthReducer = (state = initialState, action) => {
-  // console.log(state);
   switch (action.type) {
-    // case actionTypes.ADD_ITEM:
-    //     return addNewItem(state, action);
-    // case actionTypes.REMOVE_ITEM:
-    //     return deleteNewItem(state, action);
+    case actionTypes.LOGIN_SUCCESS:
+      return loginError(state, action);
+    case actionTypes.LOGIN_ERROR:
+      return loginError(state, action);
     default:
       return state;
   }

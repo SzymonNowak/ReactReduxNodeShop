@@ -1,4 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+
+// TODO move this to organism from templates
+
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
@@ -108,6 +111,19 @@ const AddNewProdcutsTemplate = ({ match }) => {
             </SmallButton>
           </div>
         ))}
+        <label htmlFor="sauce">Choose a sauce:</label>
+        <select
+          name="sauce"
+          id="sauce"
+          ref={register({
+            required: true,
+          })}
+        >
+          <option value="MM">MM</option>
+          <option value="Garlic">Garlic</option>
+          <option value="DIP">DIP</option>
+          <option value="BBQ">BBQ</option>
+        </select>
         <LongButton type="submit">add product</LongButton>
       </FormWrapper>
     </AddProductGridTemplate>

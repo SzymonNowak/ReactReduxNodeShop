@@ -12,4 +12,6 @@ export const routes = {
   newBeverages: "/newBeverages",
   admin: "/admin",
   user: "/user",
+  checkOutmyOrder: "/checkOutmyOrder",
+  addresForm: "/addresForm",
 };

@@ -21,6 +21,8 @@ import MainUserTemaplte from "./templates/MainTemplate";
 import AddNewProdcutsTemplate from "./templates/AddNewProdcutsTemplate";
 import ProductsDetailsTemplate from "./templates/ProductsDetailsTemplate";
 import firebase from "./services/firebase";
+import CheckOutMyOrder from "./views/CheckOutMyOrder";
+import AdressForm from "./components/organism/AdressForm/AdressForm";
 
 const Root = () => {
   const rrfProps = {
@@ -60,6 +62,11 @@ const Root = () => {
                   path={routes.newBurger}
                   component={AddNewProdcutsTemplate}
                 />
+                <Route
+                  path={routes.checkOutmyOrder}
+                  component={CheckOutMyOrder}
+                />
+                <Route path={routes.addresForm} component={AdressForm} />
                 <Route
                   path={routes.newTortilla}
                   component={AddNewProdcutsTemplate}

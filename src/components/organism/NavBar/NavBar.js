@@ -71,17 +71,27 @@ const NavBar = ({ productsInCart }) => {
         <ListItem>
           <StyledLink to={routes.user}>User</StyledLink>
         </ListItem>
+        <ListItem>
+          <p>Login</p>
+        </ListItem>
+        <ListItem>
+          <p>Log Out</p>
+        </ListItem>
 
         <ListItem>
-          <p>{productsInCart.length}</p>
+          <StyledLink to={routes.checkOutmyOrder}>
+            <p>{productsInCart.length}</p>
+          </StyledLink>
         </ListItem>
       </ListOfNavItem>
     </Nav>
   );
 };
 
-const mapeStateToProps = ({ ShopingCartReducer }) => ({
-  productsInCart: ShopingCartReducer.productsInCart,
-});
+const mapeStateToProps = ({ ShopingCartReducer, firebaseReducer }) => {
+  return {
+    productsInCart: ShopingCartReducer.productsInCart,
+  };
+};
 
 export default connect(mapeStateToProps)(NavBar);

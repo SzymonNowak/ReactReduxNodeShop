@@ -62,7 +62,7 @@ const Card = ({
 Card.propTypes = {
   id: PropTypes.string,
   tittle: PropTypes.string,
-  price: PropTypes.number,
+  price: PropTypes.string,
   ingredients: PropTypes.arrayOf(PropTypes.string),
   sauce: PropTypes.string,
   mealOfTheWeek: PropTypes.bool,
