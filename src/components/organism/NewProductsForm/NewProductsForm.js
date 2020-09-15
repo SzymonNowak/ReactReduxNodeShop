@@ -26,7 +26,7 @@ const NewProductsForm = ({ match }) => {
   const currentFormType = formTypes.filter((type) => match.path.includes(type));
 
   const onSubmit = (itemContent) => {
-    dispatch(addItemAction(itemContent));
+    dispatch(addItemAction(itemContent, currentFormType));
   };
 
   const addIngredient = (e) => {
