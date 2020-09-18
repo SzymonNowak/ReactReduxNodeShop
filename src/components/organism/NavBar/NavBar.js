@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { routes } from "../../../routes/index";
 
 const Nav = styled.nav`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -55,7 +55,6 @@ const UserBoxWrapper = styled.div`
 `;
 
 const NavBar = ({ productsInCart }) => {
-  console.log(productsInCart);
   return (
     <Nav>
       <UserBoxWrapper>
@@ -77,7 +76,6 @@ const NavBar = ({ productsInCart }) => {
         <ListItem>
           <p>Log Out</p>
         </ListItem>
-
         <ListItem>
           <StyledLink to={routes.checkOutmyOrder}>
             <p>{productsInCart.length}</p>

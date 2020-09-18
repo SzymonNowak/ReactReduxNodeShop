@@ -2,6 +2,7 @@
 /* eslint-disable indent */
 /* eslint-disable no-use-before-define */
 import React from "react";
+import styled from "styled-components";
 import { connect } from "react-redux";
 import {
   firestoreConnect,
@@ -9,19 +10,20 @@ import {
   isLoaded,
   isEmpty,
 } from "react-redux-firebase";
-import { collectionNames } from "../constants/collectionNames";
 import { compose } from "redux";
+import { collectionNames } from "../constants/collectionNames";
 import Card from "../components/molecules/Card/Card";
 import drawBurger from "../assets/drawBurger.jpg";
 import drawFrenchFries from "../assets/drawFrenchFries.png";
 import drawTortilla from "../assets/drawTortilla.jpg";
 import drawBeverages from "../assets/drawBeverages.jpg";
 import MainGridTemaplte from "../templates/MainGridTemaplate";
+import HeaderParagraph from "../components/atoms/HeaderParagraph/HeaderParagraph";
 
 const Main = ({ burgers, tortillas, addons, beverages }) => {
-  console.log(burgers);
   return (
     <>
+      <HeaderParagraph>Burgers : </HeaderParagraph>
       <MainGridTemaplte>
         {!isLoaded(burgers)
           ? "Loading"
@@ -29,6 +31,8 @@ const Main = ({ burgers, tortillas, addons, beverages }) => {
           ? "burgers list is empty"
           : showItems(burgers, drawBurger)}
       </MainGridTemaplte>
+      <HeaderParagraph>Tortillas : </HeaderParagraph>
+
       <MainGridTemaplte>
         {!isLoaded(tortillas)
           ? "Loading"
@@ -36,6 +40,8 @@ const Main = ({ burgers, tortillas, addons, beverages }) => {
           ? "tortillas list is empty"
           : showItems(tortillas, drawTortilla)}
       </MainGridTemaplte>
+      <HeaderParagraph>Addons : </HeaderParagraph>
+
       <MainGridTemaplte>
         {!isLoaded(addons)
           ? "Loading"
@@ -43,6 +49,8 @@ const Main = ({ burgers, tortillas, addons, beverages }) => {
           ? "addons list is empty"
           : showItems(addons, drawFrenchFries)}
       </MainGridTemaplte>
+      <HeaderParagraph>Beverages : </HeaderParagraph>
+
       <MainGridTemaplte>
         {!isLoaded(beverages)
           ? "Loading"
