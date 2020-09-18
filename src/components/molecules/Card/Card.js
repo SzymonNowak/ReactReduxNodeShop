@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { removeItem as removeItemAction } from "../../../actions/removeItemAction";
-import { addItemToCart as addItemToCartAction } from "../../../actions/addItemToCartAction";
+import { addItemToCart as addItemToCartAction } from "../../../actions/addItemToCart";
 import PriceText from "../../atoms/PriceText/PriceText";
 import LongButton from "../../atoms/LongButton/LongButton";
 
@@ -30,6 +29,7 @@ const Card = ({
   photo,
 }) => {
   const item = {
+    id,
     tittle,
     price,
     ingredients,

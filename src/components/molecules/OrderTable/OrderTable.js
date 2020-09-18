@@ -6,6 +6,7 @@ import { routes } from "../../../routes/index";
 import StyledLink from "../../atoms/StyledLink/StyledLink";
 import ColumnBody from "../../atoms/ColumnBody/ColumnBody";
 import ColumnHeader from "../../atoms/ColumnHeader/ColumnHeader";
+import { removeItemFromCart as removeItemFromCartAction } from "../../../actions/removeItemFromCart";
 
 const MainWrapper = styled.div``;
 
@@ -32,7 +33,8 @@ const StyledLongButton = styled(LongButton)`
   display: block;
 `;
 
-const OrderTable = ({ productsInCart }) => {
+const OrderTable = ({ productsInCart, removeItemFromCart }) => {
+  console.log(productsInCart);
   const [currentPrice, setCurrentPrice] = useState(0);
   let currentValue = 0;
   const total = () => {
@@ -52,6 +54,7 @@ const OrderTable = ({ productsInCart }) => {
         <ColumnHeader>product name:</ColumnHeader>
         <ColumnHeader>product price:</ColumnHeader>
         <ColumnHeader>descrption :</ColumnHeader>
+        <ColumnHeader>edit :</ColumnHeader>
       </Wrapper>
       <Wrapper>
         <ColumnBody>
@@ -75,6 +78,15 @@ const OrderTable = ({ productsInCart }) => {
             </>
           ))}
         </ColumnBody>
+        <ColumnBody>
+          {productsInCart.map((item) => (
+            <>
+              <LongButton onClick={() => removeItemFromCart(item.id)}>
+                DELETE
+              </LongButton>
+            </>
+          ))}
+        </ColumnBody>
       </Wrapper>
       <DeliveryInfoWrapper>
         <h3>delivery cost : 6zl</h3>
@@ -92,5 +104,8 @@ const mapeStateToProps = ({ ShopingCartReducer }) => {
     productsInCart: ShopingCartReducer.productsInCart,
   };
 };
+const mapDispatchToProps = (dispatch) => ({
+  removeItemFromCart: (item) => dispatch(removeItemFromCartAction(item)),
+});
 
-export default connect(mapeStateToProps)(OrderTable);
+export default connect(mapeStateToProps, mapDispatchToProps)(OrderTable);
