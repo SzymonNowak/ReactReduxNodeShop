@@ -30,11 +30,14 @@ const DeliveryInfoWrapper = styled.div`
 `;
 
 const StyledLongButton = styled(LongButton)`
-  display: block;
+  /* display: block; */
+  color: red;
+  border-color: red;
+  margin-top: 15px;
+  margin-bottom: 20px;
 `;
 
 const OrderTable = ({ productsInCart, removeItemFromCart }) => {
-  console.log(productsInCart);
   const [currentPrice, setCurrentPrice] = useState(0);
   let currentValue = 0;
   const total = () => {
@@ -79,20 +82,20 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
           ))}
         </ColumnBody>
         <ColumnBody>
-          {productsInCart.map((item) => (
+          {productsInCart.map((item, index) => (
             <>
-              <LongButton onClick={() => removeItemFromCart(item.id)}>
-                DELETE
-              </LongButton>
+              <StyledLongButton onClick={() => removeItemFromCart(index)}>
+                REMOVE
+              </StyledLongButton>
             </>
           ))}
         </ColumnBody>
       </Wrapper>
       <DeliveryInfoWrapper>
         <h3>delivery cost : 6zl</h3>
-        <h3>Total cost : {currentPrice}</h3>
+        <h3>Total cost : {currentPrice}zl</h3>
         <StyledLink to={routes.addresForm}>
-          <StyledLongButton>Next step</StyledLongButton>
+          <LongButton>Next step</LongButton>
         </StyledLink>
       </DeliveryInfoWrapper>
     </MainWrapper>
