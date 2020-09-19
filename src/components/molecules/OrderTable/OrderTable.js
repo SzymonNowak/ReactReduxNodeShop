@@ -30,7 +30,6 @@ const DeliveryInfoWrapper = styled.div`
 `;
 
 const StyledLongButton = styled(LongButton)`
-  /* display: block; */
   color: red;
   border-color: red;
   margin-top: 15px;
@@ -56,7 +55,7 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
       <Wrapper>
         <ColumnHeader>product name:</ColumnHeader>
         <ColumnHeader>product price:</ColumnHeader>
-        <ColumnHeader>descrption :</ColumnHeader>
+        <ColumnHeader>sauce :</ColumnHeader>
         <ColumnHeader>edit :</ColumnHeader>
       </Wrapper>
       <Wrapper>
@@ -77,7 +76,10 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
         <ColumnBody>
           {productsInCart.map((item) => (
             <>
-              <h4>{item.sauce}</h4>
+              <h4>
+                {item.sauce}
+                <i class="fas fa-edit"></i>
+              </h4>
             </>
           ))}
         </ColumnBody>
