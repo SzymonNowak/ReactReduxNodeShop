@@ -5,7 +5,12 @@ import { routes } from "../routes/index";
 const Admin = () => {
   return (
     <div>
-      <NavLink to={routes.addNewProduct}> Add New Product </NavLink>
+      <p>
+        <NavLink to={routes.addNewProduct}> Add New Product </NavLink>
+      </p>
+      <p>
+        <NavLink to={routes.editProduct}> Edit Product </NavLink>
+      </p>
     </div>
   );
 };

@@ -18,11 +18,13 @@ import NewProduct from "./views/NewProduct";
 import User from "./views/User";
 import Admin from "./views/Admin";
 import MainUserTemaplte from "./templates/MainTemplate";
-import NewProductsForm from "./components/organism/NewProductsForm/NewProductsForm";
+import NewProductsForm from "./components/organism/NewProductForm/NewProductForm";
 import ProductsDetailsTemplate from "./templates/ProductsDetailsTemplate";
 import firebase from "./services/firebase";
 import CheckOutMyOrder from "./views/CheckOutMyOrder";
 import AdressForm from "./components/organism/AdressForm/AdressForm";
+import EditProduct from "./views/EditProduct";
+import EditProductForm from "./components/organism/EditProductForm/EditProductForm";
 
 const Root = () => {
   const rrfProps = {
@@ -68,6 +70,8 @@ const Root = () => {
                 <Route path={routes.newAddons} component={NewProductsForm} />
                 <Route path={routes.newBeverages} component={NewProductsForm} />
                 <Route path="/burger/:id" component={ProductsDetailsTemplate} />
+                <Route path={routes.editProduct} component={EditProduct} />
+                <Route path="/editProductForm:id" component={EditProductForm} />
               </Switch>
             </MainUserTemaplte>
           </BrowserRouter>

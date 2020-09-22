@@ -53,7 +53,6 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
 
   useEffect(() => {
     total();
-    // checkValue(currentPrice);
     return () => {
       console.log("odmontowano");
     };

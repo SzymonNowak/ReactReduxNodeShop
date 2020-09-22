@@ -14,4 +14,5 @@ export const routes = {
   user: "/user",
   checkOutmyOrder: "/checkOutmyOrder",
   addresForm: "/addresForm",
+  editProduct: "/editProduct",
 };
