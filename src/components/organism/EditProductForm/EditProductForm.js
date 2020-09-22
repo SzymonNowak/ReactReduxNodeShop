@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-const EditProductForm = () => {};
+const EditProductForm = () => {
+  return (
+    <>
+      <p>EditProdcutsForm</p>
+    </>
+  );
+};
 
 export default EditProductForm;

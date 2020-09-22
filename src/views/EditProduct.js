@@ -12,7 +12,8 @@ import {
 import ColumnBody from "../components/atoms/ColumnBody/ColumnBody";
 import ColumnHeader from "../components/atoms/ColumnHeader/ColumnHeader";
 import LongButton from "../components/atoms/LongButton/LongButton";
-
+import { NavLink } from "react-router-dom";
+import { routes } from "../routes/index";
 const MainWrapper = styled.div``;
 
 const Wrapper = styled.div`
@@ -51,7 +52,9 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <StyledLongButton>Edit</StyledLongButton>
+            <NavLink to={`/editProductForm/${item.id}`}>
+              <StyledLongButton>Edit</StyledLongButton>
+            </NavLink>
           </ColumnBody>
         </Wrapper>
       ))}
@@ -68,7 +71,9 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <StyledLongButton>Edit</StyledLongButton>
+            <NavLink to={`/editProductForm/${item.id}`}>
+              <StyledLongButton>Edit</StyledLongButton>
+            </NavLink>
           </ColumnBody>
         </Wrapper>
       ))}
@@ -85,7 +90,9 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <StyledLongButton>Edit</StyledLongButton>
+            <NavLink to={`/editProductForm/${item.id}`}>
+              <StyledLongButton>Edit</StyledLongButton>
+            </NavLink>
           </ColumnBody>
         </Wrapper>
       ))}
@@ -102,7 +109,9 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <StyledLongButton>Edit</StyledLongButton>
+            <NavLink to={`/editProductForm/${item.id}`}>
+              <StyledLongButton>Edit</StyledLongButton>
+            </NavLink>
           </ColumnBody>
         </Wrapper>
       ))}

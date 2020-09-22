@@ -71,7 +71,10 @@ const Root = () => {
                 <Route path={routes.newBeverages} component={NewProductsForm} />
                 <Route path="/burger/:id" component={ProductsDetailsTemplate} />
                 <Route path={routes.editProduct} component={EditProduct} />
-                <Route path="/editProductForm:id" component={EditProductForm} />
+                <Route
+                  path={`${routes.editProductForm}/:id`}
+                  component={EditProductForm}
+                />
               </Switch>
             </MainUserTemaplte>
           </BrowserRouter>
