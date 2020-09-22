@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+const LongButton = styled.button`
   background-color: white;
   color: ${({ theme }) => theme.orange};
   cursor: pointer;
@@ -22,4 +22,4 @@ const Button = styled.button`
   }
 `;
 
-export default Button;
+export default LongButton;

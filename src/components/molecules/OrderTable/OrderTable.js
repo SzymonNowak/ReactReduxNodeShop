@@ -36,18 +36,27 @@ const StyledLongButton = styled(LongButton)`
   margin-bottom: 20px;
 `;
 
+const StyledOrderLongButton = styled(LongButton)`
+  /* display: ${({ active }) => (active ? "block" : "none")}; */
+`;
+
 const OrderTable = ({ productsInCart, removeItemFromCart }) => {
   const [currentPrice, setCurrentPrice] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
   let currentValue = 0;
   const total = () => {
     productsInCart.map((item) => {
-      return (currentValue = currentValue + Number(item.price));
+      currentValue = currentValue + Number(item.price);
     });
     setCurrentPrice(currentValue + 6);
   };
 
   useEffect(() => {
     total();
+    // checkValue(currentPrice);
+    return () => {
+      console.log("odmontowano");
+    };
   });
 
   return (
@@ -58,46 +67,29 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
         <ColumnHeader>sauce :</ColumnHeader>
         <ColumnHeader>edit :</ColumnHeader>
       </Wrapper>
-      <Wrapper>
-        <ColumnBody>
-          {productsInCart.map((item) => (
-            <>
-              <h4>{item.tittle}</h4>
-            </>
-          ))}
-        </ColumnBody>
-        <ColumnBody>
-          {productsInCart.map((item) => (
-            <>
-              <h4>{item.price}</h4>
-            </>
-          ))}
-        </ColumnBody>
-        <ColumnBody>
-          {productsInCart.map((item) => (
-            <>
-              <h4>
-                {item.sauce}
-                <i class="fas fa-edit"></i>
-              </h4>
-            </>
-          ))}
-        </ColumnBody>
-        <ColumnBody>
-          {productsInCart.map((item, index) => (
-            <>
-              <StyledLongButton onClick={() => removeItemFromCart(index)}>
-                REMOVE
-              </StyledLongButton>
-            </>
-          ))}
-        </ColumnBody>
-      </Wrapper>
+      {productsInCart.map((item, index) => (
+        <Wrapper>
+          <ColumnBody>
+            <h4>{item.tittle}</h4>
+          </ColumnBody>
+          <ColumnBody>
+            <h4>{item.price}</h4>
+          </ColumnBody>
+          <ColumnBody>
+            <h4>{item.sauce}</h4>
+          </ColumnBody>
+          <ColumnBody>
+            <StyledLongButton onClick={() => removeItemFromCart(index)}>
+              REMOVE
+            </StyledLongButton>
+          </ColumnBody>
+        </Wrapper>
+      ))}
       <DeliveryInfoWrapper>
         <h3>delivery cost : 6zl</h3>
         <h3>Total cost : {currentPrice}zl</h3>
         <StyledLink to={routes.addresForm}>
-          <LongButton>Next step</LongButton>
+          <StyledOrderLongButton>Next Step</StyledOrderLongButton>
         </StyledLink>
       </DeliveryInfoWrapper>
     </MainWrapper>
