@@ -72,7 +72,7 @@ const Root = () => {
                 <Route path="/burger/:id" component={ProductsDetailsTemplate} />
                 <Route path={routes.editProduct} component={EditProduct} />
                 <Route
-                  path={`${routes.editProductForm}/:id`}
+                  path={routes.editProductForm}
                   component={EditProductForm}
                 />
               </Switch>

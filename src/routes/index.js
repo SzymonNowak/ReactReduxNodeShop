@@ -15,5 +15,5 @@ export const routes = {
   checkOutmyOrder: "/checkOutmyOrder",
   addresForm: "/addresForm",
   editProduct: "/editProduct",
-  editProductForm: "./editProductForm/:id",
+  editProductForm: "/editProductForm/:collection/:id",
 };

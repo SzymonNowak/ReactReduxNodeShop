@@ -52,7 +52,9 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <NavLink to={`/editProductForm/${item.id}`}>
+            <NavLink
+              to={`/editProductForm/${collectionNames.burgers}/${item.id}`}
+            >
               <StyledLongButton>Edit</StyledLongButton>
             </NavLink>
           </ColumnBody>
@@ -71,7 +73,9 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <NavLink to={`/editProductForm/${item.id}`}>
+            <NavLink
+              to={`/editProductForm/${collectionNames.tortillas}/${item.id}`}
+            >
               <StyledLongButton>Edit</StyledLongButton>
             </NavLink>
           </ColumnBody>
@@ -90,7 +94,9 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <NavLink to={`/editProductForm/${item.id}`}>
+            <NavLink
+              to={`/editProductForm/${collectionNames.addons}/${item.id}`}
+            >
               <StyledLongButton>Edit</StyledLongButton>
             </NavLink>
           </ColumnBody>
@@ -109,7 +115,9 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <NavLink to={`/editProductForm/${item.id}`}>
+            <NavLink
+              to={`/editProductForm/${collectionNames.beverages}/${item.id}`}
+            >
               <StyledLongButton>Edit</StyledLongButton>
             </NavLink>
           </ColumnBody>
