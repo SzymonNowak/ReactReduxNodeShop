@@ -13,6 +13,7 @@ const LongButton = styled.button`
   font-size: 13px;
   text-transform: uppercase;
   transition: 0.25s ease-in-out;
+
   &:focus {
     outline: 0;
   }

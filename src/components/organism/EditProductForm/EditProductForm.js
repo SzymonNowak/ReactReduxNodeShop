@@ -91,6 +91,7 @@ const EditProductForm = ({ match, burgers, tortillas, addons, beverages }) => {
     </AddProductGridTemplate>
   );
 };
+
 const mapeStateToProps = ({ ProductReducer, firestoreReducer }) => ({
   burgers: firestoreReducer.ordered.burgers || ProductReducer.products,
   tortillas: firestoreReducer.ordered.tortillas || ProductReducer.products,
@@ -100,7 +101,7 @@ const mapeStateToProps = ({ ProductReducer, firestoreReducer }) => ({
 
 export default compose(
   firestoreConnect(() => [
-    { collection: "burgers", doc: "fjOauNcdS1RHjJtJ1bn3" },
+    { collection: "burgers", doc: "LnhjqkxAirPDaDPRUp2C" },
   ]),
   connect(mapeStateToProps)
 )(EditProductForm);

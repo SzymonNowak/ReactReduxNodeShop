@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Input = styled.input`
   font-size: ${({ theme }) => theme.fontSize.xs};
+  height: 25px;
   border: none;
   border-bottom: 1px solid black;
   font-weight: ${({ theme }) => theme.regular};

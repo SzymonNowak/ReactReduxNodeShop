@@ -15,6 +15,19 @@ const FormWrapper = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 100px;
+`;
+const StyledLabel = styled.label`
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+`;
+const StyledSelect = styled.select`
+  padding: 10px 20px 10px 20px;
+  color: orange;
+`;
+const StyledLongButton = styled(LongButton)`
+  margin-top: 30px;
 `;
 
 const NewProductsForm = ({ match }) => {
@@ -44,7 +57,7 @@ const NewProductsForm = ({ match }) => {
   return (
     <AddProductGridTemplate>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <h1 htmlFor="productName">{`${currentFormType} name`}</h1>
+        <StyledLabel htmlFor="productName">{`${currentFormType} name :`}</StyledLabel>
         <Input
           id="productName"
           name="productName"
@@ -56,7 +69,7 @@ const NewProductsForm = ({ match }) => {
         {errors.productName && (
           <ErrorMessage>This field is required !</ErrorMessage>
         )}
-        <h1>product price</h1>
+        <StyledLabel>product price :</StyledLabel>
         <Input
           id="productPrice"
           name="productPrice"
@@ -72,8 +85,8 @@ const NewProductsForm = ({ match }) => {
 
         {currentFormType == "tortillas" && (
           <>
-            <label htmlFor="sauce">Choose a sauce:</label>
-            <select
+            <label htmlFor="sauce">choose a sauce:</label>
+            <StyledSelect
               name="sauce"
               id="sauce"
               ref={register({
@@ -84,7 +97,7 @@ const NewProductsForm = ({ match }) => {
               <option value="Garlic">Garlic</option>
               <option value="DIP">DIP</option>
               <option value="BBQ">BBQ</option>
-            </select>
+            </StyledSelect>
             <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
               +
             </SmallButton>
@@ -93,8 +106,8 @@ const NewProductsForm = ({ match }) => {
         )}
         {currentFormType == "burgers" && (
           <>
-            <label htmlFor="sauce">Choose a sauce:</label>
-            <select
+            <StyledLabel htmlFor="sauce">choose a sauce:</StyledLabel>
+            <StyledSelect
               name="sauce"
               id="sauce"
               ref={register({
@@ -105,11 +118,11 @@ const NewProductsForm = ({ match }) => {
               <option value="Garlic">Garlic</option>
               <option value="DIP">DIP</option>
               <option value="BBQ">BBQ</option>
-            </select>
+            </StyledSelect>
+            <h1>ingredients :</h1>
             <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
               +
             </SmallButton>
-            <h1>ingredient</h1>
           </>
         )}
 
@@ -131,7 +144,7 @@ const NewProductsForm = ({ match }) => {
             </SmallButton>
           </div>
         ))}
-        <LongButton type="submit">add product</LongButton>
+        <StyledLongButton type="submit">add product</StyledLongButton>
       </FormWrapper>
     </AddProductGridTemplate>
   );
