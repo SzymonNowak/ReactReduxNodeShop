@@ -53,9 +53,9 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
 
   useEffect(() => {
     total();
-    return () => {
-      console.log("odmontowano");
-    };
+    // return () => {
+    //   console.log("odmontowano");
+    // };
   });
 
   return (

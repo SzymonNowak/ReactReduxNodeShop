@@ -14,8 +14,7 @@ const Input = styled.input`
     color: ${({ theme }) => theme.grey300};
   }
   &:focus {
-    border-color: orange;
-
+    border: 3px solid orange;
     outline: none;
   }
 `;
