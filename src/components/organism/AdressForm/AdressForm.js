@@ -40,14 +40,20 @@ const Styledelect = styled.select`
   margin-bottom: 40px;
 `;
 
-const AdressForm = () => {
+const AdressForm = ({ productsInCart }) => {
   const { register, handleSubmit, errors, control } = useForm();
   const [isChoosenCard, setChooseCard] = useState(false);
   const [isChoosenCash, setChooseCash] = useState(false);
   const dispatch = useDispatch();
+  console.log(productsInCart);
 
   const onSubmit = (deliveryInfo) => {
-    dispatch(orderMealAction(deliveryInfo));
+    const order = {
+      order: productsInCart,
+      adress: deliveryInfo,
+    };
+    console.log(order);
+    dispatch(orderMealAction(order));
   };
 
   return (
@@ -153,4 +159,8 @@ const AdressForm = () => {
   );
 };
 
-export default connect()(AdressForm);
+const mapeStateToProps = ({ ShopingCartReducer }) => ({
+  productsInCart: ShopingCartReducer.productsInCart,
+});
+
+export default connect(mapeStateToProps)(AdressForm);
