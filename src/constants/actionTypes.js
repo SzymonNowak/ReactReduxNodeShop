@@ -6,4 +6,5 @@ export const actionTypes = {
   ADD_ITEM_TO_CART: "ADD_ITEM_TO_CART",
   LOGIN_SUCCESS: "LOGIN_SUCCESS",
   LOGIN_ERROR: "LOGIN_ERROR",
+  Order_Meal: "Order_Meal",
 };

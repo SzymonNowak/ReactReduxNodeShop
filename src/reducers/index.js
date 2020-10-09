@@ -4,6 +4,7 @@ import { firestoreReducer } from "redux-firestore"; // <- needed if using firest
 import ShopingCartReducer from "./ShopingCartReducer/ShopingCartReducer";
 import AuthReducer from "./AuthReducer/AuthReducer";
 import ProductReducer from "./ProductReduer/ProductReducer";
+import DeliverReducer from "./DeliveryReducer/DeliveryInfo";
 
 export default combineReducers({
   ProductReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   AuthReducer,
   firebaseReducer,
   firestoreReducer,
+  DeliverReducer,
 });

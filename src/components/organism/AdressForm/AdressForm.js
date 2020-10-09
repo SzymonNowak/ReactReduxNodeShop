@@ -6,7 +6,8 @@ import Input from "../../atoms/Input/Input";
 import LongButton from "../../atoms/LongButton/LongButton";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import FormWrapper from "../../atoms/FormWrapper/FormWrapper";
-
+import { connect, useDispatch } from "react-redux";
+import { orderMeal as orderMealAction } from "../../../actions/orderMeal";
 const Row = styled.div`
   display: flex;
   justify-content: space-around;
@@ -43,9 +44,10 @@ const AdressForm = () => {
   const { register, handleSubmit, errors, control } = useForm();
   const [isChoosenCard, setChooseCard] = useState(false);
   const [isChoosenCash, setChooseCash] = useState(false);
+  const dispatch = useDispatch();
 
-  const onSubmit = (itemContent) => {
-    console.log(itemContent);
+  const onSubmit = (deliveryInfo) => {
+    dispatch(orderMealAction(deliveryInfo));
   };
 
   return (
@@ -151,4 +153,4 @@ const AdressForm = () => {
   );
 };
 
-export default AdressForm;
+export default connect()(AdressForm);
