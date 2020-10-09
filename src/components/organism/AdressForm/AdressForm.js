@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import Input from "../../atoms/Input/Input";
 import LongButton from "../../atoms/LongButton/LongButton";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
@@ -31,66 +31,21 @@ const StyledInput = styled(Input)`
   border-radius: 5px;
   padding: 20px 0px 20px 0px;
 `;
-
-const PayMethodCardWrapper = styled.div`
+const Styledelect = styled.select`
+  width: 200px;
+  height: 50px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 300px;
-  height: 200px;
-  border: 1px solid black;
-  margin-top: 30px;
-  border-radius: 10px;
-  background-color: #f2f4f7;
-  ${({ isChoosenCard }) =>
-    isChoosenCard &&
-    css`
-      background-color: white;
-      border-color: orange;
-    `}
-  ${({ isChoosenCash }) =>
-    isChoosenCash &&
-    css`
-      background-color: white;
-      border-color: orange;
-    `}
-`;
-const StyledIconHolder = styled.p`
-  font-size: 100px;
-  color: black;
-  ${({ isChoosenCard }) =>
-    isChoosenCard &&
-    css`
-      color: orange;
-    `}
-  ${({ isChoosenCash }) =>
-    isChoosenCash &&
-    css`
-      color: orange;
-    `}
+  margin-bottom: 40px;
 `;
 
 const AdressForm = () => {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, control } = useForm();
   const [isChoosenCard, setChooseCard] = useState(false);
   const [isChoosenCash, setChooseCash] = useState(false);
 
   const onSubmit = (itemContent) => {
     console.log(itemContent);
-  };
-
-  const setPayMethod = (e) => {
-    const payMethod = e.target.id;
-    if (payMethod == "card") {
-      setChooseCard(true);
-      setChooseCash(false);
-    }
-    if (payMethod == "cash") {
-      setChooseCard(false);
-      setChooseCash(true);
-    }
-    console.log(payMethod);
   };
 
   return (
@@ -180,27 +135,16 @@ const AdressForm = () => {
           })}
         />
         <h1>Choose pay method</h1>
-        <Row>
-          <PayMethodCardWrapper
-            id="cash"
-            onClick={(e) => setPayMethod(e)}
-            isChoosenCash={isChoosenCash}
-          >
-            <StyledIconHolder isChoosenCash={isChoosenCash}>
-              <i class="far fa-money-bill-alt"></i>
-            </StyledIconHolder>
-          </PayMethodCardWrapper>
-          <PayMethodCardWrapper
-            id="card"
-            onClick={(e) => setPayMethod(e)}
-            isChoosenCard={isChoosenCard}
-          >
-            <StyledIconHolder isChoosenCard={isChoosenCard}>
-              <i class="far fa-credit-card"></i>
-            </StyledIconHolder>
-          </PayMethodCardWrapper>
-        </Row>
-
+        <Styledelect
+          id="payMethod"
+          name="payMethod"
+          ref={register({
+            required: true,
+          })}
+        >
+          <option value="cash">cash</option>
+          <option value="card">card</option>
+        </Styledelect>
         <LongButton>Order</LongButton>
       </FormWrapper>
     </MainWrapper>
