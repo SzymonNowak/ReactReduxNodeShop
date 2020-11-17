@@ -5,6 +5,4 @@ const UserData = mongoose.Schema({
   age: Number,
 });
 
-const UserData = mongoose.model("user", UserData);
-
-new UserData({ name: "John", age: 21 }).save();
+export const user = mongoose.model("user", UserData);
