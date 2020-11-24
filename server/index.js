@@ -1,14 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import { keys } from "./config/keys.js";
-import { user } from "./models/test.js";
+import userRoutes from "./routes/userRoutes.js";
 const app = express();
 
-mongoose.connect(keys.mongoURI);
-
-app.get("/", (req, res) => {
-  new user({ name: "John", age: 6666 }).save();
-});
+app.use("/user", userRoutes);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT);
+mongoose
+  .connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => app.listen(PORT, () => console.log(`app runing on ${PORT}`)))
+  .catch((error) => console.log(error));
