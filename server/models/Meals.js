@@ -4,6 +4,7 @@ const MealsSchema = mongoose.Schema({
   name: String,
   price: Number,
   meatType: String,
+  mealType: String,
   components: [String],
 });
 
