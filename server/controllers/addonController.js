@@ -7,7 +7,7 @@ export const addAddon = async (req, res) => {
 export const getAllAddons = async (req, res) => {
   try {
     const allAddons = await Addon.find();
-    res.status(200).json(allAddons);
+    res.status(200).json({ addons: allAddons });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

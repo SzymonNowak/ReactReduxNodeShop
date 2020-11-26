@@ -17,3 +17,10 @@ export const routes = {
   editProduct: "/editProduct",
   editProductForm: "/editProductForm/:collection/:id",
 };
+
+export const apiRoutes = {
+  getAllMeals: "http://localhost:5000/meals/getAllMeals",
+  getAllAddons: "http://localhost:5000/addons/getAllAddons",
+  getAllBeverages: "http://localhost:5000/beverages/getAllBeverages",
+  getAllSauces: "http://localhost:5000/sauces/getAllSauces",
+};

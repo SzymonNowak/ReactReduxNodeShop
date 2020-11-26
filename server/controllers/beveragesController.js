@@ -7,7 +7,7 @@ export const addBeverage = async (req, res) => {
 export const getAllBeverages = async (req, res) => {
   try {
     const allBeverages = await Beverage.find();
-    res.status(200).json(allBeverages);
+    res.status(200).json({ beverages: allBeverages });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

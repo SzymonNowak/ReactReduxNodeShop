@@ -4,8 +4,7 @@
 
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import { compose } from "redux";
+import { useDispatch } from "react-redux";
 import Card from "../components/molecules/Card/Card";
 import drawBurger from "../assets/drawBurger.jpg";
 import drawFrenchFries from "../assets/drawFrenchFries.png";
@@ -13,16 +12,20 @@ import drawTortilla from "../assets/drawTortilla.jpg";
 import drawBeverages from "../assets/drawBeverages.jpg";
 import MainGridTemaplte from "../templates/MainGridTemaplate";
 import HeaderParagraph from "../components/atoms/HeaderParagraph/HeaderParagraph";
-import axios from "axios";
+import { getAllMeals } from "../actions/meals";
+import { getAllAddons } from "../actions/addons";
+import { getAllBeverages } from "../actions/beverages";
+import { getAllSauces } from "../actions/sauces";
 
 const Main = ({ burgers, tortillas, addons, beverages }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await axios.get("http://localhost:5000/meals/getAllMeals");
-      console.log(data);
-    };
-    fetchData();
-  }, []);
+    dispatch(getAllMeals());
+    dispatch(getAllAddons());
+    dispatch(getAllBeverages());
+    dispatch(getAllSauces());
+  }, [dispatch]);
 
   return (
     <>
@@ -31,19 +34,6 @@ const Main = ({ burgers, tortillas, addons, beverages }) => {
     </>
   );
 };
-
-// const mapeStateToProps = ({ ProductReducer, firestoreReducer }) => ({
-//   burgers: firestoreReducer.ordered.burgers || ProductReducer.products,
-//   tortillas: firestoreReducer.ordered.tortillas || ProductReducer.products,
-//   addons: firestoreReducer.ordered.addons || ProductReducer.products,
-//   beverages: firestoreReducer.ordered.beverages || ProductReducer.products,
-// });
-// const mapeStateToProps = ({ ProductReducer }) => ({
-//   burgers: ProductReducer.products,
-//   tortillas: ProductReducer.products,
-//   addons: ProductReducer.products,
-//   beverages: ProductReducer.products,
-// });
 
 const showItems = (products, photo) =>
   products.map(
