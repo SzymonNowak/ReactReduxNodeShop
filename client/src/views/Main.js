@@ -6,7 +6,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { collectionNames } from "../constants/collectionNames";
 import Card from "../components/molecules/Card/Card";
 import drawBurger from "../assets/drawBurger.jpg";
 import drawFrenchFries from "../assets/drawFrenchFries.png";

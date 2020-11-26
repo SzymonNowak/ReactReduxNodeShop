@@ -1,14 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { collectionNames } from "../constants/collectionNames";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import {
-  firestoreConnect,
-  withFirestore,
-  isLoaded,
-  isEmpty,
-} from "react-redux-firebase";
 import ColumnBody from "../components/atoms/ColumnBody/ColumnBody";
 import ColumnHeader from "../components/atoms/ColumnHeader/ColumnHeader";
 import LongButton from "../components/atoms/LongButton/LongButton";
@@ -52,9 +45,7 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <NavLink
-              to={`/editProductForm/${collectionNames.burgers}/${item.id}`}
-            >
+            <NavLink to={""}>
               <StyledLongButton>Edit</StyledLongButton>
             </NavLink>
           </ColumnBody>
@@ -73,9 +64,7 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <NavLink
-              to={`/editProductForm/${collectionNames.tortillas}/${item.id}`}
-            >
+            <NavLink to={""}>
               <StyledLongButton>Edit</StyledLongButton>
             </NavLink>
           </ColumnBody>
@@ -94,9 +83,7 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <NavLink
-              to={`/editProductForm/${collectionNames.addons}/${item.id}`}
-            >
+            <NavLink to={""}>
               <StyledLongButton>Edit</StyledLongButton>
             </NavLink>
           </ColumnBody>
@@ -115,9 +102,7 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
             <h4>{item.sauce}</h4>
           </ColumnBody>
           <ColumnBody>
-            <NavLink
-              to={`/editProductForm/${collectionNames.beverages}/${item.id}`}
-            >
+            <NavLink to={""}>
               <StyledLongButton>Edit</StyledLongButton>
             </NavLink>
           </ColumnBody>
@@ -127,27 +112,4 @@ const EditProduct = ({ burgers, tortillas, addons, beverages, match }) => {
   );
 };
 
-const mapeStateToProps = ({ ProductReducer, firestoreReducer }) => ({
-  burgers: firestoreReducer.ordered.burgers || ProductReducer.products,
-  tortillas: firestoreReducer.ordered.tortillas || ProductReducer.products,
-  addons: firestoreReducer.ordered.addons || ProductReducer.products,
-  beverages: firestoreReducer.ordered.beverages || ProductReducer.products,
-});
-
-export default compose(
-  connect(mapeStateToProps),
-  firestoreConnect([
-    {
-      collection: collectionNames.burgers,
-    },
-    {
-      collection: collectionNames.tortillas,
-    },
-    {
-      collection: collectionNames.addons,
-    },
-    {
-      collection: collectionNames.beverages,
-    },
-  ])
-)(EditProduct);
+export default EditProduct;
