@@ -1,7 +1,8 @@
 import express from "express";
-import { addAddon } from "../controllers/addonController.js";
+import { addAddon, getAllAddons } from "../controllers/addonController.js";
 const router = express.Router();
 
 router.get("/addAddon", addAddon);
+router.get("/getAllAddons", getAllAddons);
 
 export default router;

@@ -8,3 +8,12 @@ export const addMeal = async (req, res) => {
     components: ["jeden", "dwa", "trzy"],
   }).save();
 };
+
+export const getAllMeal = async (req, res) => {
+  try {
+    const allMeals = await Meal.find();
+    res.status(200).json(allMeals);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
