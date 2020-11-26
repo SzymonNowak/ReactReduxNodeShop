@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "../components/molecules/Card/Card";
 import drawBurger from "../assets/drawBurger.jpg";
 import drawFrenchFries from "../assets/drawFrenchFries.png";
@@ -17,8 +17,12 @@ import { getAllAddons } from "../actions/addons";
 import { getAllBeverages } from "../actions/beverages";
 import { getAllSauces } from "../actions/sauces";
 
-const Main = ({ burgers, tortillas, addons, beverages }) => {
+const Main = () => {
   const dispatch = useDispatch();
+  const meals = useSelector((state) => state.MealReducer.meals);
+  const addons = useSelector((state) => state.AddonReducer.addons);
+  const beverages = useSelector((state) => state.BeveragesReducer.beverages);
+  const sauces = useSelector((state) => state.SauceReducer.sauces);
 
   useEffect(() => {
     dispatch(getAllMeals());
@@ -30,25 +34,37 @@ const Main = ({ burgers, tortillas, addons, beverages }) => {
   return (
     <>
       <HeaderParagraph>Burgers : </HeaderParagraph>
-      <MainGridTemaplte></MainGridTemaplte>
+      <MainGridTemaplte>
+        {meals && showItems(meals, drawBurger)}
+      </MainGridTemaplte>
+      <HeaderParagraph>Addons : </HeaderParagraph>
+      <MainGridTemaplte>
+        {addons && showItems(addons, drawFrenchFries)}
+      </MainGridTemaplte>
+      <HeaderParagraph>Beverages : </HeaderParagraph>
+      <MainGridTemaplte>
+        {beverages && showItems(beverages, drawBeverages)}
+      </MainGridTemaplte>
+      <HeaderParagraph>Sauces : </HeaderParagraph>
+      <MainGridTemaplte>
+        {sauces && showItems(sauces, drawTortilla)}
+      </MainGridTemaplte>
     </>
   );
 };
 
 const showItems = (products, photo) =>
-  products.map(
-    ({ id, productName, productPrice, ingredients, sauce, mealOfTheWeek }) => (
-      <Card
-        id={id}
-        tittle={productName}
-        price={productPrice}
-        key={productName}
-        ingredients={ingredients}
-        sauce={sauce}
-        mealOfTheWeek={mealOfTheWeek}
-        photo={photo}
-      />
-    )
-  );
+  products.map(({ id, name, price, components, meatType, mealOfTheWeek }) => (
+    <Card
+      id={id}
+      name={name}
+      price={price}
+      key={id}
+      meatType={meatType}
+      components={components}
+      mealOfTheWeek={mealOfTheWeek}
+      photo={photo}
+    />
+  ));
 
 export default Main;

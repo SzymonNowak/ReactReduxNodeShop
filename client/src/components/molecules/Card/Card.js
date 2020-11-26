@@ -19,33 +19,24 @@ const StyledLink = styled(Link)`
 const StyledImg = styled.img`
   width: 100%;
 `;
-const Card = ({
-  id,
-  tittle,
-  price,
-  ingredients,
-  sauce,
-  addItemToCart,
-  photo,
-}) => {
+const Card = ({ id, name, price, components, addItemToCart, photo }) => {
   const item = {
     id,
-    tittle,
+    name,
     price,
-    ingredients,
-    sauce,
+    components,
   };
   return (
     <Wrapper>
       <StyledLink to={`burger/${id}`}>
         <StyledImg src={photo} />
       </StyledLink>
-      <h1>{tittle}</h1>
+      <h1>{name}</h1>
       <PriceText>{`${price} zl`}</PriceText>
-      {ingredients.map((ingredient, index) => (
-        <span key={index}>{`${ingredient}, `}</span>
-      ))}
-      <p>{sauce ? `sauce: ${sauce}` : null}</p>
+      {components &&
+        components.map((component, index) => (
+          <span key={index}>{`${component}, `}</span>
+        ))}
       <LongButton onClick={() => addItemToCart(item)}>Add to cart</LongButton>
     </Wrapper>
   );
@@ -54,7 +45,7 @@ const Card = ({
 Card.propTypes = {
   id: PropTypes.string,
   tittle: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
   ingredients: PropTypes.arrayOf(PropTypes.string),
   sauce: PropTypes.string,
   addItemToCart: PropTypes.func,
