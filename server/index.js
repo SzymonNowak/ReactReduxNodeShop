@@ -5,9 +5,11 @@ import userRoutes from "./routes/userRoutes.js";
 import addonRoutes from "./routes/addonRoutes.js";
 import beveragesRoutes from "./routes/beveragesRoutes.js";
 import mealsRoutes from "./routes/mealsRoutes.js";
+import cors from "cors";
 // import sauceRoutes from "./routes/sauceRoutes";
 
 const app = express();
+app.use(cors());
 
 app.use("/user", userRoutes);
 app.use("/addon", addonRoutes);
