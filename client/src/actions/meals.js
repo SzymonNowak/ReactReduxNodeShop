@@ -1,10 +1,11 @@
 import * as api from "../api/index";
+import { actionTypes } from "../constants/actionTypes";
 
 export const getAllMeals = () => async (dispatch) => {
   try {
     const { data } = await api.fetchMeals();
     dispatch({
-      type: "FETCH_ALL_MEALS",
+      type: actionTypes.FETCH_ALL_MEALS,
       payload: data,
     });
   } catch (error) {

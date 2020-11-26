@@ -5,5 +5,5 @@ const SauceSchema = mongoose.Schema({
   price: Number,
 });
 
-const Sauce = mongoose.model("Sauce", SauceSchema);
+const Sauce = mongoose.model("Sauces", SauceSchema);
 export default Sauce;
