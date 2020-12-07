@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const MealsSchema = mongoose.Schema({
-  mealName: String,
-  mealPrice: String,
+  name: String,
+  price: String,
   meatType: String,
   mealType: String,
   ingredients: [String],

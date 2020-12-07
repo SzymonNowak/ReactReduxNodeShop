@@ -20,9 +20,9 @@ const StyledImg = styled.img`
 `;
 const Card = ({
   id,
-  mealName,
-  mealPrice,
-  ingrediets,
+  name,
+  price,
+  ingredients,
   meatType,
   mealType,
   sauce,
@@ -31,8 +31,8 @@ const Card = ({
 }) => {
   const item = {
     id,
-    mealName,
-    mealPrice,
+    name,
+    price,
     sauce,
   };
   return (
@@ -40,15 +40,16 @@ const Card = ({
       <StyledLink to={`burger/${id}`}>
         <StyledImg src={photo} />
       </StyledLink>
-      <h1>{mealName}</h1>
-      <PriceText>{`${mealPrice} zl`}</PriceText>
+      <h1>{name}</h1>
+      <PriceText>{`${price} zl`}</PriceText>
       <p>
-        {ingrediets &&
-          ingrediets.map((ingrediet, index) => (
-            <span key={index}>{`${ingrediet}  `}</span>
+        {ingredients &&
+          ingredients.map((ingredient, index) => (
+            <span key={index}>{`${ingredient}, `}</span>
           ))}
       </p>
       <p>{sauce && `sauce: ${sauce}`}</p>
+      <p>{mealType}</p>
       <LongButton onClick={() => addItemToCart(item)}>Add to cart</LongButton>
     </Wrapper>
   );

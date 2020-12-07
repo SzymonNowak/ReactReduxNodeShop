@@ -56,14 +56,14 @@ const Main = () => {
 
 const showItems = (products, photo) =>
   products.map(
-    ({ id, mealName, mealPrice, mealType, ingrediets, meatType, sauce }) => (
+    ({ id, name, price, mealType, ingredients, meatType, sauce }) => (
       <Card
         id={id}
-        mealName={mealName}
-        mealPrice={mealPrice}
+        name={name}
+        price={price}
         key={id}
         meatType={meatType}
-        ingrediets={ingrediets}
+        ingredients={ingredients}
         mealType={mealType}
         sauce={sauce}
         photo={photo}

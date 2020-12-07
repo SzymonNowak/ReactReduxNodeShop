@@ -55,10 +55,10 @@ const NewMealForm = () => {
   return (
     <AddProductGridTemplate>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <StyledLabel htmlFor="mealName">Meal Name:</StyledLabel>
+        <StyledLabel htmlFor="name">Meal Name:</StyledLabel>
         <Input
-          id="mealName"
-          name="mealName"
+          id="name"
+          name="name"
           type="text"
           ref={register({
             required: true,
@@ -67,10 +67,10 @@ const NewMealForm = () => {
         {errors.productName && (
           <ErrorMessage>This field is required !</ErrorMessage>
         )}
-        <StyledLabel htmlFor="mealPrice">Meal price :</StyledLabel>
+        <StyledLabel htmlFor="price">Meal price :</StyledLabel>
         <Input
-          id="mealPrice"
-          name="mealPrice"
+          id="price"
+          name="price"
           type="number"
           ref={register({
             required: true,
