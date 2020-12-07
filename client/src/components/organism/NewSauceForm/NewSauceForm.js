@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import LongButton from "../../atoms/LongButton/LongButton";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import AddProductGridTemplate from "../../../templates/NewProductGridTemplate";
-import { addItem as addItemAction } from "../../../actions/addItemAction";
 
 const FormWrapper = styled.form`
   display: flex;

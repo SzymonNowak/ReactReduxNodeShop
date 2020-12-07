@@ -8,8 +8,7 @@ import SmallButton from "../../atoms/SmallButton/SmallButton";
 import LongButton from "../../atoms/LongButton/LongButton";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import AddProductGridTemplate from "../../../templates/NewProductGridTemplate";
-import { addItem as addItemAction } from "../../../actions/addItemAction";
-
+import { addMeal } from "../../../actions/meals";
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
@@ -36,9 +35,9 @@ const NewMealForm = () => {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
 
-  const onSubmit = (itemContent) => {
-    // dispatch(addItemAction(itemContent));
-    console.log(itemContent);
+  const onSubmit = (meal) => {
+    dispatch(addMeal(meal));
+    console.log(meal);
   };
 
   const addIngredient = (e) => {
@@ -157,9 +156,9 @@ const NewMealForm = () => {
           id="img"
           name="img"
           accept="image/*"
-          ref={register({
-            required: true,
-          })}
+          // ref={register({
+          //   required: true,
+          // })}
         ></input>
         <StyledLongButton type="submit">add product</StyledLongButton>
       </FormWrapper>

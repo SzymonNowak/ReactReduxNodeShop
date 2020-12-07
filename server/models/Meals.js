@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 
 const MealsSchema = mongoose.Schema({
-  name: String,
-  price: Number,
+  mealName: String,
+  mealPrice: String,
   meatType: String,
   mealType: String,
   ingredients: [String],
-  picture: String,
+  // img: String,
+  sauce: String,
 });
 
 const Meal = mongoose.model("Meals", MealsSchema);

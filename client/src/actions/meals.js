@@ -12,3 +12,15 @@ export const getAllMeals = () => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const addMeal = (meal) => async (dispatch) => {
+  try {
+    const { data } = await api.addMeal(meal);
+    dispatch({
+      type: actionTypes.ADD_MEAL,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

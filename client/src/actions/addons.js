@@ -12,3 +12,5 @@ export const getAllAddons = () => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const addAddons = () => async (dispatch) => {};

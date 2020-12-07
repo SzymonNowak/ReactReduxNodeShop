@@ -9,9 +9,13 @@ import sauceRoutes from "./routes/sauceRoutes.js";
 import productsInCart from "./routes/productsInCart.js";
 import orders from "./routes/orderRoutes.js";
 import cors from "cors";
+import bodyParser from "body-parser";
 
 const app = express();
 app.use(cors());
+app.options("*", cors());
+app.use(bodyParser.json({ limit: "30mb", extends: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extends: true }));
 
 app.use("/user", userRoutes);
 app.use("/addons", addonRoutes);

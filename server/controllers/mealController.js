@@ -1,12 +1,15 @@
 import Meal from "../models/Meals.js";
 
 export const addMeal = async (req, res) => {
-  await new Meal({
-    name: "meal2",
-    price: 123,
-    meatType: "beef",
-    components: ["jeden", "dwa", "trzy"],
-  }).save();
+  const meal = req.body;
+  console.log(meal);
+  const newMeal = new Meal(meal);
+  try {
+    await newMeal.save();
+    res.status(201).json(newMeal);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
 };
 
 export const getAllMeal = async (req, res) => {

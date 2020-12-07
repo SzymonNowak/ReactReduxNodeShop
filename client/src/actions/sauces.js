@@ -12,3 +12,4 @@ export const getAllSauces = () => async (dispatch) => {
     console.log(error.message);
   }
 };
+export const addSauce = () => async (dispatch) => {};

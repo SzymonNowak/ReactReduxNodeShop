@@ -12,3 +12,4 @@ export const getAllBeverages = () => async (dispatch) => {
     console.log(error.message);
   }
 };
+export const addBeverages = () => async (dispatch) => {};
