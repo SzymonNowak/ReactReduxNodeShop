@@ -62,6 +62,15 @@ const NewBeveragesForm = () => {
         {errors.productPrice && (
           <ErrorMessage>This field is required !</ErrorMessage>
         )}
+        <input
+          type="file"
+          id="img"
+          name="img"
+          accept="image/*"
+          ref={register({
+            required: true,
+          })}
+        ></input>
         <StyledLongButton type="submit">add beverages</StyledLongButton>
       </FormWrapper>
     </AddProductGridTemplate>

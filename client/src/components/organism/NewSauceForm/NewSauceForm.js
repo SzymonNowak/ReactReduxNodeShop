@@ -62,6 +62,15 @@ const NewSauceForm = () => {
         {errors.saucePrice && (
           <ErrorMessage>This field is required !</ErrorMessage>
         )}
+        <input
+          type="file"
+          id="img"
+          name="img"
+          accept="image/*"
+          ref={register({
+            required: true,
+          })}
+        ></input>
         <StyledLongButton type="submit">add Sauce</StyledLongButton>
       </FormWrapper>
     </AddProductGridTemplate>

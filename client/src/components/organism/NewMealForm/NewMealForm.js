@@ -152,6 +152,15 @@ const NewMealForm = () => {
             </SmallButton>
           </div>
         ))}
+        <input
+          type="file"
+          id="img"
+          name="img"
+          accept="image/*"
+          ref={register({
+            required: true,
+          })}
+        ></input>
         <StyledLongButton type="submit">add product</StyledLongButton>
       </FormWrapper>
     </AddProductGridTemplate>
