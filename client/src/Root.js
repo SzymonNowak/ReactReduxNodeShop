@@ -15,7 +15,11 @@ import NewProduct from "./views/NewProduct";
 import User from "./views/User";
 import Admin from "./views/Admin";
 import MainUserTemaplte from "./templates/MainTemplate";
-import NewProductsForm from "./components/organism/NewProductForm/NewProductForm";
+import NewMealForm from "./components/organism/NewMealForm/NewMealForm";
+import NewBeveragesForm from "./components/organism/NewBeveragesForm/NewBeveragesForm";
+import NewAddonForm from "./components/organism/NewAddonForm/NewAddonForm";
+import NewSauceForm from "./components/organism/NewSauceForm/NewSauceForm";
+
 import ProductsDetailsTemplate from "./templates/ProductsDetailsTemplate";
 import CheckOutMyOrder from "./views/CheckOutMyOrder";
 import AdressForm from "./components/organism/AdressForm/AdressForm";
@@ -43,16 +47,16 @@ const Root = () => {
               <Route path={routes.addNewProduct} component={NewProduct} />
               <Route path={routes.admin} component={Admin} />
               <Route path={routes.user} component={User} />
-
-              <Route path={routes.newBurger} component={NewProductsForm} />
+              <Route path={routes.newMeal} component={NewMealForm} />
               <Route
                 path={routes.checkOutmyOrder}
                 component={CheckOutMyOrder}
               />
               <Route path={routes.addresForm} component={AdressForm} />
-              <Route path={routes.newTortilla} component={NewProductsForm} />
-              <Route path={routes.newAddons} component={NewProductsForm} />
-              <Route path={routes.newBeverages} component={NewProductsForm} />
+              <Route path={routes.newAddons} component={NewAddonForm} />
+              <Route path={routes.newBeverages} component={NewBeveragesForm} />
+              <Route path={routes.newSauces} component={NewSauceForm} />
+
               <Route path="/burger/:id" component={ProductsDetailsTemplate} />
               <Route path={routes.editProduct} component={EditProduct} />
               <Route

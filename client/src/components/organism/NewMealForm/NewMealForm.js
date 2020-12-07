@@ -25,21 +25,20 @@ const StyledLabel = styled.label`
 const StyledSelect = styled.select`
   padding: 10px 20px 10px 20px;
   color: orange;
+  margin-bottom: 10px;
 `;
 const StyledLongButton = styled(LongButton)`
   margin-top: 30px;
 `;
 
-const NewProductsForm = ({ match }) => {
+const NewMealForm = () => {
   const [ingredients, setIngredients] = useState([]);
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
 
-  const formTypes = ["burgers", "tortillas", "addons", "beverages"];
-  const currentFormType = formTypes.filter((type) => match.path.includes(type));
-
   const onSubmit = (itemContent) => {
-    dispatch(addItemAction(itemContent, currentFormType));
+    // dispatch(addItemAction(itemContent));
+    console.log(itemContent);
   };
 
   const addIngredient = (e) => {
@@ -57,10 +56,10 @@ const NewProductsForm = ({ match }) => {
   return (
     <AddProductGridTemplate>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <StyledLabel htmlFor="productName">{`${currentFormType} name :`}</StyledLabel>
+        <StyledLabel htmlFor="mealName">Meal Name:</StyledLabel>
         <Input
-          id="productName"
-          name="productName"
+          id="mealName"
+          name="mealName"
           type="text"
           ref={register({
             required: true,
@@ -69,12 +68,11 @@ const NewProductsForm = ({ match }) => {
         {errors.productName && (
           <ErrorMessage>This field is required !</ErrorMessage>
         )}
-        <StyledLabel>product price :</StyledLabel>
+        <StyledLabel htmlFor="mealPrice">Meal price :</StyledLabel>
         <Input
-          id="productPrice"
-          name="productPrice"
+          id="mealPrice"
+          name="mealPrice"
           type="number"
-          step="any"
           ref={register({
             required: true,
           })}
@@ -82,49 +80,59 @@ const NewProductsForm = ({ match }) => {
         {errors.productPrice && (
           <ErrorMessage>This field is required !</ErrorMessage>
         )}
+        <>
+          <StyledLabel htmlFor="mealType">Meal Type:</StyledLabel>
+          <StyledSelect
+            name="mealType"
+            id="mealType"
+            ref={register({
+              required: true,
+            })}
+          >
+            <option value="burger">burger</option>
+            <option value="tortilla">tortilla</option>
+            <option value="dinnerwareSet">dinnerware set</option>
+          </StyledSelect>
+        </>
+        <>
+          <StyledLabel htmlFor="meatType">Meat Type:</StyledLabel>
+          <StyledSelect
+            name="meatType"
+            id="meatType"
+            ref={register({
+              required: true,
+            })}
+          >
+            <option value="beef">beef</option>
+            <option value="chicken">chicken</option>
+            <option value="prawns">prawns</option>
+            <option value="vege">vege</option>
+          </StyledSelect>
+        </>
 
-        {currentFormType == "tortillas" && (
-          <>
-            <label htmlFor="sauce">choose a sauce:</label>
-            <StyledSelect
-              name="sauce"
-              id="sauce"
-              ref={register({
-                required: true,
-              })}
-            >
-              <option value="MM">MM</option>
-              <option value="Garlic">Garlic</option>
-              <option value="DIP">DIP</option>
-              <option value="BBQ">BBQ</option>
-            </StyledSelect>
-            <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
-              +
-            </SmallButton>
-            <h1>ingredient</h1>
-          </>
-        )}
-        {currentFormType == "burgers" && (
-          <>
-            <StyledLabel htmlFor="sauce">choose a sauce:</StyledLabel>
-            <StyledSelect
-              name="sauce"
-              id="sauce"
-              ref={register({
-                required: true,
-              })}
-            >
-              <option value="MM">MM</option>
-              <option value="Garlic">Garlic</option>
-              <option value="DIP">DIP</option>
-              <option value="BBQ">BBQ</option>
-            </StyledSelect>
-            <h1>ingredients :</h1>
-            <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
-              +
-            </SmallButton>
-          </>
-        )}
+        <>
+          <StyledLabel htmlFor="sauce">choose a sauce:</StyledLabel>
+          <StyledSelect
+            name="sauce"
+            id="sauce"
+            ref={register({
+              required: true,
+            })}
+          >
+            <option value="MM">MM</option>
+            <option value="Garlic">Garlic</option>
+            <option value="DIP">DIP</option>
+            <option value="BBQ">BBQ</option>
+            <option value="Hell">Hell</option>
+            <option value="dill">dill</option>
+            <option value="curry">curry</option>
+            <option value="sweetChilli">sweet chilli</option>
+          </StyledSelect>
+          <h1>ingredients :</h1>
+          <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
+            +
+          </SmallButton>
+        </>
 
         {ingredients.map((ingredient, index) => (
           <div key={index}>
@@ -150,4 +158,4 @@ const NewProductsForm = ({ match }) => {
   );
 };
 
-export default connect()(NewProductsForm);
+export default connect()(NewMealForm);
