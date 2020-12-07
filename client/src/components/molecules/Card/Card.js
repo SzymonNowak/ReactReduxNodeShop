@@ -18,26 +18,37 @@ const StyledLink = styled(Link)`
 const StyledImg = styled.img`
   width: 100%;
 `;
-const Card = ({ id, name, price, components, addItemToCart, photo }) => {
+const Card = ({
+  id,
+  mealName,
+  mealPrice,
+  ingrediets,
+  meatType,
+  mealType,
+  sauce,
+  addItemToCart,
+  photo,
+}) => {
   const item = {
     id,
-    name,
-    price,
-    components,
+    mealName,
+    mealPrice,
+    sauce,
   };
   return (
     <Wrapper>
       <StyledLink to={`burger/${id}`}>
         <StyledImg src={photo} />
       </StyledLink>
-      <h1>{name}</h1>
-      <PriceText>{`${price} zl`}</PriceText>
+      <h1>{mealName}</h1>
+      <PriceText>{`${mealPrice} zl`}</PriceText>
       <p>
-        {components &&
-          components.map((component, index) => (
-            <span key={index}>{`${component}  `}</span>
+        {ingrediets &&
+          ingrediets.map((ingrediet, index) => (
+            <span key={index}>{`${ingrediet}  `}</span>
           ))}
       </p>
+      <p>{sauce && `sauce: ${sauce}`}</p>
       <LongButton onClick={() => addItemToCart(item)}>Add to cart</LongButton>
     </Wrapper>
   );

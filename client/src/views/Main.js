@@ -33,6 +33,7 @@ const Main = () => {
 
   return (
     <>
+      {console.log(meals)}
       <HeaderParagraph>Burgers : </HeaderParagraph>
       <MainGridTemaplte>
         {meals && showItems(meals, drawBurger)}
@@ -54,17 +55,20 @@ const Main = () => {
 };
 
 const showItems = (products, photo) =>
-  products.map(({ id, name, price, components, meatType, mealOfTheWeek }) => (
-    <Card
-      id={id}
-      name={name}
-      price={price}
-      key={id}
-      meatType={meatType}
-      components={components}
-      mealOfTheWeek={mealOfTheWeek}
-      photo={photo}
-    />
-  ));
+  products.map(
+    ({ id, mealName, mealPrice, mealType, ingrediets, meatType, sauce }) => (
+      <Card
+        id={id}
+        mealName={mealName}
+        mealPrice={mealPrice}
+        key={id}
+        meatType={meatType}
+        ingrediets={ingrediets}
+        mealType={mealType}
+        sauce={sauce}
+        photo={photo}
+      />
+    )
+  );
 
 export default Main;
