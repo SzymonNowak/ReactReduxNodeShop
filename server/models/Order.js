@@ -9,7 +9,7 @@ const OrderSchema = mongoose.Schema({
   status: Boolean,
   orderType: String,
   payMethod: String,
-  order: [{ type: Schema.Types.ObjectId, ref: "ProductsInCart" }],
+  // order: [{ type: Schema.Types.ObjectId, ref: "ProductsInCart" }],
 });
 
 const Order = mongoose.model("Orders", OrderSchema);

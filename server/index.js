@@ -7,6 +7,7 @@ import beveragesRoutes from "./routes/beveragesRoutes.js";
 import mealsRoutes from "./routes/mealsRoutes.js";
 import sauceRoutes from "./routes/sauceRoutes.js";
 import productsInCart from "./routes/productsInCart.js";
+import orders from "./routes/orderRoutes.js";
 import cors from "cors";
 
 const app = express();

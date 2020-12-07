@@ -42,14 +42,7 @@ const Styledelect = styled.select`
 
 const AdressForm = ({ productsInCart }) => {
   const { register, handleSubmit, errors, control } = useForm();
-  // const onSubmit = (deliveryInfo) => {
-  //   const order = {
-  //     order: productsInCart,
-  //     adress: deliveryInfo,
-  //   };
-  //   console.log(order);
-  //   dispatch(orderMealAction(order));
-  // };
+  const onSubmit = () => {};
 
   return (
     <MainWrapper>
