@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { addItemToCart as addItemToCartAction } from "../../../actions/addItemToCart";
 import PriceText from "../../atoms/PriceText/PriceText";
 import LongButton from "../../atoms/LongButton/LongButton";
@@ -33,30 +32,15 @@ const Card = ({ id, name, price, components, addItemToCart, photo }) => {
       </StyledLink>
       <h1>{name}</h1>
       <PriceText>{`${price} zl`}</PriceText>
-      {components &&
-        components.map((component, index) => (
-          <span key={index}>{`${component}, `}</span>
-        ))}
+      <p>
+        {components &&
+          components.map((component, index) => (
+            <span key={index}>{`${component}  `}</span>
+          ))}
+      </p>
       <LongButton onClick={() => addItemToCart(item)}>Add to cart</LongButton>
     </Wrapper>
   );
-};
-
-Card.propTypes = {
-  id: PropTypes.string,
-  tittle: PropTypes.string,
-  price: PropTypes.number,
-  ingredients: PropTypes.arrayOf(PropTypes.string),
-  sauce: PropTypes.string,
-  addItemToCart: PropTypes.func,
-};
-
-Card.defaultProps = {
-  tittle: "asd",
-  price: 18,
-  ingredients: [],
-  // sauce: "M M",
-  addItemToCart: () => ({}),
 };
 
 const mapDispatchToProps = (dispatch) => ({

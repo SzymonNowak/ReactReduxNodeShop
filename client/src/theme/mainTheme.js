@@ -2,7 +2,7 @@ export const theme = {
   orange: "#f39c12",
   warning: "#c0392b",
   orange2: "hsl(49, 100%, 58%)",
-  green: "hsl(196, 83%, 75%)",
+  green: "hsl(114, 69%, 60%)",
   blue: "hsl(106, 47%, 64%)",
   grey100: "hsl(0, 0%, 96%)",
   grey200: "hsl(0, 0%, 90%)",

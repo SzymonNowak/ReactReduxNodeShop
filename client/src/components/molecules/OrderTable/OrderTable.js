@@ -69,7 +69,7 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
       {productsInCart.map((item, index) => (
         <Wrapper>
           <ColumnBody>
-            <h4>{item.tittle}</h4>
+            <h4>{item.name}</h4>
           </ColumnBody>
           <ColumnBody>
             <h4>{item.price}</h4>
