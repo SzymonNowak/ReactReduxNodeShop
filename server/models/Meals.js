@@ -6,6 +6,7 @@ const MealsSchema = mongoose.Schema({
   meatType: String,
   mealType: String,
   ingredients: [String],
+  picture: String,
 });
 
 const Meal = mongoose.model("Meals", MealsSchema);
