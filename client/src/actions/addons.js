@@ -13,4 +13,14 @@ export const getAllAddons = () => async (dispatch) => {
   }
 };
 
-export const addAddons = () => async (dispatch) => {};
+export const addAddons = (addon) => async (dispatch) => {
+  try {
+    const { data } = await api.addAddon(addon);
+    dispatch({
+      type: actionTypes.ADD_ADDON,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

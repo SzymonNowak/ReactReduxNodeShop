@@ -33,7 +33,6 @@ const Main = () => {
 
   return (
     <>
-      {console.log(meals)}
       <HeaderParagraph>Burgers : </HeaderParagraph>
       <MainGridTemaplte>
         {meals && showItems(meals, drawBurger)}

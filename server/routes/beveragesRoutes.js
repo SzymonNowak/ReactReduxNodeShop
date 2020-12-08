@@ -5,7 +5,7 @@ import {
 } from "../controllers/beveragesController.js";
 const router = express.Router();
 
-router.get("/addBeverage", addBeverage);
+router.post("/addBeverage", addBeverage);
 router.get("/getAllBeverages", getAllBeverages);
 
 export default router;

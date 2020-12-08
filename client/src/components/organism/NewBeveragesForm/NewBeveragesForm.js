@@ -3,12 +3,11 @@ import React from "react";
 import styled from "styled-components";
 import { connect, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-
 import Input from "../../atoms/Input/Input";
 import LongButton from "../../atoms/LongButton/LongButton";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import AddProductGridTemplate from "../../../templates/NewProductGridTemplate";
-
+import { addBeverages } from "../../../actions/beverages";
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
@@ -29,47 +28,34 @@ const NewBeveragesForm = () => {
   const { register, handleSubmit, errors } = useForm();
 
   const dispatch = useDispatch();
-  const onSubmit = (itemContent) => {
-    // dispatch(addItemAction(itemContent));
-    console.log(itemContent);
+  const onSubmit = (beverages) => {
+    dispatch(addBeverages(beverages));
   };
 
   return (
     <AddProductGridTemplate>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <StyledLabel htmlFor="mealName">Beverages Name:</StyledLabel>
+        <StyledLabel htmlFor="name">Beverages Name:</StyledLabel>
         <Input
-          id="beveragesName"
-          name="beveragesName"
+          id="name"
+          name="name"
           type="text"
           ref={register({
             required: true,
           })}
         />
-        {errors.beveragesName && (
-          <ErrorMessage>This field is required !</ErrorMessage>
-        )}
-        <StyledLabel htmlFor="mealPrice">Beverages price :</StyledLabel>
+        {errors.name && <ErrorMessage>This field is required !</ErrorMessage>}
+        <StyledLabel htmlFor="price">Beverages price :</StyledLabel>
         <Input
-          id="beveragesPrice"
-          name="beveragesPrice"
+          id="price"
+          name="price"
           type="number"
           ref={register({
             required: true,
           })}
         />
-        {errors.productPrice && (
-          <ErrorMessage>This field is required !</ErrorMessage>
-        )}
-        <input
-          type="file"
-          id="img"
-          name="img"
-          accept="image/*"
-          ref={register({
-            required: true,
-          })}
-        ></input>
+        {errors.price && <ErrorMessage>This field is required !</ErrorMessage>}
+        <input type="file" id="img" name="img" accept="image/*"></input>
         <StyledLongButton type="submit">add beverages</StyledLongButton>
       </FormWrapper>
     </AddProductGridTemplate>

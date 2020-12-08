@@ -1,7 +1,14 @@
 import Sauce from "../models/Sauce.js";
 
 export const addSauce = async (req, res) => {
-  await new Sauce({ name: "Sauce", price: 0 }).save();
+  const sauce = req.body;
+  const newSauce = new Sauce(sauce);
+  try {
+    await newSauce.save();
+    res.status(201).json(newSauce);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
 };
 
 export const getAllSauces = async (req, res) => {

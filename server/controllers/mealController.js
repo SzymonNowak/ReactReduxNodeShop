@@ -2,7 +2,6 @@ import Meal from "../models/Meals.js";
 
 export const addMeal = async (req, res) => {
   const meal = req.body;
-  console.log(meal);
   const newMeal = new Meal(meal);
   try {
     await newMeal.save();
