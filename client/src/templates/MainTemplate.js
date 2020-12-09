@@ -1,11 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SideBar from "../components/organism/SideBar/SideBar";
+import styled from "styled-components";
+
+const Test = styled.div`
+  padding-left: 300px;
+`;
 const MainUserTemaplte = ({ children }) => {
   return (
     <>
       <SideBar />
-      {children}
+      <Test>{children}</Test>
     </>
   );
 };

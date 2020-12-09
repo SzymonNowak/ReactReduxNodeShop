@@ -7,8 +7,8 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
 import { Header } from "../../atoms/Header/Header";
-const MainWrapper = styled.div`
-  position: absolute;
+const MainWrapper = styled.nav`
+  position: fixed;
   top: 0;
   bottom: 0;
   width: 300px;
@@ -17,6 +17,7 @@ const MainWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  margin-right: 300px;
 `;
 
 const UserWrapper = styled.div`
