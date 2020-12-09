@@ -10,3 +10,8 @@ export const addAddon = (addon) => axios.post(apiRoutes.addAddon, addon);
 export const addBeverages = (bevereages) =>
   axios.post(apiRoutes.addBeverage, bevereages);
 export const addSauce = (sauce) => axios.post(apiRoutes.addSauce, sauce);
+
+export const getSingleMeal = (id) => axios.get();
+export const getSingleAddon = (id) => axios.get();
+export const getSingleBeverage = (id) => axios.get();
+export const getSingleSauce = (id) => axios.get();

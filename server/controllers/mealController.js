@@ -14,6 +14,7 @@ export const addMeal = async (req, res) => {
 export const getAllMeal = async (req, res) => {
   try {
     const allMeals = await Meal.find();
+    console.log(allMeals);
     res.status(200).json({ meals: allMeals });
   } catch (error) {
     res.status(404).json({ message: error.message });

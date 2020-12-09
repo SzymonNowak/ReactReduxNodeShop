@@ -37,7 +37,7 @@ const Card = ({
   };
   return (
     <Wrapper>
-      <StyledLink to={`burger/${id}`}>
+      <StyledLink to={`meal/${id}`}>
         <StyledImg src={photo} />
       </StyledLink>
       <h1>{name}</h1>

@@ -57,7 +57,7 @@ const Root = () => {
               <Route path={routes.newBeverages} component={NewBeveragesForm} />
               <Route path={routes.newSauces} component={NewSauceForm} />
 
-              <Route path="/burger/:id" component={ProductsDetailsTemplate} />
+              <Route path="/meal/:id" component={ProductsDetailsTemplate} />
               <Route path={routes.editProduct} component={EditProduct} />
               <Route
                 path={routes.editProductForm}

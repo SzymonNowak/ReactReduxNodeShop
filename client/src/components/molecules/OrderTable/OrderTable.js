@@ -41,21 +41,29 @@ const StyledOrderLongButton = styled(LongButton)`
 `;
 
 const OrderTable = ({ productsInCart, removeItemFromCart }) => {
+  const shipingPrice = 6;
   const [currentPrice, setCurrentPrice] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  let currentValue = 0;
   const total = () => {
-    productsInCart.map((item) => {
-      currentValue = currentValue + Number(item.price);
-    });
-    setCurrentPrice(currentValue + 6);
+    const totalPrice = productsInCart.reduce((prev, current) => {
+      return prev + current.price;
+    }, shipingPrice);
+    setCurrentPrice(totalPrice);
   };
 
   useEffect(() => {
     total();
-    // return () => {
-    //   console.log("odmontowano");
-    // };
+
+    // console.log(
+    //   productsInCart.flatMap((product) => [
+    //     {
+    //       productId: product.id,
+    //       products: productsInCart.filter(
+    //         (productt) => productt.id == product.id
+    //       ),
+    //     },
+    //   ]),
+    //  {})
   });
 
   return (
