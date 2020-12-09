@@ -6,9 +6,9 @@ import { FaHome } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
-
+import { Header } from "../../atoms/Header/Header";
 const MainWrapper = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   width: 300px;
@@ -31,12 +31,6 @@ const UserCircle = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-const Header = styled.p`
-  margin-top: ${({ theme }) => theme.margin.s};
-  color: ${({ theme }) => theme.colors.white};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
-  font-size: ${({ theme }) => theme.fontSize.l};
-`;
 const NavMenu = styled.div`
   display: flex;
   flex-direction: column;
@@ -47,7 +41,7 @@ const StyledSpan = styled.span`
   margin-left: 20px;
 `;
 const Options = styled.p`
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: 300;
   text-align: center;
   margin-bottom: 10px;
@@ -57,8 +51,8 @@ const StyledLink = styled(NavLink)`
   color: ${({ theme }) => theme.colors.white};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   text-decoration: none;
-  margin-top: 20px;
-  font-size: 24px;
+  margin-top: ${({ theme }) => theme.margin.s};
+  font-size: ${({ theme }) => theme.fontSize.m};
 
   &.active {
     color: ${({ theme }) => theme.colors.lightBlue};
