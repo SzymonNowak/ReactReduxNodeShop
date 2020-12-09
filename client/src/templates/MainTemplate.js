@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import NavBar from "../components/organism/NavBar/NavBar";
-
+import SideBar from "../components/organism/SideBar/SideBar";
 const MainUserTemaplte = ({ children }) => {
   return (
     <>
-      <NavBar />
+      <SideBar />
       {children}
     </>
   );

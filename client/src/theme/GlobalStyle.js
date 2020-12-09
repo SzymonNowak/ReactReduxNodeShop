@@ -6,10 +6,12 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        padding:0;
+        margin:0;
     }
     body {
         font-family: "Montserrat", sans-serif;
-        padding-top:150px;
+        
     }
 `;
 
