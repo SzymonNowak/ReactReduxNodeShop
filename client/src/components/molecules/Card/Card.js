@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addItemToCart as addItemToCartAction } from "../../../actions/addItemToCart";
-
+import SmallerHeader from "../../atoms/SmallerHeader/SmallerHeader";
+import LongButton from "../../atoms/BUTTONS/LongButton/LongButton.js";
 const Wrapper = styled.div`
   height: 100%;
   min-width: 250px;
@@ -11,11 +12,19 @@ const Wrapper = styled.div`
   text-align: center;
   margin-bottom: ${({ theme }) => theme.margin.l};
 `;
-const StyledLink = styled(Link)`
-  color: black;
-`;
 const StyledImg = styled.img`
   width: 200px;
+`;
+const StyledSmallerHeader = styled(SmallerHeader)`
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  text-transform: uppercase;
+  font-size: ${({ theme }) => theme.fontSize.m};
+  letter-spacing: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+const Text = styled.p`
+  margin-top: 10px;
 `;
 const Card = ({
   id,
@@ -33,23 +42,24 @@ const Card = ({
     name,
     price,
     sauce,
+    meatType,
+    mealType,
   };
   return (
     <Wrapper>
-      <StyledLink to={`meal/${id}`}>
+      <Link to={`meal/${id}`}>
         <StyledImg src={photo} />
-      </StyledLink>
+      </Link>
       <h1>{name}</h1>
-      {/* <PriceText>{`${price} zl`}</PriceText> */}
-      <p>
+      <StyledSmallerHeader>{`${price} zl`}</StyledSmallerHeader>
+      <Text>
         {ingredients &&
           ingredients.map((ingredient, index) => (
             <span key={index}>{`${ingredient}, `}</span>
           ))}
-      </p>
-      <p>{sauce && `sauce: ${sauce}`}</p>
-      <p>{mealType}</p>
-      <button onClick={() => addItemToCart(item)}>Add to cart</button>
+      </Text>
+      <Text>{sauce && `sauce: ${sauce}`}</Text>
+      <LongButton onClick={() => addItemToCart(item)}>Add to cart</LongButton>
     </Wrapper>
   );
 };
