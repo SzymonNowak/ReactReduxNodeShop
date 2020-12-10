@@ -6,6 +6,7 @@ const MainWrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
+  justify-content: flex-start;
 `;
 
 const MainGridTemaplate = ({ children }) => {

@@ -17,28 +17,26 @@ const MealSection = ({ meals, picture, mealType, meatType }) => {
         <>
           <StyledSmallerHeader>beef : </StyledSmallerHeader>
           <MainGridTemaplte>
-            {meals &&
-              showItems(filtrYourConcent(meals, mealType, "beef"), picture)}
+            {meals && showItems(filtrContent(meals, mealType, "beef"), picture)}
           </MainGridTemaplte>
           <StyledSmallerHeader>chicken : </StyledSmallerHeader>
           <MainGridTemaplte>
             {meals &&
-              showItems(filtrYourConcent(meals, mealType, "chicken"), picture)}
+              showItems(filtrContent(meals, mealType, "chicken"), picture)}
           </MainGridTemaplte>
           {mealType !== "dinnerwareSet" ? (
             <StyledSmallerHeader>prawns : </StyledSmallerHeader>
           ) : null}
           <MainGridTemaplte>
             {meals &&
-              showItems(filtrYourConcent(meals, mealType, "prawns"), picture)}
+              showItems(filtrContent(meals, mealType, "prawns"), picture)}
           </MainGridTemaplte>
 
           {mealType !== "dinnerwareSet" ? (
             <StyledSmallerHeader>vege : </StyledSmallerHeader>
           ) : null}
           <MainGridTemaplte>
-            {meals &&
-              showItems(filtrYourConcent(meals, mealType, "vege"), picture)}
+            {meals && showItems(filtrContent(meals, mealType, "vege"), picture)}
           </MainGridTemaplte>
         </>
       ) : null}
@@ -73,7 +71,7 @@ const showItems = (products, photo) => {
   );
 };
 
-const filtrYourConcent = (meals, mealType, meatType) =>
+const filtrContent = (meals, mealType, meatType) =>
   meals
     .filter((meal) => meal.mealType === mealType && meal.meatType === meatType)
     .filter(

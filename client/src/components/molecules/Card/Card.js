@@ -6,11 +6,10 @@ import { addItemToCart as addItemToCartAction } from "../../../actions/addItemTo
 
 const Wrapper = styled.div`
   height: 100%;
-  min-width: 200px;
+  min-width: 250px;
   max-width: 250px;
-
   text-align: center;
-  margin: 20px 10px 20px 10px;
+  margin-bottom: ${({ theme }) => theme.margin.l};
 `;
 const StyledLink = styled(Link)`
   color: black;
