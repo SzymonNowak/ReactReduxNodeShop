@@ -8,7 +8,9 @@ export const theme = {
     white: "white",
   },
   fontWeight: {
-    light: 300,
+    extraLight: 300,
+    Light: 400,
+    medium: 500,
     bold: 600,
   },
   fontSize: {

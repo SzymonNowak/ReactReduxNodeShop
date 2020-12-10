@@ -4,7 +4,7 @@ import SideBar from "../components/organism/SideBar/SideBar";
 import styled from "styled-components";
 
 const Test = styled.div`
-  padding-left: 300px;
+  padding-left: 330px;
 `;
 const MainUserTemaplte = ({ children }) => {
   return (

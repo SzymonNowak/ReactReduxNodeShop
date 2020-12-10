@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import LongButton from "../../atoms/LongButton/LongButton";
+
 import { routes } from "../../../routes/index";
 import StyledLink from "../../atoms/StyledLink/StyledLink";
 import ColumnBody from "../../atoms/ColumnBody/ColumnBody";
@@ -27,17 +27,6 @@ const DeliveryInfoWrapper = styled.div`
   width: 100%;
   height: 100%;
   margin-top: 40px;
-`;
-
-const StyledLongButton = styled(LongButton)`
-  color: red;
-  border-color: red;
-  margin-top: 15px;
-  margin-bottom: 20px;
-`;
-
-const StyledOrderLongButton = styled(LongButton)`
-  /* display: ${({ active }) => (active ? "block" : "none")}; */
 `;
 
 const OrderTable = ({ productsInCart, removeItemFromCart }) => {
@@ -66,43 +55,43 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
     //  {})
   });
 
-  return (
-    <MainWrapper>
-      <Wrapper>
-        <ColumnHeader>product name:</ColumnHeader>
-        <ColumnHeader>product price:</ColumnHeader>
-        <ColumnHeader>sauce :</ColumnHeader>
-        <ColumnHeader>edit :</ColumnHeader>
-      </Wrapper>
-      {productsInCart.map((item, index) => (
-        <Wrapper>
-          <ColumnBody>
-            <h4>{item.name}</h4>
-          </ColumnBody>
-          <ColumnBody>
-            <h4>{item.price}</h4>
-          </ColumnBody>
-          <ColumnBody>
-            <h4>{item.sauce}</h4>
-          </ColumnBody>
-          <ColumnBody>
-            <StyledLongButton onClick={() => removeItemFromCart(index)}>
-              REMOVE
-            </StyledLongButton>
-          </ColumnBody>
-        </Wrapper>
-      ))}
-      <DeliveryInfoWrapper>
-        <h3>delivery cost : 6zl</h3>
-        <h3>Total cost : {currentPrice}zl</h3>
-        <StyledLink to={routes.addresForm}>
-          <StyledOrderLongButton>Next Step</StyledOrderLongButton>
-        </StyledLink>
-      </DeliveryInfoWrapper>
-    </MainWrapper>
-  );
+  //   return (
+  //     <MainWrapper>
+  //       <Wrapper>
+  //         <ColumnHeader>product name:</ColumnHeader>
+  //         <ColumnHeader>product price:</ColumnHeader>
+  //         <ColumnHeader>sauce :</ColumnHeader>
+  //         <ColumnHeader>edit :</ColumnHeader>
+  //       </Wrapper>
+  //       {productsInCart.map((item, index) => (
+  //         <Wrapper>
+  //           <ColumnBody>
+  //             <h4>{item.name}</h4>
+  //           </ColumnBody>
+  //           <ColumnBody>
+  //             <h4>{item.price}</h4>
+  //           </ColumnBody>
+  //           <ColumnBody>
+  //             <h4>{item.sauce}</h4>
+  //           </ColumnBody>
+  //           <ColumnBody>
+  //             <StyledLongButton onClick={() => removeItemFromCart(index)}>
+  //               REMOVE
+  //             </StyledLongButton>
+  //           </ColumnBody>
+  //         </Wrapper>
+  //       ))}
+  //       <DeliveryInfoWrapper>
+  //         <h3>delivery cost : 6zl</h3>
+  //         <h3>Total cost : {currentPrice}zl</h3>
+  //         <StyledLink to={routes.addresForm}>
+  //           <StyledOrderLongButton>Next Step</StyledOrderLongButton>
+  //         </StyledLink>
+  //       </DeliveryInfoWrapper>
+  //     </MainWrapper>
+  //   );
+  // };
 };
-
 const mapeStateToProps = ({ ShopingCartReducer }) => {
   return {
     productsInCart: ShopingCartReducer.productsInCart,

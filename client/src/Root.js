@@ -8,11 +8,9 @@ import Main from "./views/Main";
 import store from "./store/index";
 import GlobalStyle from "./theme/GlobalStyle";
 import Contact from "./views/Contact";
-import Login from "./views/Login";
-import Register from "./views/Register";
 import OrderList from "./views/OrderList";
 import NewProduct from "./views/NewProduct";
-import User from "./views/User";
+
 import Admin from "./views/Admin";
 import MainUserTemaplte from "./templates/MainTemplate";
 import NewMealForm from "./components/organism/NewMealForm/NewMealForm";
@@ -41,12 +39,9 @@ const Root = () => {
               />
               <Route path={routes.main} component={Main} />
               <Route path={routes.contact} component={Contact} />
-              <Route path={routes.register} component={Register} />
-              <Route path={routes.login} component={Login} />
               <Route path={routes.orders} component={OrderList} />
               <Route path={routes.addNewProduct} component={NewProduct} />
               <Route path={routes.admin} component={Admin} />
-              <Route path={routes.user} component={User} />
               <Route path={routes.newMeal} component={NewMealForm} />
               <Route
                 path={routes.checkOutmyOrder}

@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addItemToCart as addItemToCartAction } from "../../../actions/addItemToCart";
-import PriceText from "../../atoms/PriceText/PriceText";
-import LongButton from "../../atoms/LongButton/LongButton";
 
 const Wrapper = styled.div`
   height: 100%;
-  width: 305px;
+  min-width: 200px;
+  max-width: 250px;
+
   text-align: center;
   margin: 20px 10px 20px 10px;
 `;
@@ -16,7 +16,7 @@ const StyledLink = styled(Link)`
   color: black;
 `;
 const StyledImg = styled.img`
-  width: 100%;
+  width: 200px;
 `;
 const Card = ({
   id,
@@ -41,7 +41,7 @@ const Card = ({
         <StyledImg src={photo} />
       </StyledLink>
       <h1>{name}</h1>
-      <PriceText>{`${price} zl`}</PriceText>
+      {/* <PriceText>{`${price} zl`}</PriceText> */}
       <p>
         {ingredients &&
           ingredients.map((ingredient, index) => (
@@ -50,7 +50,7 @@ const Card = ({
       </p>
       <p>{sauce && `sauce: ${sauce}`}</p>
       <p>{mealType}</p>
-      <LongButton onClick={() => addItemToCart(item)}>Add to cart</LongButton>
+      <button onClick={() => addItemToCart(item)}>Add to cart</button>
     </Wrapper>
   );
 };

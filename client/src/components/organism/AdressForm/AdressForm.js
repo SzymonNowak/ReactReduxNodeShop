@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { useForm, Controller } from "react-hook-form";
 import Input from "../../atoms/Input/Input";
-import LongButton from "../../atoms/LongButton/LongButton";
+
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import FormWrapper from "../../atoms/FormWrapper/FormWrapper";
 import { connect, useDispatch } from "react-redux";
@@ -141,7 +141,6 @@ const AdressForm = ({ productsInCart }) => {
           <option value="cash">cash</option>
           <option value="card">card</option>
         </Styledelect>
-        <LongButton>Order</LongButton>
       </FormWrapper>
     </MainWrapper>
   );

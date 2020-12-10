@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { connect, useDispatch } from "react-redux";
 import Input from "../../atoms/Input/Input";
-import SmallButton from "../../atoms/SmallButton/SmallButton";
-import LongButton from "../../atoms/LongButton/LongButton";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import AddProductGridTemplate from "../../../templates/NewProductGridTemplate";
 import { addMeal } from "../../../actions/meals";
@@ -25,9 +23,6 @@ const StyledSelect = styled.select`
   padding: 10px 20px 10px 20px;
   color: orange;
   margin-bottom: 10px;
-`;
-const StyledLongButton = styled(LongButton)`
-  margin-top: 30px;
 `;
 
 const NewMealForm = () => {
@@ -128,9 +123,9 @@ const NewMealForm = () => {
             <option value="sweetChilli">sweet chilli</option>
           </StyledSelect>
           <h1>ingredients :</h1>
-          <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
+          {/* <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
             +
-          </SmallButton>
+          </SmallButton> */}
         </>
 
         {ingredients.map((ingredient, index) => (
@@ -141,14 +136,14 @@ const NewMealForm = () => {
               })}
               name={`ingredients[${index}]`}
             />
-            <SmallButton
+            {/* <SmallButton
               delete
               id={index}
               placeholder={index}
               onClick={(e) => handleInputRemove(e, index)}
             >
               X
-            </SmallButton>
+            </SmallButton> */}
           </div>
         ))}
         <input
@@ -160,7 +155,6 @@ const NewMealForm = () => {
           //   required: true,
           // })}
         ></input>
-        <StyledLongButton type="submit">add product</StyledLongButton>
       </FormWrapper>
     </AddProductGridTemplate>
   );

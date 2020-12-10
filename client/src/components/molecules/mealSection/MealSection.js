@@ -1,29 +1,41 @@
 import React from "react";
+import styled from "styled-components";
 import MainGridTemaplte from "../../../templates/MainGridTemaplate";
 import Card from "../Card/Card";
+import SmallerHeader from "../../atoms/SmallerHeader/SmallerHeader";
+
+const StyledSmallerHeader = styled(SmallerHeader)`
+  margin-left: ${({ theme }) => theme.margin.l};
+  margin-top: ${({ theme }) => theme.margin.l};
+  margin-bottom: ${({ theme }) => theme.margin.l};
+`;
 
 const MealSection = ({ meals, picture, mealType, meatType }) => {
   return (
     <>
       {mealType ? (
         <>
-          <h1>beef : </h1>
+          <StyledSmallerHeader>beef : </StyledSmallerHeader>
           <MainGridTemaplte>
             {meals &&
               showItems(filtrYourConcent(meals, mealType, "beef"), picture)}
           </MainGridTemaplte>
-          <h1>chicken : </h1>
+          <StyledSmallerHeader>chicken : </StyledSmallerHeader>
           <MainGridTemaplte>
             {meals &&
               showItems(filtrYourConcent(meals, mealType, "chicken"), picture)}
           </MainGridTemaplte>
-          {mealType !== "dinnerwareSet" ? <h1>prawns : </h1> : null}
+          {mealType !== "dinnerwareSet" ? (
+            <StyledSmallerHeader>prawns : </StyledSmallerHeader>
+          ) : null}
           <MainGridTemaplte>
             {meals &&
               showItems(filtrYourConcent(meals, mealType, "prawns"), picture)}
           </MainGridTemaplte>
 
-          {mealType !== "dinnerwareSet" ? <h1>vege : </h1> : null}
+          {mealType !== "dinnerwareSet" ? (
+            <StyledSmallerHeader>vege : </StyledSmallerHeader>
+          ) : null}
           <MainGridTemaplte>
             {meals &&
               showItems(filtrYourConcent(meals, mealType, "vege"), picture)}

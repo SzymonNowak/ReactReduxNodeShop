@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { connect, useDispatch } from "react-redux";
 import Input from "../../atoms/Input/Input";
 import { useForm } from "react-hook-form";
-import LongButton from "../../atoms/LongButton/LongButton";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import AddProductGridTemplate from "../../../templates/NewProductGridTemplate";
 import { addSauce } from "../../../actions/sauces";
@@ -19,9 +18,6 @@ const StyledLabel = styled.label`
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 20px;
-`;
-const StyledLongButton = styled(LongButton)`
-  margin-top: 30px;
 `;
 
 const NewSauceForm = () => {
@@ -56,7 +52,6 @@ const NewSauceForm = () => {
         />
         {errors.price && <ErrorMessage>This field is required !</ErrorMessage>}
         <input type="file" id="img" name="img" accept="image/*"></input>
-        <StyledLongButton type="submit">add Sauce</StyledLongButton>
       </FormWrapper>
     </AddProductGridTemplate>
   );

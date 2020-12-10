@@ -3,6 +3,7 @@
 /* eslint-disable no-use-before-define */
 
 import React, { useEffect } from "react";
+import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import MealSection from "../components/molecules/mealSection/MealSection";
 import drawBurger from "../assets/drawBurger.jpg";
@@ -14,8 +15,7 @@ import { getAllMeals } from "../actions/meals";
 import { getAllAddons } from "../actions/addons";
 import { getAllBeverages } from "../actions/beverages";
 import { getAllSauces } from "../actions/sauces";
-import HeaderParagraph from "../components/atoms/HeaderParagraph/HeaderParagraph";
-
+import { Header } from "../components/atoms/Header/Header";
 const Main = () => {
   const dispatch = useDispatch();
   const meals = useSelector((state) => state.MealReducer.meals);
@@ -30,28 +30,35 @@ const Main = () => {
     dispatch(getAllSauces());
   }, [dispatch]);
 
+  const StyledHeader = styled(Header)`
+    color: ${({ theme }) => theme.colors.black};
+    margin-bottom: ${({ theme }) => theme.margin.xl};
+    margin-left: ${({ theme }) => theme.margin.l};
+    margin-top: ${({ theme }) => theme.margin.l};
+    letter-spacing: 3px;
+  `;
   return (
     <>
-      <HeaderParagraph>Burgers : </HeaderParagraph>
+      <StyledHeader>Burgers : </StyledHeader>
       <MealSection meals={meals} mealType={"burger"} picture={drawBurger} />
 
-      <HeaderParagraph>Tortillas : </HeaderParagraph>
+      <StyledHeader>Tortillas : </StyledHeader>
       <MealSection meals={meals} mealType={"tortilla"} picture={drawTortilla} />
 
-      <HeaderParagraph>Dinnerware Set : </HeaderParagraph>
+      <StyledHeader>Dinnerware Set : </StyledHeader>
       <MealSection
         meals={meals}
         mealType={"dinnerwareSet"}
         picture={drawFrenchFries}
       />
 
-      <HeaderParagraph>Addons : </HeaderParagraph>
+      <StyledHeader>Addons : </StyledHeader>
       <MealSection meals={addons} picture={drawFrenchFries} />
 
-      <HeaderParagraph>Sauces : </HeaderParagraph>
+      <StyledHeader>Sauces : </StyledHeader>
       <MealSection meals={sauces} picture={drawSauce} />
 
-      <HeaderParagraph>Beverages : </HeaderParagraph>
+      <StyledHeader>Beverages : </StyledHeader>
       <MealSection meals={beverages} picture={drawBeverages} />
     </>
   );
