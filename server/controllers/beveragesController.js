@@ -1,7 +1,6 @@
 import Beverage from "../models/Beverages.js";
 
 export const addBeverage = async (req, res) => {
-  await new Beverage({ name: "Beverage", price: 0 }).save();
   const beverage = req.body;
   const newBeverage = new Beverage(beverage);
   try {

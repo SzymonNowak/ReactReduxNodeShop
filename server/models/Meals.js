@@ -6,6 +6,7 @@ const MealsSchema = mongoose.Schema({
   meatType: String,
   mealType: String,
   ingredients: [String],
+  type: { type: String, default: "meals" },
   // img: String,
   sauce: String,
 });

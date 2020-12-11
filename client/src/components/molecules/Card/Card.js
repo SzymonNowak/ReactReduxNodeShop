@@ -37,6 +37,7 @@ const Card = ({
   sauce,
   addItemToCart,
   photo,
+  type,
 }) => {
   const item = {
     id,
@@ -46,10 +47,11 @@ const Card = ({
     meatType,
     mealType,
     photo,
+    type,
   };
   return (
     <Wrapper>
-      <Link to={`meal/${id}`}>
+      <Link to={`${type}/${id}`}>
         <StyledImg src={photo} />
       </Link>
       <h1>{name}</h1>

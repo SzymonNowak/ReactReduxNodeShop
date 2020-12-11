@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiRoutes } from "../routes/index";
+import { apiRoutes, routes } from "../routes/index";
 
 export const fetchMeals = () => axios.get(apiRoutes.getAllMeals);
 export const fetchAddons = () => axios.get(apiRoutes.getAllAddons);
@@ -11,7 +11,5 @@ export const addBeverages = (bevereages) =>
   axios.post(apiRoutes.addBeverage, bevereages);
 export const addSauce = (sauce) => axios.post(apiRoutes.addSauce, sauce);
 
-export const getSingleMeal = (id) => axios.get();
-export const getSingleAddon = (id) => axios.get();
-export const getSingleBeverage = (id) => axios.get();
-export const getSingleSauce = (id) => axios.get();
+export const getSingleProduct = (id, collection) =>
+  axios.get(`${apiRoutes.getSingleProduct}/${collection}/${id}`);

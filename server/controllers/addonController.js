@@ -19,3 +19,13 @@ export const getAllAddons = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const getAddon = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const addon = await Addon.findById(id);
+    res.status(200).json({ addon: addon });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};

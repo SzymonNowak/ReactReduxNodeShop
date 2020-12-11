@@ -1,7 +1,12 @@
 import express from "express";
-import { addAddon, getAllAddons } from "../controllers/addonController.js";
+import {
+  addAddon,
+  getAllAddons,
+  getAddon,
+} from "../controllers/addonController.js";
 const router = express.Router();
 
+router.get("/:id", getAddon);
 router.post("/addAddon", addAddon);
 router.get("/getAllAddons", getAllAddons);
 

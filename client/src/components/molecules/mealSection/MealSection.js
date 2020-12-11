@@ -53,7 +53,7 @@ const MealSection = ({ meals, picture, mealType, meatType }) => {
 
 const showItems = (products, photo) => {
   return products.map(
-    ({ _id, name, price, mealType, ingredients, meatType, sauce }) => (
+    ({ _id, name, price, mealType, ingredients, meatType, sauce, type }) => (
       <>
         <Card
           id={_id}
@@ -65,6 +65,7 @@ const showItems = (products, photo) => {
           mealType={mealType}
           sauce={sauce}
           photo={photo}
+          type={type}
         />
       </>
     )

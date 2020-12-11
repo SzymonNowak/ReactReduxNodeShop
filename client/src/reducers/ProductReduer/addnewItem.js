@@ -1,4 +1,4 @@
-export const addNewItem = (state, { type, payload }) => ({
+export const getProduct = (state, { type, payload }) => ({
   ...state,
-  products: [...state.products, payload.item],
+  products: [...state.products, payload.data],
 });

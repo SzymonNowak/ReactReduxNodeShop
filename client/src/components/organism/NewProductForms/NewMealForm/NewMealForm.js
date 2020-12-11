@@ -3,10 +3,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { connect, useDispatch } from "react-redux";
-import Input from "../../atoms/Input/Input";
-import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
-import AddProductGridTemplate from "../../../templates/NewProductGridTemplate";
-import { addMeal } from "../../../actions/meals";
+import Input from "../../../atoms/Input/Input";
+import ErrorMessage from "../../../atoms/ErrorMessage/ErrorMessage";
+import AddProductGridTemplate from "../../../../templates/NewProductGridTemplate";
+import { addMeal } from "../../../../actions/meals";
+import LongButton from "../../../atoms/BUTTONS/LongButton/LongButton";
+import AddIgredientsButton from "../../../atoms/BUTTONS/AddIgredientsButton/AddIgredientsButton";
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
@@ -123,9 +127,12 @@ const NewMealForm = () => {
             <option value="sweetChilli">sweet chilli</option>
           </StyledSelect>
           <h1>ingredients :</h1>
-          {/* <SmallButton id="addIngredient" onClick={(e) => addIngredient(e)}>
-            +
-          </SmallButton> */}
+          <AddIgredientsButton
+            id="addIngredient"
+            onClick={(e) => addIngredient(e)}
+          >
+            <FaPlus />
+          </AddIgredientsButton>
         </>
 
         {ingredients.map((ingredient, index) => (
@@ -136,14 +143,14 @@ const NewMealForm = () => {
               })}
               name={`ingredients[${index}]`}
             />
-            {/* <SmallButton
-              delete
+            <AddIgredientsButton
+              remove
               id={index}
               placeholder={index}
               onClick={(e) => handleInputRemove(e, index)}
             >
-              X
-            </SmallButton> */}
+              <FaMinus />
+            </AddIgredientsButton>
           </div>
         ))}
         <input
@@ -155,6 +162,7 @@ const NewMealForm = () => {
           //   required: true,
           // })}
         ></input>
+        <LongButton>Add</LongButton>
       </FormWrapper>
     </AddProductGridTemplate>
   );

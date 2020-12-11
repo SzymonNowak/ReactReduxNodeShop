@@ -2,11 +2,13 @@
 import React from "react";
 import styled from "styled-components";
 import { connect, useDispatch } from "react-redux";
-import Input from "../../atoms/Input/Input";
+import Input from "../../../atoms/Input/Input";
 import { useForm } from "react-hook-form";
-import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
-import AddProductGridTemplate from "../../../templates/NewProductGridTemplate";
-import { addSauce } from "../../../actions/sauces";
+import ErrorMessage from "../../../atoms/ErrorMessage/ErrorMessage";
+import AddProductGridTemplate from "../../../../templates/NewProductGridTemplate";
+import { addSauce } from "../../../../actions/sauces";
+import LongButton from "../../../atoms/BUTTONS/LongButton/LongButton";
+
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
@@ -52,6 +54,7 @@ const NewSauceForm = () => {
         />
         {errors.price && <ErrorMessage>This field is required !</ErrorMessage>}
         <input type="file" id="img" name="img" accept="image/*"></input>
+        <LongButton>Add</LongButton>
       </FormWrapper>
     </AddProductGridTemplate>
   );
