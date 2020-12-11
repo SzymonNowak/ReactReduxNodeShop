@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   height: 100%;
   min-width: 250px;
   max-width: 250px;
+  min-height: 400px;
   text-align: center;
   margin-bottom: ${({ theme }) => theme.margin.l};
 `;
@@ -44,6 +45,7 @@ const Card = ({
     sauce,
     meatType,
     mealType,
+    photo,
   };
   return (
     <Wrapper>
