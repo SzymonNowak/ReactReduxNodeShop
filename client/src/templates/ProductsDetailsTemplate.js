@@ -10,7 +10,7 @@ const ProductDetailsTemplate = ({ match }) => {
 
   useEffect(() => {
     dispatch(getProduct(id, collection));
-  });
+  }, [dispatch]);
 
   return (
     <>

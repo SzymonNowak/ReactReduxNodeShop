@@ -19,3 +19,13 @@ export const getAllSauces = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const getSauce = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const sauce = await Sauce.findById(id);
+    res.status(200).json({ sauces: sauce });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};

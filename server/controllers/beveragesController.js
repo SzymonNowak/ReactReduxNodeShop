@@ -19,3 +19,12 @@ export const getAllBeverages = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+export const getBeverage = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const beverage = await Beverage.findById(id);
+    res.status(200).json({ beverages: beverage });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};

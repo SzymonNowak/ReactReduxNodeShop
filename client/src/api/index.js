@@ -12,4 +12,4 @@ export const addBeverages = (bevereages) =>
 export const addSauce = (sauce) => axios.post(apiRoutes.addSauce, sauce);
 
 export const getSingleProduct = (id, collection) =>
-  axios.get(`${apiRoutes.getSingleProduct}/${collection}/${id}`);
+  axios.get(`${apiRoutes.getProduct}/${collection}/single/${id}`);

@@ -20,6 +20,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { routes } from "../routes/index";
 import CartButton from "../components/atoms/BUTTONS/CartButton/CartButton";
+
 const Main = () => {
   const dispatch = useDispatch();
   const meals = useSelector((state) => state.MealReducer.meals);
@@ -29,6 +30,7 @@ const Main = () => {
   const cart = useSelector((state) => state.ShopingCartReducer.productsInCart);
   const shipingPrice = 6;
   const [currentPrice, setCurrentPrice] = useState(0);
+
   const total = () => {
     const totalPrice = cart.reduce((prev, current) => {
       return prev + current.price;

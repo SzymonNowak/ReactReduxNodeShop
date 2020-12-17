@@ -1,5 +1,4 @@
 import { actionTypes } from "../../constants/actionTypes";
-import { db } from "../../initialStates/productState";
 
 const MealReducer = (state = [], action) => {
   switch (action.type) {
