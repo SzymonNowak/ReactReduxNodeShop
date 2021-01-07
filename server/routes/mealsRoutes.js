@@ -1,12 +1,18 @@
 import express from "express";
 import cors from "cors";
 
-import { addMeal, getAllMeal, getMeal } from "../controllers/mealController.js";
+import {
+  addMeal,
+  getAllMeal,
+  getMeal,
+  updateMeal,
+} from "../controllers/mealController.js";
 
 const router = express.Router();
 
 router.get("/single/:id", getMeal);
-router.post("/addMeal", cors(), addMeal);
+router.post("/addMeal", addMeal);
+router.post("/updateMeal", updateMeal);
 router.get("/getAllMeals", getAllMeal);
 
 export default router;
