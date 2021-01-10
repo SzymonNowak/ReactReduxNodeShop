@@ -13,7 +13,6 @@ const ProductDetailsTemplate = ({ match }) => {
 
   return (
     <>
-      {console.log(product)}
       <p>collection:{collection}</p>
       <p>id:{id}</p>
       <p>{product.sauce && product.sauce}</p>

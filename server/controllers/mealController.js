@@ -13,7 +13,6 @@ export const addMeal = async (req, res) => {
 };
 
 export const updateMeal = async (req, res) => {
-  console.log("to co dostalem", req.body);
   const id = req.body.id;
   const { name, price, meatType, mealType, ingredients, sauce } = req.body.body;
   const mealToUpdate = {
@@ -41,7 +40,6 @@ export const updateMeal = async (req, res) => {
 export const getAllMeal = async (req, res) => {
   try {
     const allMeals = await Meal.find();
-    console.log(allMeals);
     res.status(200).json({ meals: allMeals });
   } catch (error) {
     res.status(404).json({ message: error.message });

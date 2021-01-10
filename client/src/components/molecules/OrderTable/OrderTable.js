@@ -19,7 +19,7 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
 
   useEffect(() => {
     total();
-    console.log(cart);
+
     // console.log(
     //   productsInCart.flatMap((product) => [
     //     {
