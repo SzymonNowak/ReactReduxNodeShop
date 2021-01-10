@@ -31,7 +31,7 @@ const NewSauceForm = ({ action, id }) => {
   const product = useSelector((state) => state.ProductReducer);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProduct(id, collectionsNames.addons));
+    dispatch(getProduct(id, collectionsNames.sauces));
     return () => dispatch(cleanForm());
   }, [dispatch]);
 
@@ -63,7 +63,7 @@ const NewSauceForm = ({ action, id }) => {
         {errors.name && <ErrorMessage>This field is required !</ErrorMessage>}
         <StyledLabel htmlFor="price">Sauce price :</StyledLabel>
         <Input
-          defaultValue={product && product.name}
+          defaultValue={product && product.price}
           id="price"
           name="price"
           type="number"
@@ -75,6 +75,7 @@ const NewSauceForm = ({ action, id }) => {
         <input type="file" id="img" name="img" accept="image/*"></input>
         <LongButton>{action}</LongButton>
       </FormWrapper>
+      {product.message && <ErrorMessage>{product.message}</ErrorMessage>}
     </AddProductGridTemplate>
   );
 };

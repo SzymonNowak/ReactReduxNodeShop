@@ -16,6 +16,7 @@ export const getAllMeals = () => async (dispatch) => {
 export const addMeal = (meal) => async (dispatch) => {
   try {
     const { data } = await api.addMeal(meal);
+    console.log(data);
     dispatch({
       type: actionTypes.ADD_MEAL,
       payload: data,

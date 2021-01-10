@@ -66,7 +66,7 @@ const NewBeveragesForm = ({ action, id }) => {
         {errors.name && <ErrorMessage>This field is required !</ErrorMessage>}
         <StyledLabel htmlFor="price">Beverages price :</StyledLabel>
         <Input
-          defaultValue={product && product.name}
+          defaultValue={product && product.price}
           id="price"
           name="price"
           type="number"
@@ -78,6 +78,7 @@ const NewBeveragesForm = ({ action, id }) => {
         <input type="file" id="img" name="img" accept="image/*"></input>
         <LongButton>{action}</LongButton>
       </FormWrapper>
+      {product.message && <ErrorMessage>{product.message}</ErrorMessage>}
     </AddProductGridTemplate>
   );
 };

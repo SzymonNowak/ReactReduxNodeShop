@@ -196,6 +196,7 @@ const NewMealForm = ({ action, edit, id }) => {
         <input type="file" id="img" name="img" accept="image/*" />
         <LongButton>{action}</LongButton>
       </FormWrapper>
+      {product.message && <ErrorMessage>{product.message}</ErrorMessage>}
     </AddProductGridTemplate>
   );
 };

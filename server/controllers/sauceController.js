@@ -5,7 +5,7 @@ export const addSauce = async (req, res) => {
   const newSauce = new Sauce(sauce);
   try {
     await newSauce.save();
-    res.status(201).json(newSauce);
+    res.status(201).json({ message: "added" });
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

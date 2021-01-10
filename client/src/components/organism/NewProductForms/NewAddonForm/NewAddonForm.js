@@ -74,6 +74,7 @@ const NewAddonForm = ({ action, id }) => {
         <input type="file" id="img" name="img" accept="image/*"></input>
         <LongButton>{action}</LongButton>
       </FormWrapper>
+      {product.message && <ErrorMessage>{product.message}</ErrorMessage>}
     </AddProductGridTemplate>
   );
 };

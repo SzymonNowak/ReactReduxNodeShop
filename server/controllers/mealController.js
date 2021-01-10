@@ -6,7 +6,7 @@ export const addMeal = async (req, res) => {
   const newMeal = new Meal(meal);
   try {
     await newMeal.save();
-    res.status(201).json(newMeal);
+    res.status(201).json({ message: "added" });
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

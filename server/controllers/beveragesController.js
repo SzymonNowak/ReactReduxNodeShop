@@ -5,7 +5,7 @@ export const addBeverage = async (req, res) => {
   const newBeverage = new Beverage(beverage);
   try {
     await newBeverage.save();
-    res.status(201).json(newBeverage);
+    res.status(201).json({ message: "added" });
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

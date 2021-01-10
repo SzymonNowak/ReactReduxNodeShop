@@ -5,7 +5,7 @@ export const addAddon = async (req, res) => {
   const newAddon = new Addon(addon);
   try {
     await newAddon.save();
-    res.status(201).json(newAddon);
+    res.status(201).json({ message: "added" });
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

@@ -6,6 +6,8 @@ const ProductReducer = (state = db, action) => {
       return action.payload;
     case "CLEAN_FORM":
       return action.payload;
+    case actionTypes.ADD_MEAL:
+      return action.payload;
     default:
       return state;
   }
