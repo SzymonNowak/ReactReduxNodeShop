@@ -29,4 +29,7 @@ export const apiRoutes = {
   addSauce: "http://localhost:5000/sauces/addSauce",
   getProduct: "http://localhost:5000",
   updateMeal: "http://localhost:5000/meals/updateMeal",
+  updateAddon: "http://localhost:5000/addons/updateAddon",
+  updateBeverage: "http://localhost:5000/beverages/updateBeverage",
+  updateSauce: "http://localhost:5000/sauces/updateSauce",
 };

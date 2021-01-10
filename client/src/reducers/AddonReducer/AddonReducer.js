@@ -7,6 +7,8 @@ const AddonReducer = (state = db, action) => {
       return action.payload;
     case actionTypes.ADD_ADDON:
       return [...state, action.payload];
+    case actionTypes.UPDATE_ADDON:
+      return action.payload;
     default:
       return state;
   }

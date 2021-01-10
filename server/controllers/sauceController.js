@@ -19,6 +19,26 @@ export const getAllSauces = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+export const updateSauce = async (req, res) => {
+  const id = req.body.id;
+  const { name, price } = req.body.body;
+  const sauceToUpdate = {
+    name,
+    price,
+  };
+  try {
+    const updatedSauce = await Sauce.findByIdAndUpdate(
+      {
+        _id: id,
+      },
+      sauceToUpdate,
+      { new: true }
+    );
+    res.status(200).json(updatedSauce);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
 export const getSauce = async (req, res) => {
   const id = req.params.id;

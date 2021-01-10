@@ -23,3 +23,15 @@ export const addSauce = (sauce) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const updateSauce = (meal) => async (dispatch) => {
+  try {
+    const { data } = await api.updateSauce(meal);
+    dispatch({
+      type: actionTypes.UPDATE_SAUCEL,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

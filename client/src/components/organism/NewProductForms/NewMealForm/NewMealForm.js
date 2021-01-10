@@ -48,11 +48,11 @@ const NewMealForm = ({ action, edit, id }) => {
       id: mealId,
       body: meal,
     };
-    // if (action === "update") {
-    // } else {
-    // dispatch(addMeal(meal));
-    // }
-    dispatch(updateMeal(mealToUpdate));
+    if (action === "update") {
+      dispatch(updateMeal(mealToUpdate));
+    } else {
+      dispatch(addMeal(meal));
+    }
   };
 
   const addIngredient = (e) => {

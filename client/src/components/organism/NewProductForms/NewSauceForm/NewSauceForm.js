@@ -1,13 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import Input from "../../../atoms/Input/Input";
+import { getProduct, cleanForm } from "../../../../actions/edit";
+
 import { useForm } from "react-hook-form";
 import ErrorMessage from "../../../atoms/ErrorMessage/ErrorMessage";
 import AddProductGridTemplate from "../../../../templates/NewProductGridTemplate";
-import { addSauce } from "../../../../actions/sauces";
+import { addSauce, updateSauce } from "../../../../actions/sauces";
 import LongButton from "../../../atoms/BUTTONS/LongButton/LongButton";
+import { collectionsNames } from "../../../../constants/collectionsNames";
 
 const FormWrapper = styled.form`
   display: flex;
@@ -22,12 +25,26 @@ const StyledLabel = styled.label`
   margin-bottom: 20px;
 `;
 
-const NewSauceForm = ({ action }) => {
+const NewSauceForm = ({ action, id }) => {
+  const sauceId = id;
   const { register, handleSubmit, errors } = useForm();
-
+  const product = useSelector((state) => state.ProductReducer);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProduct(id, collectionsNames.addons));
+    return () => dispatch(cleanForm());
+  }, [dispatch]);
+
   const onSubmit = (sauce) => {
-    dispatch(addSauce(sauce));
+    const sauceToUpdate = {
+      id: sauceId,
+      body: sauce,
+    };
+    if (action === "update") {
+      dispatch(updateSauce(sauceToUpdate));
+    } else {
+      dispatch(addSauce(sauce));
+    }
   };
 
   return (
@@ -35,6 +52,7 @@ const NewSauceForm = ({ action }) => {
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
         <StyledLabel htmlFor="name">Sauce Name:</StyledLabel>
         <Input
+          defaultValue={product && product.name}
           id="name"
           name="name"
           type="text"
@@ -45,6 +63,7 @@ const NewSauceForm = ({ action }) => {
         {errors.name && <ErrorMessage>This field is required !</ErrorMessage>}
         <StyledLabel htmlFor="price">Sauce price :</StyledLabel>
         <Input
+          defaultValue={product && product.name}
           id="price"
           name="price"
           type="number"
@@ -60,4 +79,4 @@ const NewSauceForm = ({ action }) => {
   );
 };
 
-export default connect()(NewSauceForm);
+export default NewSauceForm;

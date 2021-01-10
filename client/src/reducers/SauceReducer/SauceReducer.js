@@ -7,6 +7,8 @@ const SauceReducer = (state = db, action) => {
       return action.payload;
     case actionTypes.ADD_SAUCE:
       return [...state, action.payload];
+    case actionTypes.UPDATE_SAUCE:
+      return action.payload;
     default:
       return state;
   }

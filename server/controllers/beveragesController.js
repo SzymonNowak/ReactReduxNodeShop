@@ -28,3 +28,23 @@ export const getBeverage = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+export const updateBeverage = async (req, res) => {
+  const id = req.body.id;
+  const { name, price } = req.body.body;
+  const beverageToUpdate = {
+    name,
+    price,
+  };
+  try {
+    const updatedBeverage = await Beverage.findByIdAndUpdate(
+      {
+        _id: id,
+      },
+      beverageToUpdate,
+      { new: true }
+    );
+    res.status(200).json(updatedBeverage);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};

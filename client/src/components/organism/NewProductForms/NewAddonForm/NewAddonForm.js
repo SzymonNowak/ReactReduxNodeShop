@@ -1,14 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import Input from "../../../atoms/Input/Input";
+import { getProduct, cleanForm } from "../../../../actions/edit";
 
 import LongButton from "../../../atoms/BUTTONS/LongButton/LongButton";
 import ErrorMessage from "../../../atoms/ErrorMessage/ErrorMessage";
 import AddProductGridTemplate from "../../../../templates/NewProductGridTemplate";
-import { addAddons } from "../../../../actions/addons";
+import { addAddons, updateAddon } from "../../../../actions/addons";
+import { collectionsNames } from "../../../../constants/collectionsNames";
+
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
@@ -22,12 +25,25 @@ const StyledLabel = styled.label`
   margin-bottom: 20px;
 `;
 
-const NewAddonForm = ({ action }) => {
+const NewAddonForm = ({ action, id }) => {
+  const addonId = id;
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
-
-  const onSubmit = (sauce) => {
-    dispatch(addAddons(sauce));
+  const product = useSelector((state) => state.ProductReducer);
+  useEffect(() => {
+    dispatch(getProduct(id, collectionsNames.addons));
+    return () => dispatch(cleanForm());
+  }, [dispatch]);
+  const onSubmit = (addon) => {
+    const addonToUpdate = {
+      id: addonId,
+      body: addon,
+    };
+    if (action === "update") {
+      dispatch(updateAddon(addonToUpdate));
+    } else {
+      dispatch(addAddons(addon));
+    }
   };
 
   return (
@@ -35,6 +51,7 @@ const NewAddonForm = ({ action }) => {
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
         <StyledLabel htmlFor="name">Addon Name:</StyledLabel>
         <Input
+          defaultValue={product && product.name}
           id="name"
           name="name"
           type="text"
@@ -45,6 +62,7 @@ const NewAddonForm = ({ action }) => {
         {errors.name && <ErrorMessage>This field is required !</ErrorMessage>}
         <StyledLabel htmlFor="price">Addon price :</StyledLabel>
         <Input
+          defaultValue={product && product.price}
           id="price"
           name="price"
           type="number"
@@ -60,4 +78,4 @@ const NewAddonForm = ({ action }) => {
   );
 };
 
-export default connect()(NewAddonForm);
+export default NewAddonForm;

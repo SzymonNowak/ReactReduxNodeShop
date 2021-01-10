@@ -7,6 +7,8 @@ const BeveragesReducer = (state = db, action) => {
       return action.payload;
     case actionTypes.ADD_BEVERAGES:
       return [...state, action.payload];
+    case actionTypes.UPDATE_BEVERAGE:
+      return action.payload;
     default:
       return state;
   }

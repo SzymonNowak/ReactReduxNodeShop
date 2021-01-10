@@ -10,6 +10,26 @@ export const addAddon = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+export const updateAddon = async (req, res) => {
+  const id = req.body.id;
+  const { name, price } = req.body.body;
+  const addonToUpdate = {
+    name,
+    price,
+  };
+  try {
+    const updatedAddon = await Addon.findByIdAndUpdate(
+      {
+        _id: id,
+      },
+      addonToUpdate,
+      { new: true }
+    );
+    res.status(200).json(updatedAddon);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
 export const getAllAddons = async (req, res) => {
   try {

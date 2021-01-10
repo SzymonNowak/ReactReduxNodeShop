@@ -24,3 +24,15 @@ export const addAddons = (addon) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const updateAddon = (meal) => async (dispatch) => {
+  try {
+    const { data } = await api.updateAddon(meal);
+    dispatch({
+      type: actionTypes.UPDATE_ADDON,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

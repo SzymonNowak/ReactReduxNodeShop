@@ -23,3 +23,14 @@ export const addBeverages = (beverages) => async (dispatch) => {
     console.log(error);
   }
 };
+export const updateBeverage = (meal) => async (dispatch) => {
+  try {
+    const { data } = await api.updateBeverage(meal);
+    dispatch({
+      type: actionTypes.UPDATE_BEVERAGE,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
