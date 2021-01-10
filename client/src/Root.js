@@ -42,11 +42,13 @@ const Root = () => {
               />
 
               <Route
+                exact
                 path="/:collection/:id"
                 component={ProductsDetailsTemplate}
               />
               <Route path={routes.editProduct} component={EditProduct} />
               <Route
+                exact
                 path={routes.editProductForm}
                 component={EditProductForm}
               />

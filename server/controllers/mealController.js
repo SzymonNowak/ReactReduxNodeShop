@@ -11,15 +11,7 @@ export const addMeal = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
-// export const updateMeal = async (req, res) => {
-//   const id = req.params.id;
-//   try {
-//     const meal = await Meal.findById(id);
-//     res.status(200).json(meal);
-//   } catch (error) {
-//     res.status(404).json({ message: error.message });
-//   }
-// };
+
 export const updateMeal = async (req, res) => {
   const { id, price, meatType, mealType, ingredients, sauce } = req.body;
 

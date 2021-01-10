@@ -11,3 +11,10 @@ export const getProduct = (id, collection) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const cleanForm = () => {
+  return {
+    type: "CLEAN_FORM",
+    payload: {},
+  };
+};

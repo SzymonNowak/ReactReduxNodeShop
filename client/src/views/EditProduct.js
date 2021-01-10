@@ -8,6 +8,7 @@ import { getAllBeverages } from "../actions/beverages";
 import { getAllSauces } from "../actions/sauces";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Collection } from "mongoose";
 
 const EditProduct = () => {
   const dispatch = useDispatch();
@@ -27,14 +28,12 @@ const EditProduct = () => {
       <h1>Meals:</h1>
       {meals &&
         meals.map((item) => {
-          console.log(item);
           const id = item._id;
-          const type = item.type;
           return (
             <>
               <p>
                 {item.name}{" "}
-                <Link to={`${type}/${id}`}>
+                <Link to={`/editProductForm/meals/${id}`}>
                   <span>edit</span>
                 </Link>
               </p>
@@ -42,12 +41,51 @@ const EditProduct = () => {
           );
         })}
       <h1>Addons:</h1>
-      {addons && addons.map((item) => <p>{item.name}</p>)}
+      {addons &&
+        addons.map((item) => {
+          const id = item._id;
+          return (
+            <>
+              <p>
+                {item.name}{" "}
+                <Link to={`/editProductForm/addons/${id}`}>
+                  <span>edit</span>
+                </Link>
+              </p>
+            </>
+          );
+        })}
       <h1>Beverages:</h1>
-      {beverages && beverages.map((item) => <p>{item.name}</p>)}
+      {beverages &&
+        beverages.map((item) => {
+          const id = item._id;
+          return (
+            <>
+              <p>
+                {item.name}{" "}
+                <Link to={`/editProductForm/beverages/${id}`}>
+                  <span>edit</span>
+                </Link>
+              </p>
+            </>
+          );
+        })}
       <h1>Sauces:</h1>
 
-      {sauces && sauces.map((item) => <p>{item.name}</p>)}
+      {sauces &&
+        sauces.map((item) => {
+          const id = item._id;
+          return (
+            <>
+              <p>
+                {item.name}{" "}
+                <Link to={`/editProductForm/sauces/${id}`}>
+                  <span>edit</span>
+                </Link>
+              </p>
+            </>
+          );
+        })}
     </>
   );
 };

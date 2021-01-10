@@ -4,6 +4,8 @@ const ProductReducer = (state = db, action) => {
   switch (action.type) {
     case actionTypes.GET_PRODUCT:
       return action.payload;
+    case "CLEAN_FORM":
+      return action.payload;
     default:
       return state;
   }

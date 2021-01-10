@@ -22,7 +22,7 @@ const StyledLabel = styled.label`
   margin-bottom: 20px;
 `;
 
-const NewAddonForm = () => {
+const NewAddonForm = ({ action }) => {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
 
@@ -54,7 +54,7 @@ const NewAddonForm = () => {
         />
         {errors.price && <ErrorMessage>This field is required !</ErrorMessage>}
         <input type="file" id="img" name="img" accept="image/*"></input>
-        <LongButton>Add</LongButton>
+        <LongButton>{action}</LongButton>
       </FormWrapper>
     </AddProductGridTemplate>
   );

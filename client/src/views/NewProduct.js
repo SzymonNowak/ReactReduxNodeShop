@@ -10,10 +10,10 @@ const Wrapper = styled.div`
 const NewProduct = () => {
   return (
     <Wrapper>
-      <NewMealForm />
-      <NewAddomForm />
-      <NewSauceForm />
-      <NewBeveragesFrom />
+      <NewMealForm action="add" />
+      <NewAddomForm action="add" />
+      <NewSauceForm action="add" />
+      <NewBeveragesFrom action="add" />
     </Wrapper>
   );
 };
