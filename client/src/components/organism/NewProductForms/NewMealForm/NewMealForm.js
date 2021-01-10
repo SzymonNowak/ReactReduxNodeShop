@@ -7,7 +7,7 @@ import { getProduct, cleanForm } from "../../../../actions/edit";
 import Input from "../../../atoms/Input/Input";
 import ErrorMessage from "../../../atoms/ErrorMessage/ErrorMessage";
 import AddProductGridTemplate from "../../../../templates/NewProductGridTemplate";
-import { addMeal } from "../../../../actions/meals";
+import { addMeal, updateMeal } from "../../../../actions/meals";
 import LongButton from "../../../atoms/BUTTONS/LongButton/LongButton";
 import AddIgredientsButton from "../../../atoms/BUTTONS/AddIgredientsButton/AddIgredientsButton";
 import { FaPlus } from "react-icons/fa";
@@ -32,6 +32,7 @@ const StyledSelect = styled.select`
 `;
 
 const NewMealForm = ({ action, edit, id }) => {
+  const mealId = id;
   const [ingredients, setIngredients] = useState([]);
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
@@ -43,7 +44,15 @@ const NewMealForm = ({ action, edit, id }) => {
   }, [dispatch]);
 
   const onSubmit = (meal) => {
-    dispatch(addMeal(meal));
+    const mealToUpdate = {
+      id: mealId,
+      body: meal,
+    };
+    // if (action === "update") {
+    // } else {
+    // dispatch(addMeal(meal));
+    // }
+    dispatch(updateMeal(mealToUpdate));
   };
 
   const addIngredient = (e) => {

@@ -13,7 +13,7 @@ import bodyParser from "body-parser";
 
 const app = express();
 app.use(cors());
-app.options("*", cors());
+
 app.use(bodyParser.json({ limit: "30mb", extends: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extends: true }));
 
@@ -23,7 +23,7 @@ app.use("/beverages", beveragesRoutes);
 app.use("/meals", mealsRoutes);
 app.use("/sauces", sauceRoutes);
 app.use("/productsInCart", productsInCart);
-
+mongoose.set("useFindAndModify", false);
 const PORT = process.env.PORT || 5000;
 mongoose
   .connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })

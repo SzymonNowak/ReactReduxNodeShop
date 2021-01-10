@@ -13,10 +13,10 @@ const NewProduct = ({ match }) => {
   return (
     <Wrapper>
       {collection === "meals" && <NewMealForm action="update" id={id} edit />}
-      {collection === "addons" && <NewAddomForm action="update" id={id} />}
-      {collection === "sauces" && <NewSauceForm action="update" id={id} />}
+      {collection === "addons" && <NewAddomForm action="update" id={id} edit />}
+      {collection === "sauces" && <NewSauceForm action="update" id={id} edit />}
       {collection === "beverages" && (
-        <NewBeveragesFrom action="update" id={id} />
+        <NewBeveragesFrom action="update" id={id} edit />
       )}
     </Wrapper>
   );

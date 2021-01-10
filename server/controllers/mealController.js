@@ -13,14 +13,23 @@ export const addMeal = async (req, res) => {
 };
 
 export const updateMeal = async (req, res) => {
-  const { id, price, meatType, mealType, ingredients, sauce } = req.body;
-
+  console.log("to co dostalem", req.body);
+  const id = req.body.id;
+  const { name, price, meatType, mealType, ingredients, sauce } = req.body.body;
+  const mealToUpdate = {
+    name,
+    price,
+    meatType,
+    mealType,
+    ingredients,
+    sauce,
+  };
   try {
     const updatedMeal = await Meal.findByIdAndUpdate(
       {
         _id: id,
       },
-      { price, meatType, mealType, ingredients, sauce },
+      mealToUpdate,
       { new: true }
     );
     res.status(200).json(updatedMeal);

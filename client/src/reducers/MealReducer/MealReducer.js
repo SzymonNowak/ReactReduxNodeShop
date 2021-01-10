@@ -6,6 +6,9 @@ const MealReducer = (state = [], action) => {
       return action.payload;
     case actionTypes.ADD_MEAL:
       return [...state, action.payload];
+    case actionTypes.UPDATE_MEAL:
+      return action.payload;
+
     default:
       return state;
   }

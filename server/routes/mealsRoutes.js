@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get("/single/:id", getMeal);
 router.post("/addMeal", addMeal);
-router.post("/updateMeal", updateMeal);
+router.put("/updateMeal", updateMeal);
 router.get("/getAllMeals", getAllMeal);
 
 export default router;
