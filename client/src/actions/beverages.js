@@ -34,3 +34,14 @@ export const updateBeverage = (meal) => async (dispatch) => {
     console.log(error);
   }
 };
+export const deleteBeverage = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.deleteBeverage(id);
+    dispatch({
+      type: actionTypes.DELETE_BEVERAGES,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

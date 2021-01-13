@@ -15,6 +15,13 @@ export const updateAddon = (addon) => axios.put(apiRoutes.updateAddon, addon);
 export const updateSauce = (sauce) => axios.put(apiRoutes.updateSauce, sauce);
 export const updateBeverage = (beverage) =>
   axios.put(apiRoutes.updateBeverage, beverage);
+export const deleteMeal = (id) => axios.delete(`${apiRoutes.deleteMeal}/${id}`);
+export const deleteSauce = (id) =>
+  axios.delete(`${apiRoutes.deleteSauce}/${id}`);
+export const deleteAddon = (id) =>
+  axios.delete(`${apiRoutes.deleteAddon}/${id}`);
+export const deleteBeverage = (id) =>
+  axios.delete(`${apiRoutes.deleteBeverage}/${id}`);
 
 export const getSingleProduct = (id, collection) =>
   axios.get(`${apiRoutes.getProduct}/${collection}/single/${id}`);

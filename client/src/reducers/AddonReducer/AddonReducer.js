@@ -9,6 +9,10 @@ const AddonReducer = (state = db, action) => {
       return [...state, action.payload];
     case actionTypes.UPDATE_ADDON:
       return action.payload;
+    case actionTypes.DELETE_ADDON:
+      return () => {
+        console.log(action);
+      };
     default:
       return state;
   }

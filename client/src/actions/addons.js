@@ -36,3 +36,14 @@ export const updateAddon = (meal) => async (dispatch) => {
     console.log(error);
   }
 };
+export const deleteAddon = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.deleteAddon(id);
+    dispatch({
+      type: actionTypes.DELETE_ADDON,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { getAllMeals } from "../actions/meals";
-import { getAllAddons } from "../actions/addons";
-import { getAllBeverages } from "../actions/beverages";
-import { getAllSauces } from "../actions/sauces";
+import { getAllMeals, deleteMeal } from "../actions/meals";
+import { getAllAddons, deleteAddon } from "../actions/addons";
+import { getAllBeverages, deleteBeverage } from "../actions/beverages";
+import { getAllSauces, deleteSauce } from "../actions/sauces";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Collection } from "mongoose";
 
 const EditProduct = () => {
   const dispatch = useDispatch();
@@ -23,6 +22,22 @@ const EditProduct = () => {
     dispatch(getAllSauces());
   }, [dispatch]);
 
+  const deletePorduct = (productId, e) => {
+    const sectionId = e.target.id;
+    if (sectionId === "meal") {
+      dispatch(deleteMeal(productId));
+      dispatch(getAllMeals());
+    } else if (sectionId === "addon") {
+      dispatch(deleteAddon(productId));
+    } else if (sectionId === "sauce") {
+      dispatch(deleteSauce(productId));
+    } else if (sectionId === "beverage") {
+      dispatch(deleteBeverage(productId));
+    } else {
+      console.log("cant delete");
+    }
+  };
+
   return (
     <>
       <h1>Meals:</h1>
@@ -36,6 +51,9 @@ const EditProduct = () => {
                 <Link to={`/editProductForm/meals/${id}`}>
                   <span>edit</span>
                 </Link>
+                <button onClick={(e) => deletePorduct(id, e)} id="meal">
+                  delete
+                </button>
               </p>
             </>
           );
@@ -51,6 +69,9 @@ const EditProduct = () => {
                 <Link to={`/editProductForm/addons/${id}`}>
                   <span>edit</span>
                 </Link>
+                <button onClick={(e) => deletePorduct(id, e)} id="addon">
+                  delete
+                </button>
               </p>
             </>
           );
@@ -66,6 +87,9 @@ const EditProduct = () => {
                 <Link to={`/editProductForm/beverages/${id}`}>
                   <span>edit</span>
                 </Link>
+                <button onClick={(e) => deletePorduct(id, e)} id="beverage">
+                  delete
+                </button>
               </p>
             </>
           );
@@ -82,6 +106,9 @@ const EditProduct = () => {
                 <Link to={`/editProductForm/sauces/${id}`}>
                   <span>edit</span>
                 </Link>
+                <button onClick={(e) => deletePorduct(id, e)} id="sauce">
+                  delete
+                </button>
               </p>
             </>
           );

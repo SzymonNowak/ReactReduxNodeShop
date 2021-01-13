@@ -49,3 +49,19 @@ export const getSauce = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const deleteSauce = async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  try {
+    const deletedSauce = await Sauce.findOneAndDelete(
+      {
+        _id: id,
+      },
+      console.log("test")
+    );
+    res.status(201).json(deletedSauce);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};

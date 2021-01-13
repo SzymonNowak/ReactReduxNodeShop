@@ -48,3 +48,19 @@ export const updateBeverage = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const deleteBeverage = async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  try {
+    const deletedBeverage = await Beverage.findOneAndDelete(
+      {
+        _id: id,
+      },
+      console.log("test")
+    );
+    res.status(201).json(deletedBeverage);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};

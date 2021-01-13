@@ -35,3 +35,14 @@ export const updateSauce = (meal) => async (dispatch) => {
     console.log(error);
   }
 };
+export const deleteSauce = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.deleteSauce(id);
+    dispatch({
+      type: actionTypes.DELETE_SAUCE,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

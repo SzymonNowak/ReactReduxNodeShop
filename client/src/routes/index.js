@@ -32,4 +32,8 @@ export const apiRoutes = {
   updateAddon: "http://localhost:5000/addons/updateAddon",
   updateBeverage: "http://localhost:5000/beverages/updateBeverage",
   updateSauce: "http://localhost:5000/sauces/updateSauce",
+  deleteMeal: "http://localhost:5000/meals/deleteMeal",
+  deleteAddon: "http://localhost:5000/addons/deleteAddon",
+  deleteSauce: "http://localhost:5000/sauces/deleteSauce",
+  deleteBeverage: "http://localhost:5000/beverages/deleteBeverage",
 };
