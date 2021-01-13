@@ -22,17 +22,20 @@ const EditProduct = () => {
     dispatch(getAllSauces());
   }, [dispatch]);
 
-  const deletePorduct = (productId, e) => {
+  const deletePorduct = async (productId, e) => {
     const sectionId = e.target.id;
     if (sectionId === "meal") {
-      dispatch(deleteMeal(productId));
-      dispatch(getAllMeals());
+      await dispatch(deleteMeal(productId));
+      await dispatch(getAllMeals());
     } else if (sectionId === "addon") {
-      dispatch(deleteAddon(productId));
+      await dispatch(deleteAddon(productId));
+      await dispatch(getAllAddons());
     } else if (sectionId === "sauce") {
-      dispatch(deleteSauce(productId));
+      await dispatch(deleteSauce(productId));
+      await dispatch(getAllSauces());
     } else if (sectionId === "beverage") {
-      dispatch(deleteBeverage(productId));
+      await dispatch(deleteBeverage(productId));
+      await dispatch(getAllBeverages());
     } else {
       console.log("cant delete");
     }

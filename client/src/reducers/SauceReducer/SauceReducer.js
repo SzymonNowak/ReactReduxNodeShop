@@ -10,9 +10,8 @@ const SauceReducer = (state = db, action) => {
     case actionTypes.UPDATE_SAUCE:
       return action.payload;
     case actionTypes.DELETE_SAUCE:
-      return () => {
-        console.log(action);
-      };
+      return state.sauces.filter((item) => item._id !== action.payload._id);
+
     default:
       return state;
   }

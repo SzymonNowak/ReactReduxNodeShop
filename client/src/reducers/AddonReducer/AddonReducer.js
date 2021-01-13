@@ -2,6 +2,7 @@ import { actionTypes } from "../../constants/actionTypes";
 import { db } from "../../initialStates/productState";
 
 const AddonReducer = (state = db, action) => {
+  console.log(state);
   switch (action.type) {
     case actionTypes.FETCH_ALL_ADDONS:
       return action.payload;
@@ -10,9 +11,7 @@ const AddonReducer = (state = db, action) => {
     case actionTypes.UPDATE_ADDON:
       return action.payload;
     case actionTypes.DELETE_ADDON:
-      return () => {
-        console.log(action);
-      };
+      return state.addons.filter((item) => item._id !== action.payload._id);
     default:
       return state;
   }

@@ -10,9 +10,7 @@ const BeveragesReducer = (state = db, action) => {
     case actionTypes.UPDATE_BEVERAGE:
       return action.payload;
     case actionTypes.DELETE_BEVERAGES:
-      return () => {
-        console.log(action);
-      };
+      return state.beverages.filter((item) => item._id !== action.payload._id);
     default:
       return state;
   }
