@@ -10,9 +10,7 @@ const MealReducer = (state = [], action) => {
     case actionTypes.UPDATE_MEAL:
       return action.payload;
     case actionTypes.DELETE_MEAL:
-      return () => {
-        console.log(action);
-      };
+      return state.meals.filter((item) => item._id !== action.payload._id);
 
     default:
       return state;

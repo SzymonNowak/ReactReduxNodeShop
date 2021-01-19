@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { getAllMeals, deleteMeal } from "../actions/meals";
 import { getAllAddons, deleteAddon } from "../actions/addons";
 import { getAllBeverages, deleteBeverage } from "../actions/beverages";
@@ -52,7 +49,7 @@ const EditProduct = () => {
               <p>
                 {item.name}{" "}
                 <Link to={`/editProductForm/meals/${id}`}>
-                  <span>edit</span>
+                  <button>edit</button>
                 </Link>
                 <button onClick={(e) => deletePorduct(id, e)} id="meal">
                   delete
@@ -70,7 +67,7 @@ const EditProduct = () => {
               <p>
                 {item.name}{" "}
                 <Link to={`/editProductForm/addons/${id}`}>
-                  <span>edit</span>
+                  <button>edit</button>
                 </Link>
                 <button onClick={(e) => deletePorduct(id, e)} id="addon">
                   delete
@@ -88,7 +85,7 @@ const EditProduct = () => {
               <p>
                 {item.name}{" "}
                 <Link to={`/editProductForm/beverages/${id}`}>
-                  <span>edit</span>
+                  <button>edit</button>
                 </Link>
                 <button onClick={(e) => deletePorduct(id, e)} id="beverage">
                   delete
@@ -107,7 +104,7 @@ const EditProduct = () => {
               <p>
                 {item.name}{" "}
                 <Link to={`/editProductForm/sauces/${id}`}>
-                  <span>edit</span>
+                  <button>edit</button>
                 </Link>
                 <button onClick={(e) => deletePorduct(id, e)} id="sauce">
                   delete

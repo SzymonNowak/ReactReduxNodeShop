@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { useForm, Controller } from "react-hook-form";
 import Input from "../../atoms/Input/Input";
-
+import ProgressBar from "../../molecules/ProgressBar/ProgressBar";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import FormWrapper from "../../atoms/FormWrapper/FormWrapper";
 import { connect, useDispatch } from "react-redux";
@@ -39,110 +39,125 @@ const Styledelect = styled.select`
   justify-content: center;
   margin-bottom: 40px;
 `;
+const ProgressBarWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  padding-top: 50px;
+`;
 
 const AdressForm = ({ productsInCart }) => {
   const { register, handleSubmit, errors, control } = useForm();
   const onSubmit = () => {};
 
   return (
-    <MainWrapper>
-      <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <Row>
-          <RowWrapper>
-            <StyledLabel>Name</StyledLabel>
-            <StyledInput
-              id="Name"
-              name="Name"
-              type="text"
-              ref={register({
-                required: true,
-              })}
-            />
-          </RowWrapper>
-          <RowWrapper>
-            <StyledLabel>Surname</StyledLabel>
-            <StyledInput
-              id="SurName"
-              name="SurName"
-              type="text"
-              ref={register({
-                required: true,
-              })}
-            />
-          </RowWrapper>
-        </Row>
-        <Row>
-          <RowWrapper>
-            <StyledLabel>Phone Number</StyledLabel>
-            <StyledInput
-              id="PhoneNumber"
-              name="PhoneNumber"
-              type="text"
-              ref={register({
-                required: true,
-              })}
-            />
-          </RowWrapper>
-          <RowWrapper>
-            <StyledLabel>Street</StyledLabel>
-            <StyledInput
-              id="Street"
-              name="Street"
-              type="text"
-              step="any"
-              ref={register({
-                required: true,
-              })}
-            />
-          </RowWrapper>
-        </Row>
-        <Row>
-          <RowWrapper>
-            <StyledLabel>Street Number</StyledLabel>
-            <StyledInput
-              id="StreetNumber"
-              name="StreetNumber"
-              type="text"
-              ref={register({
-                required: true,
-              })}
-            />
-          </RowWrapper>
-          <RowWrapper>
-            <StyledLabel>Flat Number</StyledLabel>
-            <StyledInput
-              id="FlatNumber"
-              name="FlatNumber"
-              type="number"
-              ref={register({
-                required: true,
-              })}
-            />
-          </RowWrapper>
-        </Row>
+    <>
+      <>
+        <ProgressBarWrapper>
+          <ProgressBar name={"cart"} />
+          <ProgressBar name={"adress"} active />
+          <ProgressBar name={"Order"} />
+        </ProgressBarWrapper>
+      </>
+      <MainWrapper>
+        <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+          <Row>
+            <RowWrapper>
+              <StyledLabel>Name</StyledLabel>
+              <StyledInput
+                id="Name"
+                name="Name"
+                type="text"
+                ref={register({
+                  required: true,
+                })}
+              />
+            </RowWrapper>
+            <RowWrapper>
+              <StyledLabel>Surname</StyledLabel>
+              <StyledInput
+                id="SurName"
+                name="SurName"
+                type="text"
+                ref={register({
+                  required: true,
+                })}
+              />
+            </RowWrapper>
+          </Row>
+          <Row>
+            <RowWrapper>
+              <StyledLabel>Phone Number</StyledLabel>
+              <StyledInput
+                id="PhoneNumber"
+                name="PhoneNumber"
+                type="text"
+                ref={register({
+                  required: true,
+                })}
+              />
+            </RowWrapper>
+            <RowWrapper>
+              <StyledLabel>Street</StyledLabel>
+              <StyledInput
+                id="Street"
+                name="Street"
+                type="text"
+                step="any"
+                ref={register({
+                  required: true,
+                })}
+              />
+            </RowWrapper>
+          </Row>
+          <Row>
+            <RowWrapper>
+              <StyledLabel>Street Number</StyledLabel>
+              <StyledInput
+                id="StreetNumber"
+                name="StreetNumber"
+                type="text"
+                ref={register({
+                  required: true,
+                })}
+              />
+            </RowWrapper>
+            <RowWrapper>
+              <StyledLabel>Flat Number</StyledLabel>
+              <StyledInput
+                id="FlatNumber"
+                name="FlatNumber"
+                type="number"
+                ref={register({
+                  required: true,
+                })}
+              />
+            </RowWrapper>
+          </Row>
 
-        <StyledLabel>floor / key access</StyledLabel>
-        <StyledInput
-          id="floor/keyAccess"
-          name="floor/keyAccess"
-          type="text"
-          ref={register({
-            required: true,
-          })}
-        />
-        <h1>Choose pay method</h1>
-        <Styledelect
-          id="payMethod"
-          name="payMethod"
-          ref={register({
-            required: true,
-          })}
-        >
-          <option value="cash">cash</option>
-          <option value="card">card</option>
-        </Styledelect>
-      </FormWrapper>
-    </MainWrapper>
+          <StyledLabel>floor / key access</StyledLabel>
+          <StyledInput
+            id="floor/keyAccess"
+            name="floor/keyAccess"
+            type="text"
+            ref={register({
+              required: true,
+            })}
+          />
+          <h1>Choose pay method</h1>
+          <Styledelect
+            id="payMethod"
+            name="payMethod"
+            ref={register({
+              required: true,
+            })}
+          >
+            <option value="cash">cash</option>
+            <option value="card">card</option>
+          </Styledelect>
+        </FormWrapper>
+      </MainWrapper>
+    </>
   );
 };
 

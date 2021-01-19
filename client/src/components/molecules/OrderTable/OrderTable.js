@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector, connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { routes } from "../../../routes/index";
 import { removeItemFromCart as removeItemFromCartAction } from "../../../actions/removeItemFromCart";
 import { FaTrash } from "react-icons/fa";
+import LongButton from "../../atoms/BUTTONS/LongButton/LongButton";
 const OrderTable = ({ productsInCart, removeItemFromCart }) => {
   const shipingPrice = 6;
   const [currentPrice, setCurrentPrice] = useState(0);
@@ -19,17 +21,6 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
 
   useEffect(() => {
     total();
-
-    // console.log(
-    //   productsInCart.flatMap((product) => [
-    //     {
-    //       productId: product.id,
-    //       products: productsInCart.filter(
-    //         (productt) => productt.id == product.id
-    //       ),
-    //     },
-    //   ]),
-    //  {})
   });
   const TableWrapper = styled.div`
     justify-content: space-between;
@@ -83,6 +74,11 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
         </TableWrapper>
       )}
       {cart.length == 0 && <p>add sth</p>}
+      {cart.length != 0 && (
+        <Link to={routes.addresForm}>
+          <LongButton>Go Next</LongButton>
+        </Link>
+      )}
     </>
   );
 };

@@ -32,6 +32,7 @@ const Root = () => {
                 render={() => <Redirect to="/main" />}
               />
               <Route path={routes.main} component={Main} />
+              <Route path={routes.addresForm} component={AdressForm} />
               <Route path={routes.contact} component={Contact} />
               <Route path={routes.orders} component={OrderList} />
               <Route path={routes.addNewProduct} component={NewProduct} />
