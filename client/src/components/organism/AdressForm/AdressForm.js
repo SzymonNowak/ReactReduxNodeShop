@@ -6,8 +6,8 @@ import Input from "../../atoms/Input/Input";
 import ProgressBar from "../../molecules/ProgressBar/ProgressBar";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import FormWrapper from "../../atoms/FormWrapper/FormWrapper";
-import { connect, useDispatch } from "react-redux";
-import { orderMeal as orderMealAction } from "../../../actions/orderMeal";
+import { useDispatch } from "react-redux";
+import { addAdress } from "../../../actions/adress";
 const Row = styled.div`
   display: flex;
   justify-content: space-around;
@@ -46,10 +46,13 @@ const ProgressBarWrapper = styled.div`
   padding-top: 50px;
 `;
 
-const AdressForm = ({ productsInCart }) => {
+const AdressForm = () => {
   const { register, handleSubmit, errors, control } = useForm();
-  const onSubmit = () => {};
+  const dispatch = useDispatch();
 
+  const onSubmit = (data) => {
+    dispatch(addAdress(data));
+  };
   return (
     <>
       <>
@@ -155,14 +158,11 @@ const AdressForm = ({ productsInCart }) => {
             <option value="cash">cash</option>
             <option value="card">card</option>
           </Styledelect>
+          <button type="submit">go next</button>
         </FormWrapper>
       </MainWrapper>
     </>
   );
 };
 
-const mapeStateToProps = ({ ShopingCartReducer }) => ({
-  productsInCart: ShopingCartReducer.productsInCart,
-});
-
-export default connect(mapeStateToProps)(AdressForm);
+export default AdressForm;

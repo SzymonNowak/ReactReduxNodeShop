@@ -1,14 +1,15 @@
 import { actionTypes } from "../../constants/actionTypes";
-import { orderMeal } from "./orderMeal";
 
 const initialState = {
-  deliveryInfo: [],
+  deliveryInfo: {},
 };
 
-const DeliveryInfo = (state = initialState, action) => {
-  switch (action.type) {
-    case actionTypes.Order_Meal:
-      return orderMeal(state, action);
+const DeliveryInfo = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case actionTypes.ADD_ADRESS_INFO:
+      return {
+        deliveryInfo: payload,
+      };
     default:
       return state;
   }

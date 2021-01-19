@@ -19,5 +19,5 @@ export const actionTypes = {
   GET_PRODUCT: "GET_PRODUCT",
   REMOVE_ITEM_FROM_CART: "REMOVE_ITEM_FROM_CART",
   ADD_ITEM_TO_CART: "ADD_ITEM_TO_CART",
-  Order_Meal: "Order_Meal",
+  ADD_ADRESS_INFO: "ADD_ADRESS_INFO",
 };
