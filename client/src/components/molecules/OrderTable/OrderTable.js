@@ -74,6 +74,7 @@ const OrderTable = ({ productsInCart, removeItemFromCart }) => {
         </TableWrapper>
       )}
       {cart.length == 0 && <p>add sth</p>}
+      {currentPrice}
       {cart.length != 0 && (
         <Link to={routes.addresForm}>
           <LongButton>Go Next</LongButton>

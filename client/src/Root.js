@@ -17,7 +17,7 @@ import CheckOutMyOrder from "./views/CheckOutMyOrder";
 import AdressForm from "./components/organism/AdressForm/AdressForm";
 import EditProduct from "./views/EditProduct";
 import EditProductForm from "./components/organism/EditProductForm/EditProductForm";
-
+import OrderSummary from "./views/OrderSummary";
 const Root = () => {
   return (
     <Provider store={store}>
@@ -32,6 +32,8 @@ const Root = () => {
                 render={() => <Redirect to="/main" />}
               />
               <Route path={routes.main} component={Main} />
+              <Route path={routes.OrderSummary} component={OrderSummary} />
+
               <Route path={routes.addresForm} component={AdressForm} />
               <Route path={routes.contact} component={Contact} />
               <Route path={routes.orders} component={OrderList} />

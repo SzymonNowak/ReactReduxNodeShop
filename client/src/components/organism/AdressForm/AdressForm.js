@@ -7,7 +7,9 @@ import ProgressBar from "../../molecules/ProgressBar/ProgressBar";
 import ErrorMessage from "../../atoms/ErrorMessage/ErrorMessage";
 import FormWrapper from "../../atoms/FormWrapper/FormWrapper";
 import { useDispatch } from "react-redux";
+import { routes } from "../../../routes/index";
 import { addAdress } from "../../../actions/adress";
+import { Link, useHistory } from "react-router-dom";
 const Row = styled.div`
   display: flex;
   justify-content: space-around;
@@ -49,9 +51,13 @@ const ProgressBarWrapper = styled.div`
 const AdressForm = () => {
   const { register, handleSubmit, errors, control } = useForm();
   const dispatch = useDispatch();
-
+  let history = useHistory();
+  const redirect = () => {
+    history.push("/OrderSummary");
+  };
   const onSubmit = (data) => {
     dispatch(addAdress(data));
+    redirect();
   };
   return (
     <>

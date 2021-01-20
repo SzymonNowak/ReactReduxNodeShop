@@ -2,7 +2,6 @@ import { actionTypes } from "../../constants/actionTypes";
 import { db } from "../../initialStates/productState";
 
 const AddonReducer = (state = db, action) => {
-  console.log(state);
   switch (action.type) {
     case actionTypes.FETCH_ALL_ADDONS:
       return action.payload;

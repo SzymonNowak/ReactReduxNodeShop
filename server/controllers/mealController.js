@@ -13,14 +13,11 @@ export const addMeal = async (req, res) => {
 };
 export const deleteMeal = async (req, res) => {
   const id = req.params.id;
-  console.log(id);
+
   try {
-    const deletedMeal = await Meal.findOneAndDelete(
-      {
-        _id: id,
-      },
-      console.log("test")
-    );
+    const deletedMeal = await Meal.findOneAndDelete({
+      _id: id,
+    });
     res.status(201).json(deletedMeal);
   } catch (error) {
     res.status(409).json({ message: error.message });

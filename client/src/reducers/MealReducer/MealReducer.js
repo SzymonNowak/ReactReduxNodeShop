@@ -1,7 +1,6 @@
 import { actionTypes } from "../../constants/actionTypes";
 
 const MealReducer = (state = [], action) => {
-  console.log(action);
   switch (action.type) {
     case actionTypes.FETCH_ALL_MEALS:
       return action.payload;

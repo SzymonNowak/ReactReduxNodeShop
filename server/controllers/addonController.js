@@ -51,14 +51,10 @@ export const getAddon = async (req, res) => {
 };
 export const deleteAddon = async (req, res) => {
   const id = req.params.id;
-  console.log(id);
   try {
-    const deletedAddon = await Addon.findOneAndDelete(
-      {
-        _id: id,
-      },
-      console.log("test")
-    );
+    const deletedAddon = await Addon.findOneAndDelete({
+      _id: id,
+    });
     res.status(201).json(deletedAddon);
   } catch (error) {
     res.status(409).json({ message: error.message });

@@ -1,15 +1,14 @@
 import mongoose from "mongoose";
 
 const OrderSchema = mongoose.Schema({
-  name: String,
-  secoundName: String,
-  street: String,
-  homeNumber: Number,
-  phoneNumber: String,
-  status: Boolean,
-  orderType: String,
-  payMethod: String,
-  // order: [{ type: Schema.Types.ObjectId, ref: "ProductsInCart" }],
+  delivery: { type: mongoose.Schema.Types.ObjectId, ref: "DeliveryInfo" },
+  meals: [{ type: mongoose.Schema.Types.ObjectId, ref: "Meals" }],
+  beverages: [{ type: mongoose.Schema.Types.ObjectId, ref: "Beverages" }],
+  addons: [{ type: mongoose.Schema.Types.ObjectId, ref: "Addons" }],
+  sauces: [{ type: mongoose.Schema.Types.ObjectId, ref: "Sauces" }],
+  cart: { type: mongoose.Schema.Types.ObjectId, ref: "ProductsInCart" },
+  done: { type: Boolean, default: false },
+  data: { type: Date, default: Date.now() },
 });
 
 const Order = mongoose.model("Orders", OrderSchema);

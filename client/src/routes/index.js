@@ -13,6 +13,7 @@ export const routes = {
   admin: "/admin",
   user: "/user",
   checkOutmyOrder: "/checkOutmyOrder",
+  OrderSummary: "/OrderSummary",
   addresForm: "/addresForm",
   editProduct: "/editProduct",
   editProductForm: "/editProductForm/:collection/:id",

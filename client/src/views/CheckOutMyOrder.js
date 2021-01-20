@@ -24,7 +24,6 @@ const CheckOutMyOrder = () => {
         <ProgressBar name={"Order"} />
       </ProgressBarWrapper>
       <OrderTable />
-      {/* {podsumowanie} */}
     </>
   );
 };
