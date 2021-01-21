@@ -7,7 +7,7 @@ const MealsSchema = mongoose.Schema({
   mealType: String,
   ingredients: [String],
   type: { type: String, default: "meals" },
-  // img: String,
+  photo: String,
   sauce: String,
 });
 
