@@ -6,7 +6,6 @@ const OrderSchema = mongoose.Schema({
   beverages: [{ type: mongoose.Schema.Types.ObjectId, ref: "Beverages" }],
   addons: [{ type: mongoose.Schema.Types.ObjectId, ref: "Addons" }],
   sauces: [{ type: mongoose.Schema.Types.ObjectId, ref: "Sauces" }],
-  cart: { type: mongoose.Schema.Types.ObjectId, ref: "ProductsInCart" },
   done: { type: Boolean, default: false },
   data: { type: Date, default: Date.now() },
 });

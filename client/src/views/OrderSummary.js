@@ -2,21 +2,40 @@
 /* eslint-disable indent */
 /* eslint-disable no-use-before-define */
 
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Header } from "../components/atoms/Header/Header";
-import { NavLink } from "react-router-dom";
-import { routes } from "../routes/index";
-
+import { makeOrder } from "../actions/makeOrder";
 const OrderSummary = () => {
   const cart = useSelector((state) => state.ShopingCartReducer.productsInCart);
+  const meals = cart.filter((item) => item.type == "meals");
+  const addons = cart.filter((item) => item.type == "addons");
+  const sauces = cart.filter((item) => item.type == "sauces");
+  const beverages = cart.filter((item) => item.type == "beverages");
+  const filterByTypeAndCreateIdArray = (tabToFilter) => {
+    const idArray = [];
+    tabToFilter.map((item) => {
+      idArray.push(item.id);
+    });
+    return idArray;
+  };
+  const mealsIdArray = filterByTypeAndCreateIdArray(meals);
+  const addonsIdArray = filterByTypeAndCreateIdArray(addons);
+  const saucesIdArray = filterByTypeAndCreateIdArray(sauces);
+  const beveragesIdArray = filterByTypeAndCreateIdArray(beverages);
   const delivery = useSelector((state) => state.DeliverReducer.deliveryInfo);
+  const dispatch = useDispatch();
+
   const order = {
-    products: cart,
+    meals: mealsIdArray,
+    addons: addonsIdArray,
+    sauces: saucesIdArray,
+    beverages: beveragesIdArray,
     deliveryInfo: delivery,
   };
-  console.log(order);
+  const handleClick = () => {
+    dispatch(makeOrder(order));
+    console.log(order);
+  };
 
   return (
     <>
@@ -31,7 +50,7 @@ const OrderSummary = () => {
           <p>{item.price}</p>
         </>
       ))}
-      <button>Make Order</button>
+      <button onClick={handleClick}>Make Order</button>
     </>
   );
 };

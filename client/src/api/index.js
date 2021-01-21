@@ -25,3 +25,7 @@ export const deleteBeverage = (id) =>
 
 export const getSingleProduct = (id, collection) =>
   axios.get(`${apiRoutes.getProduct}/${collection}/single/${id}`);
+
+export const makeOrder = (order) => {
+  axios.post(apiRoutes.makeOrder, order);
+};

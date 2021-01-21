@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const DeliveryInfoSchema = mongoose.Schema({
   Name: String,
-  Surname: String,
-  PhoneNumber: Number,
+  SurName: String,
+  PhoneNumber: String,
   Street: String,
   StreetNumber: String,
-  FlatNumber: Number,
-  floor: Number,
+  FlatNumber: String,
+  floor: String,
   payMethod: String,
 });
 

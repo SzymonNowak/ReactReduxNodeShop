@@ -100,7 +100,7 @@ const AdressForm = () => {
               <StyledInput
                 id="PhoneNumber"
                 name="PhoneNumber"
-                type="text"
+                type="number"
                 ref={register({
                   required: true,
                 })}
@@ -144,10 +144,10 @@ const AdressForm = () => {
             </RowWrapper>
           </Row>
 
-          <StyledLabel>floor / key access</StyledLabel>
+          <StyledLabel>floor</StyledLabel>
           <StyledInput
-            id="floor/keyAccess"
-            name="floor/keyAccess"
+            id="floor"
+            name="floor"
             type="text"
             ref={register({
               required: true,
