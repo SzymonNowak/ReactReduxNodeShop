@@ -1,13 +1,11 @@
 import { actionTypes } from "../../constants/actionTypes";
 
-const initialState = {
-  productsInCart: [],
-};
+const initialState = [];
 
 const OrderReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.MAKE_ORDER:
-      return null;
+      return [...state, action.payload];
     default:
       return state;
   }

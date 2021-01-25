@@ -7,9 +7,7 @@ export const getProduct = (id, collection) => async (dispatch) => {
       type: actionTypes.GET_PRODUCT,
       payload: data,
     });
-  } catch (error) {
-    console.log(error.message);
-  }
+  } catch (error) {}
 };
 
 export const cleanForm = () => {

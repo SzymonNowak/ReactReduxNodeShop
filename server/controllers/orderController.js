@@ -24,7 +24,7 @@ export const makeOrder = async (req, res) => {
       .populate("beverages")
       .populate("addons")
       .populate("sauces");
-    res.status(200).json(fulldescriptionOrder);
+    res.status(201).json({ fulldescriptionOrder });
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

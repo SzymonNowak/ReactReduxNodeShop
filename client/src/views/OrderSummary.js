@@ -34,7 +34,6 @@ const OrderSummary = () => {
   };
   const handleClick = () => {
     dispatch(makeOrder(order));
-    console.log(order);
   };
 
   return (
