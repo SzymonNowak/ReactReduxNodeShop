@@ -1,13 +1,13 @@
-import express from "express";
-import {
+const express = require("express");
+const router = express.Router();
+
+const {
   makeOrder,
   getAllOrders,
   getOrder,
-} from "../controllers/orderController.js";
-const router = express.Router();
+} = require("../controllers/orderController.js");
 
 router.post("/makeOrder", makeOrder);
 router.get("/getAllOrders", getAllOrders);
 router.get("/getOrders", getOrder);
-
-export default router;
+module.exports = router;

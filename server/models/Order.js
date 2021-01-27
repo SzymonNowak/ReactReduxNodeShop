@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const OrderSchema = mongoose.Schema({
   delivery: { type: mongoose.Schema.Types.ObjectId, ref: "DeliveryInfo" },
@@ -11,4 +11,4 @@ const OrderSchema = mongoose.Schema({
 });
 
 const Order = mongoose.model("Orders", OrderSchema);
-export default Order;
+module.exports = Order;

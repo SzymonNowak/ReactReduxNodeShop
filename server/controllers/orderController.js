@@ -1,8 +1,7 @@
-import Order from "../models/Order.js";
-import DeliveryInfo from "../models/DeliveryInfo.js";
-import ProductsInCart from "../models/ProductsInCart.js";
+const Order = require("../models/Order");
+const DeliveryInfo = require("../models/DeliveryInfo");
 
-export const makeOrder = async (req, res) => {
+const makeOrder = async (req, res) => {
   const delivery = req.body.deliveryInfo;
   const meals = req.body.meals;
   const addons = req.body.addons;
@@ -30,7 +29,7 @@ export const makeOrder = async (req, res) => {
   }
 };
 
-export const getOrder = async (req, res) => {
+const getOrder = async (req, res) => {
   const _id = req.id;
   try {
     const fulldescriptionOrder = await Order.find(_id)
@@ -44,7 +43,7 @@ export const getOrder = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
-export const getAllOrders = async (req, res) => {
+const getAllOrders = async (req, res) => {
   try {
     const fulldescriptionOrder = await Order.find()
       .populate("delivery")
@@ -57,3 +56,5 @@ export const getAllOrders = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+
+module.exports = { makeOrder, getOrder, getAllOrders };

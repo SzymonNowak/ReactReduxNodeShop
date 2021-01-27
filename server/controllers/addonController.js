@@ -1,6 +1,7 @@
-import Addon from "../models/Addons.js";
+const Addon = require("../models/Addons");
+const mongoose = require("mongoose");
 
-export const addAddon = async (req, res) => {
+const addAddon = async (req, res) => {
   const addon = req.body;
   const newAddon = new Addon(addon);
   try {
@@ -10,7 +11,7 @@ export const addAddon = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
-export const updateAddon = async (req, res) => {
+const updateAddon = async (req, res) => {
   const id = req.body.id;
   const { name, price } = req.body.body;
   const addonToUpdate = {
@@ -31,7 +32,7 @@ export const updateAddon = async (req, res) => {
   }
 };
 
-export const getAllAddons = async (req, res) => {
+const getAllAddons = async (req, res) => {
   try {
     const allAddons = await Addon.find();
     res.status(200).json({ addons: allAddons });
@@ -40,7 +41,7 @@ export const getAllAddons = async (req, res) => {
   }
 };
 
-export const getAddon = async (req, res) => {
+const getAddon = async (req, res) => {
   const id = req.params.id;
   try {
     const addon = await Addon.findById(id);
@@ -49,7 +50,7 @@ export const getAddon = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-export const deleteAddon = async (req, res) => {
+const deleteAddon = async (req, res) => {
   const id = req.params.id;
   try {
     const deletedAddon = await Addon.findOneAndDelete({
@@ -60,3 +61,5 @@ export const deleteAddon = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+
+module.exports = { deleteAddon, getAddon, getAllAddons, updateAddon, addAddon };

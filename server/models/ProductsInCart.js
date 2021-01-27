@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const ProductsInCartSchema = mongoose.Schema({
   meals: [{ type: mongoose.Schema.Types.ObjectId, type: String, ref: "Meals" }],
@@ -9,4 +9,4 @@ const ProductsInCartSchema = mongoose.Schema({
 
 const ProductsInCart = mongoose.model("ProductsInCart", ProductsInCartSchema);
 
-export default ProductsInCart;
+module.exports = ProductsInCart;

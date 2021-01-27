@@ -1,7 +1,7 @@
-import Meal from "../models/Meals.js";
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+const Meal = require("../models/Meals");
 
-export const addMeal = async (req, res) => {
+const addMeal = async (req, res) => {
   const meal = req.body;
   const newMeal = new Meal(meal);
   try {
@@ -11,7 +11,7 @@ export const addMeal = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
-export const deleteMeal = async (req, res) => {
+const deleteMeal = async (req, res) => {
   const id = req.params.id;
 
   try {
@@ -24,7 +24,7 @@ export const deleteMeal = async (req, res) => {
   }
 };
 
-export const updateMeal = async (req, res) => {
+const updateMeal = async (req, res) => {
   const id = req.body.id;
   const { name, price, meatType, mealType, ingredients, sauce } = req.body.body;
   const mealToUpdate = {
@@ -49,7 +49,7 @@ export const updateMeal = async (req, res) => {
   }
 };
 
-export const getAllMeal = async (req, res) => {
+const getAllMeal = async (req, res) => {
   try {
     const allMeals = await Meal.find();
     res.status(201).json({ meals: allMeals });
@@ -58,7 +58,7 @@ export const getAllMeal = async (req, res) => {
   }
 };
 
-export const getMeal = async (req, res) => {
+const getMeal = async (req, res) => {
   const id = req.params.id;
   try {
     const meal = await Meal.findById(id);
@@ -67,3 +67,4 @@ export const getMeal = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+module.exports = { addMeal, deleteMeal, updateMeal, getAllMeal, getMeal };

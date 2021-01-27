@@ -1,22 +1,21 @@
-import express from "express";
-import mongoose from "mongoose";
-import { keys } from "./config/keys.js";
-import userRoutes from "./routes/userRoutes.js";
-import addonRoutes from "./routes/addonRoutes.js";
-import beveragesRoutes from "./routes/beveragesRoutes.js";
-import mealsRoutes from "./routes/mealsRoutes.js";
-import sauceRoutes from "./routes/sauceRoutes.js";
-import ordersRoutes from "./routes/orderRoutes.js";
-import cors from "cors";
-import bodyParser from "body-parser";
+const express = require("express");
+const mongoose = require("mongoose");
+const { keys } = require("./config/keys");
+const io = require("socket.io");
+const http = require("http");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const mealsRoutes = require("./routes/mealsRoutes");
+const sauceRoutes = require("./routes/sauceRoutes");
+const ordersRoutes = require("./routes/orderRoutes");
+const beveragesRoutes = require("./routes/beveragesRoutes");
+const addonRoutes = require("./routes/addonRoutes");
 
 const app = express();
 app.use(cors());
 
 app.use(bodyParser.json({ limit: "30mb", extends: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extends: true }));
-
-app.use("/user", userRoutes);
 app.use("/addons", addonRoutes);
 app.use("/beverages", beveragesRoutes);
 app.use("/meals", mealsRoutes);

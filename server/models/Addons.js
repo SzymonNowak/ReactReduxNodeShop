@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const AddonsSchema = mongoose.Schema({
   name: String,
@@ -8,4 +8,4 @@ const AddonsSchema = mongoose.Schema({
 });
 
 const Addon = mongoose.model("Addons", AddonsSchema);
-export default Addon;
+module.exports = Addon;
