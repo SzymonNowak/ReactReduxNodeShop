@@ -24,7 +24,11 @@ const io = socket(
   }
 );
 io.on("connection", (socket) => {
-  console.log();
+  console.log(socket.id);
+
+  socket.on("test", (data) => {
+    socket.broadcast.emit("test", data);
+  });
 });
 
 mongoose.set("useFindAndModify", false);

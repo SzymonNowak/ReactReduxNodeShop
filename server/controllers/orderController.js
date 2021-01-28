@@ -56,5 +56,18 @@ const getAllOrders = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+const getAllNotFinishedOrders = async (req, res) => {
+  try {
+    const fulldescriptionOrder = await Order.find({ done: false })
+      .populate("delivery")
+      .populate("meals")
+      .populate("beverages")
+      .populate("addons")
+      .populate("sauces");
+    res.status(201).json(fulldescriptionOrder);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
 
-module.exports = { makeOrder, getOrder, getAllOrders };
+module.exports = { makeOrder, getOrder, getAllOrders, getAllNotFinishedOrders };
