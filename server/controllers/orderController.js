@@ -70,4 +70,9 @@ const getAllNotFinishedOrders = async (req, res) => {
   }
 };
 
-module.exports = { makeOrder, getOrder, getAllOrders, getAllNotFinishedOrders };
+module.exports = {
+  makeOrder,
+  getOrder,
+  getAllOrders,
+  getAllNotFinishedOrders,
+};

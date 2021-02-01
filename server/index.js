@@ -1,8 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { keys } = require("./config/keys");
-const socket = require("socket.io");
-const http = require("http");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mealsRoutes = require("./routes/mealsRoutes");
@@ -10,12 +8,10 @@ const sauceRoutes = require("./routes/sauceRoutes");
 const ordersRoutes = require("./routes/orderRoutes");
 const beveragesRoutes = require("./routes/beveragesRoutes");
 const addonRoutes = require("./routes/addonRoutes");
-
 const app = express();
-
 app.use(cors());
 const PORT = process.env.PORT || 5000;
-const io = socket(
+const io = require("socket.io")(
   app.listen(PORT, () => console.log(`app runing on ${PORT}`)),
   {
     cors: {
@@ -23,13 +19,8 @@ const io = socket(
     },
   }
 );
-io.on("connection", (socket) => {
-  console.log(socket.id);
 
-  socket.on("test", (data) => {
-    socket.broadcast.emit("test", data);
-  });
-});
+require("./socket/makeOrder")(io);
 
 mongoose.set("useFindAndModify", false);
 mongoose

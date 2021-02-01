@@ -41,4 +41,5 @@ export const apiRoutes = {
   makeOrder: "http://localhost:5000/orders/makeOrder",
   getAllNotFinishedOrders:
     "http://localhost:5000/orders/getAllNotFinishedOrders",
+  socketConnection: "http://localhost:5000",
 };

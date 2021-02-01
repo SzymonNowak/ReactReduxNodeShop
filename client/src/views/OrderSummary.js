@@ -2,15 +2,13 @@
 /* eslint-disable indent */
 /* eslint-disable no-use-before-define */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import io from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
-import { makeOrder } from "../actions/makeOrder";
+import { makeOrder, saveOrderToRedux } from "../actions/makeOrder";
+import { apiRoutes } from "../routes/index";
 const OrderSummary = () => {
-  const cart = useSelector((state) => state.ShopingCartReducer.productsInCart);
-  const meals = cart.filter((item) => item.type == "meals");
-  const addons = cart.filter((item) => item.type == "addons");
-  const sauces = cart.filter((item) => item.type == "sauces");
-  const beverages = cart.filter((item) => item.type == "beverages");
   const filterByTypeAndCreateIdArray = (tabToFilter) => {
     const idArray = [];
     tabToFilter.map((item) => {
@@ -18,12 +16,32 @@ const OrderSummary = () => {
     });
     return idArray;
   };
+
+  let clientId = [];
+  let history = useHistory();
+  const cart = useSelector((state) => state.ShopingCartReducer.productsInCart);
+  const meals = cart.filter((item) => item.type == "meals");
+  const addons = cart.filter((item) => item.type == "addons");
+  const sauces = cart.filter((item) => item.type == "sauces");
+  const beverages = cart.filter((item) => item.type == "beverages");
+  const socket = io.connect(apiRoutes.socketConnection);
+  const dispatch = useDispatch();
   const mealsIdArray = filterByTypeAndCreateIdArray(meals);
   const addonsIdArray = filterByTypeAndCreateIdArray(addons);
   const saucesIdArray = filterByTypeAndCreateIdArray(sauces);
   const beveragesIdArray = filterByTypeAndCreateIdArray(beverages);
   const delivery = useSelector((state) => state.DeliverReducer.deliveryInfo);
-  const dispatch = useDispatch();
+
+  socket.on("connect", () => {
+    console.log("id po connekcie", socket.id);
+    clientId.push(socket.id);
+  });
+  socket.on("test", (order) => {
+    if (order) {
+      dispatch(saveOrderToRedux(order));
+      console.log(order);
+    }
+  });
 
   const order = {
     meals: mealsIdArray,
@@ -31,11 +49,17 @@ const OrderSummary = () => {
     sauces: saucesIdArray,
     beverages: beveragesIdArray,
     deliveryInfo: delivery,
+    clientId: clientId,
   };
   const handleClick = () => {
-    dispatch(makeOrder(order));
-  };
+    // dispatch(makeOrder(order));
+    dispatch(makeOrder(order, socket));
 
+    // history.push("/contact");
+    // socket.emit("test", {
+    //   order,
+    // });
+  };
   return (
     <>
       <h1>your adress :</h1>

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
-import { routes } from "./routes/index";
+import { routes, apiRoutes } from "./routes/index";
 import { theme } from "./theme/mainTheme";
 import Main from "./views/Main";
 import store from "./store/index";
@@ -19,6 +19,7 @@ import EditProduct from "./views/EditProduct";
 import EditProductForm from "./components/organism/EditProductForm/EditProductForm";
 import OrderSummary from "./views/OrderSummary";
 import ManageOrders from "./components/organism/ManageOrders/ManageOrders";
+
 const Root = () => {
   return (
     <Provider store={store}>

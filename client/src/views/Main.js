@@ -37,6 +37,7 @@ const Main = () => {
     }, shipingPrice);
     setCurrentPrice(totalPrice);
   };
+
   useEffect(() => {
     dispatch(getAllMeals());
     dispatch(getAllAddons());
