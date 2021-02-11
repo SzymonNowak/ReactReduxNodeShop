@@ -6,6 +6,7 @@ const OrderSchema = mongoose.Schema({
   beverages: [{ type: mongoose.Schema.Types.ObjectId, ref: "Beverages" }],
   addons: [{ type: mongoose.Schema.Types.ObjectId, ref: "Addons" }],
   sauces: [{ type: mongoose.Schema.Types.ObjectId, ref: "Sauces" }],
+  clientId: [String],
   done: { type: Boolean, default: false },
   data: { type: Date, default: Date.now() },
 });

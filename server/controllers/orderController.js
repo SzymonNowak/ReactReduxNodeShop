@@ -69,10 +69,18 @@ const getAllNotFinishedOrders = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+const finishOrder = async (req, res) => {
+  const id = req.body.id;
+  await Order.findByIdAndUpdate({ _id: id }, { done: true });
+  try {
+    res.status(201).json("finished");
+  } catch (error) {}
+};
 
 module.exports = {
   makeOrder,
   getOrder,
   getAllOrders,
+  finishOrder,
   getAllNotFinishedOrders,
 };

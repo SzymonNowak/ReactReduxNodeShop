@@ -36,11 +36,13 @@ const OrderSummary = () => {
     console.log("id po connekcie", socket.id);
     clientId.push(socket.id);
   });
-  socket.on("test", (order) => {
+  socket.on("saveOrder", (order) => {
     if (order) {
       dispatch(saveOrderToRedux(order));
-      console.log(order);
     }
+  });
+  socket.on("orderStatus", (data) => {
+    console.log(data);
   });
 
   const order = {
@@ -52,13 +54,8 @@ const OrderSummary = () => {
     clientId: clientId,
   };
   const handleClick = () => {
-    // dispatch(makeOrder(order));
     dispatch(makeOrder(order, socket));
-
     // history.push("/contact");
-    // socket.emit("test", {
-    //   order,
-    // });
   };
   return (
     <>

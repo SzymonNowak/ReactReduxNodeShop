@@ -24,7 +24,7 @@ export const saveOrderToRedux = (order) => async (dispatch) => {
 
 export const makeOrder = (order, socket) => async (dispatch) => {
   try {
-    const data = await socket.emit("test", {
+    const data = await socket.emit("makeOrder", {
       order,
     });
     dispatch({
@@ -35,11 +35,21 @@ export const makeOrder = (order, socket) => async (dispatch) => {
     console.log(error.message);
   }
 };
+export const finishOrder = (orderId) => async (dispatch) => {
+  try {
+    const { data } = await api.finishOrder(orderId);
+    dispatch({
+      type: actionTypes.FINISH_ORDER,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 export const getAllNotFinishedOrders = () => async (dispatch) => {
   try {
     const { data } = await api.getAllNotFinishedOrders();
-    console.log(data);
     dispatch({
       type: actionTypes.GET_ALL_NOT_FINISHED_ORDERS,
       payload: data,

@@ -19,7 +19,6 @@ const OrderReducer = (state = initialState, action) => {
     case actionTypes.SAVE_ORDER_TO_REDUX:
       return {
         clientOrder: [action.payload],
-        socketId: [...state],
       };
     default:
       return state;
