@@ -1,4 +1,4 @@
-const Addon = require("../models/Addons");
+const Addon = require("../../models/Addons");
 const mongoose = require("mongoose");
 
 const addAddon = async (req, res) => {

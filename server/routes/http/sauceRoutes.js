@@ -7,7 +7,7 @@ const {
   getSauce,
   updateSauce,
   deleteSauce,
-} = require("../controllers/sauceController.js");
+} = require("../../controllers/http/sauceController.js");
 
 router.get("/single/:id", getSauce);
 router.post("/addSauce", addSauce);

@@ -7,7 +7,7 @@ const {
   getBeverage,
   updateBeverage,
   deleteBeverage,
-} = require("../controllers/beveragesController.js");
+} = require("../../controllers/http/beveragesController.js");
 
 router.get("/single/:id", getBeverage);
 router.post("/addBeverage", addBeverage);

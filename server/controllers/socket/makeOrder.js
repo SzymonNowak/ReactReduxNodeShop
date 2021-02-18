@@ -1,31 +1,5 @@
-const Order = require("../models/Order");
-const DeliveryInfo = require("../models/DeliveryInfo");
-module.exports = function (io) {
-  io.on("connect", (socket) => {
-    makeOrderHandler(io, socket);
-    updateOrderStatus(io, socket);
-  });
-};
-
-const makeOrderHandler = (io, socket) => {
-  socket.on("makeOrder", async (data) => {
-    const clientOrder = {
-      fullOrder: await makeOrder(data),
-      clientId: socket.id,
-    };
-    io.to(socket.id).emit("saveOrder", clientOrder);
-  });
-};
-const updateOrderStatus = (io, socket) => {
-  socket.on("updateOrderStatus", (data) => {
-    const orderStatus = {
-      time: data.time,
-      status: data.orderStatus,
-    };
-    console.log(data);
-    io.to(data.socketId).emit("orderStatus", orderStatus);
-  });
-};
+const DeliveryInfo = require("../../models/DeliveryInfo");
+const Order = require("../../models/Order");
 
 const makeOrder = async (data) => {
   const delivery = data.order.deliveryInfo;
@@ -57,3 +31,5 @@ const makeOrder = async (data) => {
     return error;
   }
 };
+
+module.exports = { makeOrder };

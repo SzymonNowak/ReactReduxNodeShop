@@ -7,7 +7,7 @@ const {
   getAddon,
   updateAddon,
   deleteAddon,
-} = require("../controllers/addonController.js");
+} = require("../../controllers/http/addonController.js");
 
 router.get("/single/:id", getAddon);
 router.post("/addAddon", addAddon);

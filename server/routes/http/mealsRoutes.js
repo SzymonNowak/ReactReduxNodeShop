@@ -6,7 +6,7 @@ const {
   updateMeal,
   getAllMeal,
   getMeal,
-} = require("../controllers/mealController");
+} = require("../../controllers/http/mealController");
 
 router.get("/single/:id", getMeal);
 

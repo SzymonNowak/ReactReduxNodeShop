@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const { keys } = require("./config/keys");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const mealsRoutes = require("./routes/mealsRoutes");
-const sauceRoutes = require("./routes/sauceRoutes");
-const ordersRoutes = require("./routes/orderRoutes");
-const beveragesRoutes = require("./routes/beveragesRoutes");
-const addonRoutes = require("./routes/addonRoutes");
+const mealsRoutes = require("./routes/http/mealsRoutes");
+const sauceRoutes = require("./routes/http/sauceRoutes");
+const ordersRoutes = require("./routes/http/orderRoutes");
+const beveragesRoutes = require("./routes/http/beveragesRoutes");
+const addonRoutes = require("./routes/http/addonRoutes");
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 5000;
@@ -20,7 +20,7 @@ const io = require("socket.io")(
   }
 );
 
-require("./socket/makeOrder")(io);
+require("./routes/socket/socketRoutes")(io);
 
 mongoose.set("useFindAndModify", false);
 mongoose

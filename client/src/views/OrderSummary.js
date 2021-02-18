@@ -3,12 +3,29 @@
 /* eslint-disable no-use-before-define */
 
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import io from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
 import { makeOrder, saveOrderToRedux } from "../actions/makeOrder";
 import { apiRoutes } from "../routes/index";
+
 const OrderSummary = () => {
+  let socket = io.connect(apiRoutes.socketConnection);
+  useEffect(() => {
+    socket.on("connect", () => {
+      clientId.push(socket.id);
+    });
+  }, [socket]);
+
+  socket.on("saveOrder", (order) => {
+    if (order) {
+      dispatch(saveOrderToRedux(order));
+    }
+  });
+  socket.on("orderStatus", (data) => {
+    setOrderStatus(data);
+    changeActivStatus(true);
+  });
+
   const filterByTypeAndCreateIdArray = (tabToFilter) => {
     const idArray = [];
     tabToFilter.map((item) => {
@@ -18,32 +35,20 @@ const OrderSummary = () => {
   };
 
   let clientId = [];
-  let history = useHistory();
+
+  const [orderStatus, setOrderStatus] = useState({});
+  const [isActive, changeActivStatus] = useState(false);
   const cart = useSelector((state) => state.ShopingCartReducer.productsInCart);
   const meals = cart.filter((item) => item.type == "meals");
   const addons = cart.filter((item) => item.type == "addons");
   const sauces = cart.filter((item) => item.type == "sauces");
   const beverages = cart.filter((item) => item.type == "beverages");
-  const socket = io.connect(apiRoutes.socketConnection);
   const dispatch = useDispatch();
   const mealsIdArray = filterByTypeAndCreateIdArray(meals);
   const addonsIdArray = filterByTypeAndCreateIdArray(addons);
   const saucesIdArray = filterByTypeAndCreateIdArray(sauces);
   const beveragesIdArray = filterByTypeAndCreateIdArray(beverages);
   const delivery = useSelector((state) => state.DeliverReducer.deliveryInfo);
-
-  socket.on("connect", () => {
-    console.log("id po connekcie", socket.id);
-    clientId.push(socket.id);
-  });
-  socket.on("saveOrder", (order) => {
-    if (order) {
-      dispatch(saveOrderToRedux(order));
-    }
-  });
-  socket.on("orderStatus", (data) => {
-    console.log(data);
-  });
 
   const order = {
     meals: mealsIdArray,
@@ -55,7 +60,6 @@ const OrderSummary = () => {
   };
   const handleClick = () => {
     dispatch(makeOrder(order, socket));
-    // history.push("/contact");
   };
   return (
     <>
@@ -70,7 +74,17 @@ const OrderSummary = () => {
           <p>{item.price}</p>
         </>
       ))}
-      <button onClick={handleClick}>Make Order</button>
+      {!isActive && (
+        <>
+          <button onClick={() => handleClick(socket)}>Make Order</button>
+        </>
+      )}
+      {isActive && (
+        <>
+          <p>time: {orderStatus.time}</p>
+          <p>status: {orderStatus.status}</p>
+        </>
+      )}
     </>
   );
 };

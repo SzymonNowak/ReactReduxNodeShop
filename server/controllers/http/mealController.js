@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Meal = require("../models/Meals");
+const Meal = require("../..//models/Meals");
 
 const addMeal = async (req, res) => {
   const meal = req.body;

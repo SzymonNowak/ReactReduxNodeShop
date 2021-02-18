@@ -25,7 +25,6 @@ const ManageOrders = () => {
   const [time, setTime] = useState("45");
   const [orderStatus, setOrderStatus] = useState("accept");
   const [clientId, setClientId] = useState("");
-  console.log(clientId);
 
   const dispatch = useDispatch();
   const orders = useSelector((state) => state.OrderReducer);
@@ -59,7 +58,7 @@ const ManageOrders = () => {
                 <p>order id:{singleOrder._id} </p>
                 <p>socket id:</p>
                 <p>
-                  adress:{" "}
+                  adress:
                   {`${singleOrder.delivery.Street} ${singleOrder.delivery.StreetNumber}`}
                 </p>
 
