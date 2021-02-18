@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import io from "socket.io-client";
 
 const Contact = () => {
-  return <p> tel number</p>;
+  return (
+    <>
+      <p>status:</p>
+      <p>delivery time:</p>
+    </>
+  );
 };
 
 export default Contact;

@@ -1,16 +1,17 @@
-import express from "express";
-import {
+const express = require("express");
+const router = express.Router();
+
+const {
   addSauce,
   getAllSauces,
   getSauce,
   updateSauce,
   deleteSauce,
-} from "../controllers/sauceController.js";
-const router = express.Router();
+} = require("../../controllers/http/sauceController.js");
+
 router.get("/single/:id", getSauce);
 router.post("/addSauce", addSauce);
 router.get("/getAllSauces", getAllSauces);
 router.put("/updateSauce", updateSauce);
 router.delete("/deleteSauce/:id", deleteSauce);
-
-export default router;
+module.exports = router;

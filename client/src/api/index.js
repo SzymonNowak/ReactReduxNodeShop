@@ -29,3 +29,8 @@ export const getSingleProduct = (id, collection) =>
 export const makeOrder = (order) => {
   return axios.post(apiRoutes.makeOrder, order);
 };
+export const finishOrder = (orderId) => {
+  return axios.post(`${apiRoutes.finishOrder}/${orderId}`, { id: orderId });
+};
+export const getAllNotFinishedOrders = () =>
+  axios.get(apiRoutes.getAllNotFinishedOrders);

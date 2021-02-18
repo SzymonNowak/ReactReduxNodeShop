@@ -90,6 +90,9 @@ const SideBar = () => {
         <StyledLink to={routes.editProduct}>
           <Options>edit products</Options>
         </StyledLink>
+        <StyledLink to={routes.manageOrders}>
+          <Options>manage orders</Options>
+        </StyledLink>
       </NavMenu>
     </MainWrapper>
   );

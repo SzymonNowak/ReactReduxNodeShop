@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const OrderSchema = mongoose.Schema({
   delivery: { type: mongoose.Schema.Types.ObjectId, ref: "DeliveryInfo" },
@@ -6,9 +6,10 @@ const OrderSchema = mongoose.Schema({
   beverages: [{ type: mongoose.Schema.Types.ObjectId, ref: "Beverages" }],
   addons: [{ type: mongoose.Schema.Types.ObjectId, ref: "Addons" }],
   sauces: [{ type: mongoose.Schema.Types.ObjectId, ref: "Sauces" }],
+  clientId: [String],
   done: { type: Boolean, default: false },
   data: { type: Date, default: Date.now() },
 });
 
 const Order = mongoose.model("Orders", OrderSchema);
-export default Order;
+module.exports = Order;

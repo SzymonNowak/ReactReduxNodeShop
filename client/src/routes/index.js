@@ -17,6 +17,7 @@ export const routes = {
   addresForm: "/addresForm",
   editProduct: "/editProduct",
   editProductForm: "/editProductForm/:collection/:id",
+  manageOrders: "/manageOrders",
 };
 
 export const apiRoutes = {
@@ -38,4 +39,9 @@ export const apiRoutes = {
   deleteSauce: "http://localhost:5000/sauces/deleteSauce",
   deleteBeverage: "http://localhost:5000/beverages/deleteBeverage",
   makeOrder: "http://localhost:5000/orders/makeOrder",
+  finishOrder: "http://localhost:5000/orders/finishOrder",
+
+  getAllNotFinishedOrders:
+    "http://localhost:5000/orders/getAllNotFinishedOrders",
+  socketConnection: "http://localhost:5000",
 };

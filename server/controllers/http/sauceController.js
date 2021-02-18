@@ -1,6 +1,6 @@
-import Sauce from "../models/Sauce.js";
+const Sauce = require("../../models/Sauce");
 
-export const addSauce = async (req, res) => {
+const addSauce = async (req, res) => {
   const sauce = req.body;
   const newSauce = new Sauce(sauce);
   try {
@@ -11,7 +11,7 @@ export const addSauce = async (req, res) => {
   }
 };
 
-export const getAllSauces = async (req, res) => {
+const getAllSauces = async (req, res) => {
   try {
     const allSauces = await Sauce.find();
     res.status(200).json({ sauces: allSauces });
@@ -19,7 +19,7 @@ export const getAllSauces = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-export const updateSauce = async (req, res) => {
+const updateSauce = async (req, res) => {
   const id = req.body.id;
   const { name, price } = req.body.body;
   const sauceToUpdate = {
@@ -40,7 +40,7 @@ export const updateSauce = async (req, res) => {
   }
 };
 
-export const getSauce = async (req, res) => {
+const getSauce = async (req, res) => {
   const id = req.params.id;
   try {
     const sauce = await Sauce.findById(id);
@@ -50,7 +50,7 @@ export const getSauce = async (req, res) => {
   }
 };
 
-export const deleteSauce = async (req, res) => {
+const deleteSauce = async (req, res) => {
   const id = req.params.id;
 
   try {
@@ -61,4 +61,12 @@ export const deleteSauce = async (req, res) => {
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
+};
+
+module.exports = {
+  addSauce,
+  getAllSauces,
+  updateSauce,
+  getSauce,
+  deleteSauce,
 };

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const BeveragesSchema = mongoose.Schema({
   name: String,
@@ -8,4 +8,5 @@ const BeveragesSchema = mongoose.Schema({
 });
 
 const Beverage = mongoose.model("Beverages", BeveragesSchema);
-export default Beverage;
+
+module.exports = Beverage;

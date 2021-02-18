@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const SauceSchema = mongoose.Schema({
   name: String,
@@ -8,4 +8,4 @@ const SauceSchema = mongoose.Schema({
 });
 
 const Sauce = mongoose.model("Sauces", SauceSchema);
-export default Sauce;
+module.exports = Sauce;

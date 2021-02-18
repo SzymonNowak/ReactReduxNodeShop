@@ -11,6 +11,9 @@ const Admin = () => {
       <p>
         <NavLink to={routes.editProduct}> Edit Product </NavLink>
       </p>
+      <p>
+        <NavLink to={routes.manageOrders}> Manage Orders </NavLink>
+      </p>
     </div>
   );
 };

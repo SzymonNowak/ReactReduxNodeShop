@@ -1,12 +1,13 @@
-import express from "express";
-import {
+const express = require("express");
+const router = express.Router();
+
+const {
   addBeverage,
   getAllBeverages,
   getBeverage,
   updateBeverage,
   deleteBeverage,
-} from "../controllers/beveragesController.js";
-const router = express.Router();
+} = require("../../controllers/http/beveragesController.js");
 
 router.get("/single/:id", getBeverage);
 router.post("/addBeverage", addBeverage);
@@ -14,4 +15,4 @@ router.get("/getAllBeverages", getAllBeverages);
 router.put("/updateBeverage", updateBeverage);
 router.delete("/deleteBeverage/:id", deleteBeverage);
 
-export default router;
+module.exports = router;

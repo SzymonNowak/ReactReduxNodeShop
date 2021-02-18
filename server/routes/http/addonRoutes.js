@@ -1,12 +1,13 @@
-import express from "express";
-import {
+const express = require("express");
+const router = express.Router();
+
+const {
   addAddon,
   getAllAddons,
   getAddon,
   updateAddon,
   deleteAddon,
-} from "../controllers/addonController.js";
-const router = express.Router();
+} = require("../../controllers/http/addonController.js");
 
 router.get("/single/:id", getAddon);
 router.post("/addAddon", addAddon);
@@ -14,4 +15,4 @@ router.get("/getAllAddons", getAllAddons);
 router.put("/updateAddon", updateAddon);
 router.delete("/deleteAddon/:id", deleteAddon);
 
-export default router;
+module.exports = router;
